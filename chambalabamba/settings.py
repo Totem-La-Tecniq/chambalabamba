@@ -8,7 +8,7 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 # Archivos estáticos
 STATIC_URL = "/static/"
 
-"""
+
 # para Local
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
@@ -16,13 +16,20 @@ MEDIA_ROOT = BASE_DIR / "media"
 # para Render:
 MEDIA_ROOT = "/opt/render/project/src/media"
 MEDIA_URL = "/media/"
-
+"""
 
 print ("BD",BASE_DIR)
 # Seguridad
 SECRET_KEY = config('SECRET_KEY')
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
+#ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
+ALLOWED_HOSTS = [
+    "192.168.100.2",
+    "192.168.100.2:8000",
+    "localhost",
+    "127.0.0.1",
+]
+
 
 # Aplicaciones instaladas
 INSTALLED_APPS = [

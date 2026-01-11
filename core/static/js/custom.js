@@ -127,8 +127,8 @@ jQuery(document).ready(function($) {
 			responsiveClass: true,
 			nav: true,
 			autoplay: true,
-			autoplayTimeout: 7000,   // ⬅️ MÁS LENTO (9 segundos por slide)
-            smartSpeed: 5000,        // ⬅️ TRANSICIÓN SUAVE
+			autoplayTimeout: 8000,   // ⬅️ MÁS LENTO (9 segundos por slide)
+            smartSpeed: 6000,        // ⬅️ TRANSICIÓN SUAVE
 			dots: false,
 			responsive: {
 				0: {
