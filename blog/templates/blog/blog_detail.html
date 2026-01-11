@@ -107,7 +107,16 @@
                         {% if thumbs %}
                         <ul class="small-gallery">
                             {% for f in thumbs|slice:":3" %}
-                            <li><img src="{{ f.imagen.url }}" alt="{{ f.alt|default:post.titulo }}"></li>
+                          <li>
+  <figure class="blog-photo-figure">
+    <img src="{{ f.imagen.url }}"
+         alt="{{ f.alt|default:f.titulo|default:post.titulo }}"
+         title="{{ f.titulo|default:'' }}">
+    {% if f.titulo %}
+      <figcaption class="blog-photo-caption">{{ f.titulo }}</figcaption>
+    {% endif %}
+  </figure>
+</li>
                             {% endfor %}
                         </ul>
                         {% endif %}

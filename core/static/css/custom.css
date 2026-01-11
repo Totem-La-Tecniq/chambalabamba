@@ -7357,3 +7357,33 @@ header.site-header {
     background-size: 24px 24px !important;
   }
 }
+/*MEJOR PRESENTACION TITULO IMAGEN BLOG GALLERY*/
+.blog-slider .item{
+  position: relative;
+}
+
+.blog-slider .blog-photo-title{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 12px;
+  background: rgba(0,0,0,.55);
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.blog-photo-figure{
+  margin: 0;
+  position: relative;
+}
+
+.blog-photo-caption,
+.blog-photo-figure figcaption{
+  font-size: 13px;
+  margin-top: 6px;
+  color: #555;
+  line-height: 1.3;
+  text-align: center;
+}
