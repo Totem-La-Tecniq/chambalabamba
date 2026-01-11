@@ -2,36 +2,17 @@ jQuery(document).ready(function($) {
     "use strict"
 
     // ------- Home Slider Start ------- //
-    // ------- Home Slider Start ------- //
-if ($('#home-slider').length) {
-    $('#home-slider').owlCarousel({
-        loop: true,
-        margin: 0,
-        items: 1,
-        autoplay: true,
+    if ($('#home-slider').length) {
+        $('#home-slider').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: true,
+			dots:false,
+            items: 1,
+            autoplay: true,
 
-        nav: true,
-        dots: false,
-
-        navText: [
-            '<img class="owl-arrow" src="/static/images/arrows/left.png" alt="Anterior">',
-            '<img class="owl-arrow" src="/static/images/arrows/right.png" alt="Siguiente">'
-        ],
-
-        responsive: {
-            0: {
-                items: 1,
-                nav: true
-            },
-            768: {
-                items: 1,
-                nav: true
-            }
-        }
-    });
-}
-// ------- Home Slider End ------- //
-
+        })
+    }
     // ------- Home Slider End ------- //
 	
 	
@@ -138,36 +119,36 @@ if ($('#home-slider').length) {
 	
 	
 	// ------- Current Project Slider ------- //
-	// ------- Current Project Slider ------- //
-console.log("cpro-slider cargado!");
-if ($('.cpro-slider').length) {
-  $('.cpro-slider').owlCarousel({
-    loop: true,
-    margin: 10,
-    responsiveClass: true,
-
-    nav: true,
-    dots: false,
-
-    navText: [
-      '<img class="owl-arrow" src="/static/images/arrows/left.png" alt="Anterior">',
-      '<img class="owl-arrow" src="/static/images/arrows/right.png" alt="Siguiente">'
-    ],
-
-    autoplay: true,
-    autoplayTimeout: 6000,
-    smartSpeed: 5000,
-
-    responsive: {
-      0:   { items: 1, nav: true },
-      567: { items: 2, nav: true },
-      991: { items: 3, nav: true },
-      1000:{ items: 4, nav: true, loop: false }
-    }
-  });
-}
-// ------- Current Project Slider End ------- //
-
+	console.log("cpro-slider cargado!");
+	if ($('.cpro-slider').length) {
+		$('.cpro-slider').owlCarousel   ({
+			loop: true,
+			margin: 10,
+			responsiveClass: true,
+			nav: true,
+			autoplay: true,
+			autoplayTimeout: 7000,   // ⬅️ MÁS LENTO (9 segundos por slide)
+            smartSpeed: 5000,        // ⬅️ TRANSICIÓN SUAVE
+			dots: false,
+			responsive: {
+				0: {
+					items: 1,
+				},
+				567: {
+					items: 2,
+				},
+	
+				991: {
+					items: 3,
+				},
+	
+				1000: {
+					items: 4,
+					loop: false
+				}
+			}
+		})
+	}
 	// ------- Current Project Slider End ------- //
 
 
