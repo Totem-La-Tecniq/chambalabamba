@@ -5,35 +5,75 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('participa', '0001_initial'),
+        ("participa", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ParticipaHeader',
+            name="ParticipaHeader",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Participa', max_length=120, verbose_name='Título')),
-                ('breadcrumb_label', models.CharField(default='Estancias', max_length=120, verbose_name='Breadcrumb actual')),
-                ('background', models.ImageField(blank=True, null=True, upload_to='participa/headers/')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Participa", max_length=120, verbose_name="Título"
+                    ),
+                ),
+                (
+                    "breadcrumb_label",
+                    models.CharField(
+                        default="Estancias",
+                        max_length=120,
+                        verbose_name="Breadcrumb actual",
+                    ),
+                ),
+                (
+                    "background",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="participa/headers/"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Sección: Header (Participa)',
-                'verbose_name_plural': 'Sección: Header (Participa)',
+                "verbose_name": "Sección: Header (Participa)",
+                "verbose_name_plural": "Sección: Header (Participa)",
             },
         ),
         migrations.CreateModel(
-            name='ParticipaPage',
+            name="ParticipaPage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('enabled', models.BooleanField(default=True)),
-                ('header', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='participa.participaheader')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("enabled", models.BooleanField(default=True)),
+                (
+                    "header",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="participa.participaheader",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Página: Participa',
-                'verbose_name_plural': 'Página: Participa',
+                "verbose_name": "Página: Participa",
+                "verbose_name_plural": "Página: Participa",
             },
         ),
     ]

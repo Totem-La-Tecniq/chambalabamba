@@ -4,9 +4,10 @@ from django.db import connection, transaction
 from django.conf import settings
 from pathlib import Path
 
-SEED_TAG = "voluntariado:v12"            # súbelo cuando cambies datos
+SEED_TAG = "voluntariado:v12"  # súbelo cuando cambies datos
 FIXTURE_BASENAME = "voluntariado_fixture"  # nombre sin extensión
 FIXTURE_FILENAME = "voluntariado_fixture.json"
+
 
 def _try_loaddata(arg) -> tuple[bool, str | None]:
     try:
@@ -14,6 +15,7 @@ def _try_loaddata(arg) -> tuple[bool, str | None]:
         return True, None
     except CommandError as e:
         return False, str(e)
+
 
 def _seed_voluntariado_once(sender, **kwargs):
     with connection.cursor() as cur, transaction.atomic():
@@ -35,14 +37,16 @@ def _seed_voluntariado_once(sender, **kwargs):
             print(f"[seed_voluntariado] Cargado por nombre: {FIXTURE_BASENAME}")
             loaded = True
         else:
-            print(f"[seed_voluntariado] No se encontró por nombre ({FIXTURE_BASENAME}). Probando rutas…")
+            print(
+                f"[seed_voluntariado] No se encontró por nombre ({FIXTURE_BASENAME}). Probando rutas…"
+            )
 
             # 2) Búsqueda en rutas conocidas
-            seeds_dir = Path(__file__).resolve().parent           # participa/seeds
-            app_dir   = seeds_dir.parent                          # participa
+            seeds_dir = Path(__file__).resolve().parent  # participa/seeds
+            app_dir = seeds_dir.parent  # participa
             candidate_dirs = [
-                app_dir / "fixtures",                             # participa/fixtures
-                seeds_dir / "fixtures",                           # participa/seeds/fixtures
+                app_dir / "fixtures",  # participa/fixtures
+                seeds_dir / "fixtures",  # participa/seeds/fixtures
             ]
 
             # FIXTURE_DIRS de settings (si existen)

@@ -5,76 +5,149 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('contenttypes', '0002_remove_content_type_name'),
+        ("contenttypes", "0002_remove_content_type_name"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Project',
+            name="Project",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True)),
-                ('actualizado', models.DateTimeField(auto_now=True)),
-                ('titulo', models.CharField(max_length=160)),
-                ('slug', models.SlugField(unique=True)),
-                ('resumen', models.TextField(blank=True)),
-                ('body_html', models.TextField(blank=True)),
-                ('imagen', models.ImageField(blank=True, null=True, upload_to='proyectos/')),
-                ('url', models.URLField(blank=True)),
-                ('estado', models.CharField(choices=[('current', 'Actual'), ('paused', 'Pausado'), ('done', 'Finalizado')], default='current', max_length=10)),
-                ('fecha_inicio', models.DateField(blank=True, null=True)),
-                ('fecha_fin', models.DateField(blank=True, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("creado", models.DateTimeField(auto_now_add=True)),
+                ("actualizado", models.DateTimeField(auto_now=True)),
+                ("titulo", models.CharField(max_length=160)),
+                ("slug", models.SlugField(unique=True)),
+                ("resumen", models.TextField(blank=True)),
+                ("body_html", models.TextField(blank=True)),
+                (
+                    "imagen",
+                    models.ImageField(blank=True, null=True, upload_to="proyectos/"),
+                ),
+                ("url", models.URLField(blank=True)),
+                (
+                    "estado",
+                    models.CharField(
+                        choices=[
+                            ("current", "Actual"),
+                            ("paused", "Pausado"),
+                            ("done", "Finalizado"),
+                        ],
+                        default="current",
+                        max_length=10,
+                    ),
+                ),
+                ("fecha_inicio", models.DateField(blank=True, null=True)),
+                ("fecha_fin", models.DateField(blank=True, null=True)),
             ],
             options={
-                'verbose_name': 'Proyecto',
-                'verbose_name_plural': 'Proyectos',
+                "verbose_name": "Proyecto",
+                "verbose_name_plural": "Proyectos",
             },
         ),
         migrations.CreateModel(
-            name='ProjectPlacement',
+            name="ProjectPlacement",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True)),
-                ('actualizado', models.DateTimeField(auto_now=True)),
-                ('object_id', models.PositiveIntegerField()),
-                ('titulo_bloque', models.CharField(blank=True, default='Proyectos actuales', max_length=160)),
-                ('nota', models.TextField(blank=True)),
-                ('content_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='contenttypes.contenttype')),
-                ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='placements', to='proyectos.project')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("creado", models.DateTimeField(auto_now_add=True)),
+                ("actualizado", models.DateTimeField(auto_now=True)),
+                ("object_id", models.PositiveIntegerField()),
+                (
+                    "titulo_bloque",
+                    models.CharField(
+                        blank=True, default="Proyectos actuales", max_length=160
+                    ),
+                ),
+                ("nota", models.TextField(blank=True)),
+                (
+                    "content_type",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="contenttypes.contenttype",
+                    ),
+                ),
+                (
+                    "project",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="placements",
+                        to="proyectos.project",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Colocación de proyecto',
-                'verbose_name_plural': 'Colocaciones de proyectos',
+                "verbose_name": "Colocación de proyecto",
+                "verbose_name_plural": "Colocaciones de proyectos",
             },
         ),
         migrations.CreateModel(
-            name='ProjectPhoto',
+            name="ProjectPhoto",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True)),
-                ('actualizado', models.DateTimeField(auto_now=True)),
-                ('imagen', models.ImageField(upload_to='proyectos/gallery/')),
-                ('titulo', models.CharField(blank=True, max_length=160)),
-                ('alt', models.CharField(blank=True, max_length=160)),
-                ('creditos', models.CharField(blank=True, max_length=160)),
-                ('is_header', models.BooleanField(default=False, help_text='Usar como cabecera/portada')),
-                ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='fotos', to='proyectos.project')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("creado", models.DateTimeField(auto_now_add=True)),
+                ("actualizado", models.DateTimeField(auto_now=True)),
+                ("imagen", models.ImageField(upload_to="proyectos/gallery/")),
+                ("titulo", models.CharField(blank=True, max_length=160)),
+                ("alt", models.CharField(blank=True, max_length=160)),
+                ("creditos", models.CharField(blank=True, max_length=160)),
+                (
+                    "is_header",
+                    models.BooleanField(
+                        default=False, help_text="Usar como cabecera/portada"
+                    ),
+                ),
+                (
+                    "project",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="fotos",
+                        to="proyectos.project",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Proyecto · Foto',
-                'verbose_name_plural': 'Proyecto · Galería',
-                'ordering': ('orden', 'id'),
-                'constraints': [models.UniqueConstraint(condition=models.Q(('is_header', True)), fields=('project',), name='unique_header_per_project')],
+                "verbose_name": "Proyecto · Foto",
+                "verbose_name_plural": "Proyecto · Galería",
+                "ordering": ("orden", "id"),
+                "constraints": [
+                    models.UniqueConstraint(
+                        condition=models.Q(("is_header", True)),
+                        fields=("project",),
+                        name="unique_header_per_project",
+                    )
+                ],
             },
         ),
     ]

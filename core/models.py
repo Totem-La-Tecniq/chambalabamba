@@ -1,6 +1,7 @@
 # core/models.py
 from django.db import models
 
+
 class PageHeader(models.Model):
     slug = models.SlugField(unique=True)  # ej: "voluntariado"
     title = models.CharField(max_length=150, blank=True, default="")

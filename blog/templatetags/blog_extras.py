@@ -4,6 +4,7 @@ from django.urls import reverse, NoReverseMatch
 
 register = template.Library()
 
+
 @register.inclusion_tag("blog/_latest_posts_footer.html", takes_context=False)
 def latest_posts_footer(limit=2):
     """
@@ -11,7 +12,9 @@ def latest_posts_footer(limit=2):
     Devuelve 'footer_latest_posts' con [{'title','url','date','image'}, ...]
     """
     BlogPost = apps.get_model("blog", "BlogPost")
-    posts = BlogPost.objects.filter(publicado=True).order_by("-fecha_publicacion")[:limit]
+    posts = BlogPost.objects.filter(publicado=True).order_by("-fecha_publicacion")[
+        :limit
+    ]
 
     items = []
     for p in posts:
@@ -44,11 +47,13 @@ def latest_posts_footer(limit=2):
                 except Exception:
                     pass
 
-        items.append({
-            "title": title,
-            "url": url,
-            "date": getattr(p, "fecha_publicacion", None),
-            "image": image,
-        })
+        items.append(
+            {
+                "title": title,
+                "url": url,
+                "date": getattr(p, "fecha_publicacion", None),
+                "image": image,
+            }
+        )
 
     return {"footer_latest_posts": items}

@@ -11,9 +11,15 @@ class TipoUsuario(models.Model):
     para gestionar permisos. Puedes crear más tipos (p.ej. 'editor', 'moderador')
     y asignarles permisos via Group.
     """
+
     nombre = models.CharField(max_length=30, unique=True)
-    slug = models.SlugField(max_length=30, unique=True, blank=True, null=True,
-                            help_text="Identificador único (ej. 'externo', 'residente').")
+    slug = models.SlugField(
+        max_length=30,
+        unique=True,
+        blank=True,
+        null=True,
+        help_text="Identificador único (ej. 'externo', 'residente').",
+    )
 
     descripcion = models.TextField(blank=True)
 
@@ -51,7 +57,10 @@ class TipoUsuario(models.Model):
         """
         obj, _ = cls.objects.get_or_create(
             slug="externo",
-            defaults={"nombre": "Externo", "descripcion": "Usuario externo por defecto"},
+            defaults={
+                "nombre": "Externo",
+                "descripcion": "Usuario externo por defecto",
+            },
         )
         return obj.pk
 
@@ -89,7 +98,9 @@ class PerfilUsuario(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     rol_en_comunidad = models.CharField(max_length=100, blank=True)
-    areas_aporte = models.CharField(max_length=200, blank=True)  # o ManyToMany a etiquetas
+    areas_aporte = models.CharField(
+        max_length=200, blank=True
+    )  # o ManyToMany a etiquetas
     disponibilidad = models.CharField(max_length=100, blank=True)
     fecha_residencia_desde = models.DateField(null=True, blank=True)
 

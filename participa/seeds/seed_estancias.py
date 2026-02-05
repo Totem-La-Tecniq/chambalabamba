@@ -6,6 +6,7 @@ from pathlib import Path
 
 SEED_TAG = "estancias:v11"  # <- súbelo al cambiar el seed/datos
 
+
 def _seed_estancias_once(sender, **kwargs):
     with connection.cursor() as cur, transaction.atomic():
         cur.execute("CREATE TABLE IF NOT EXISTS seed_run(tag TEXT PRIMARY KEY)")
@@ -23,13 +24,13 @@ def _seed_estancias_once(sender, **kwargs):
         ]
 
         # Carpetas candidatas donde buscarlos
-        seeds_dir = Path(__file__).resolve().parent              # apps/estancias/seeds
-        estancias_app = seeds_dir.parent                         # apps/estancias
-        participa_app = estancias_app.parent / "participa"       # apps/participa
+        seeds_dir = Path(__file__).resolve().parent  # apps/estancias/seeds
+        estancias_app = seeds_dir.parent  # apps/estancias
+        participa_app = estancias_app.parent / "participa"  # apps/participa
         candidate_dirs = [
-            estancias_app / "fixtures",                          # apps/estancias/fixtures
-            seeds_dir / "fixtures",                              # apps/estancias/seeds/fixtures
-            participa_app / "fixtures",                          # apps/participa/fixtures  <-- tu caso actual
+            estancias_app / "fixtures",  # apps/estancias/fixtures
+            seeds_dir / "fixtures",  # apps/estancias/seeds/fixtures
+            participa_app / "fixtures",  # apps/participa/fixtures  <-- tu caso actual
         ]
         # También respeta FIXTURE_DIRS si lo usas en settings.py
         for p in getattr(settings, "FIXTURE_DIRS", []):

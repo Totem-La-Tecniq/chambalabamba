@@ -2,21 +2,28 @@ from django.db import models
 
 # Create your models here.
 # apps/visitas/models.py
-from django.db import models
 from django.utils.text import slugify
 
 
 class VisitsLanding(models.Model):
     publicado = models.BooleanField(default=True)
     # Inner header
-    title = models.CharField("Título de la página", max_length=120, default="Visitas guiadas")
-    background = models.ImageField("Imagen de cabecera (inner header)",
-                                   upload_to="visitas/landing/", blank=True, null=True)
+    title = models.CharField(
+        "Título de la página", max_length=120, default="Visitas guiadas"
+    )
+    background = models.ImageField(
+        "Imagen de cabecera (inner header)",
+        upload_to="visitas/landing/",
+        blank=True,
+        null=True,
+    )
     # Contenidos
     intro_html = models.TextField(blank=True, help_text="Cuerpo principal en HTML.")
     intro_image = models.ImageField(upload_to="visitas/landing/", blank=True, null=True)
     sidebar_html = models.TextField(blank=True, help_text="Sidebar en HTML.")
-    instagram_embed = models.URLField(blank=True, help_text="URL a reel/post (opcional).")
+    instagram_embed = models.URLField(
+        blank=True, help_text="URL a reel/post (opcional)."
+    )
 
     actualizado = models.DateTimeField(auto_now=True)
 
@@ -56,11 +63,18 @@ class GuidedVisit(models.Model):
     contacto_whatsapp = models.CharField(max_length=40, blank=True)
 
     # Imágenes
-    portada = models.ImageField(upload_to="visitas/portadas/", blank=True, null=True,
-                                help_text="Imagen destacada para grillas/listados.")
-    inner_bg_override = models.ImageField(upload_to="visitas/inner/",
-                                          blank=True, null=True,
-                                          help_text="Opcional: reemplaza el fondo del inner-header en el detalle.")
+    portada = models.ImageField(
+        upload_to="visitas/portadas/",
+        blank=True,
+        null=True,
+        help_text="Imagen destacada para grillas/listados.",
+    )
+    inner_bg_override = models.ImageField(
+        upload_to="visitas/inner/",
+        blank=True,
+        null=True,
+        help_text="Opcional: reemplaza el fondo del inner-header en el detalle.",
+    )
 
     # SEO opcional
     meta_title = models.CharField(max_length=160, blank=True)
@@ -74,15 +88,22 @@ class GuidedVisit(models.Model):
         verbose_name = "2) Galeria visita guiada"
         verbose_name_plural = "2) Galeria visitas guiadas"
 
-    def __str__(self): return self.titulo
+    def __str__(self):
+        return self.titulo
+
     def save(self, *a, **kw):
-        if not self.slug: self.slug = slugify(self.titulo)[:50]
+        if not self.slug:
+            self.slug = slugify(self.titulo)[:50]
         return super().save(*a, **kw)
-    def get_absolute_url(self): return f"/visitas/{self.slug}/"
+
+    def get_absolute_url(self):
+        return f"/visitas/{self.slug}/"
 
 
 class GuidedVisitPhoto(models.Model):
-    visita = models.ForeignKey(GuidedVisit, on_delete=models.CASCADE, related_name="fotos")
+    visita = models.ForeignKey(
+        GuidedVisit, on_delete=models.CASCADE, related_name="fotos"
+    )
     publicado = models.BooleanField(default=True)
     orden = models.PositiveIntegerField(default=0)
     titulo = models.CharField(max_length=140, blank=True)
@@ -90,8 +111,7 @@ class GuidedVisitPhoto(models.Model):
     alt = models.CharField(max_length=200, blank=True)
     creditos = models.CharField(max_length=140, blank=True)
     is_header = models.BooleanField(
-        default=True,
-        help_text="Incluye en slider/galería de cabecera del detalle."
+        default=True, help_text="Incluye en slider/galería de cabecera del detalle."
     )
 
     creado = models.DateTimeField(auto_now_add=True)
@@ -104,5 +124,3 @@ class GuidedVisitPhoto(models.Model):
 
     def __str__(self):
         return f"{self.visita} · {self.titulo or self.imagen.name}"
-
-

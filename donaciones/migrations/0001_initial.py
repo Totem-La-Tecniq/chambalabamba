@@ -5,46 +5,100 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='DonacionSection',
+            name="DonacionSection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('slug', models.SlugField(help_text='Ej: home_callout', max_length=60, unique=True)),
-                ('titulo_superior', models.CharField(default='Llamado Consciente', max_length=120)),
-                ('titulo', models.CharField(default='Sanación y Regeneración en Chambalabamba', max_length=180)),
-                ('descripcion', models.TextField(default='En nuestra Ecocentro, practicamos la sanación y el cultivo de una conciencia ecológica y espiritual. Tu apoyo nos ayuda a expandir este espacio de transformación, donde la tierra y el ser se armonizan.')),
-                ('progreso', models.PositiveIntegerField(default=55, help_text='0–100 (muestra la barra de progreso)')),
-                ('cta_titulo', models.CharField(default='Apoya este Espacio', max_length=120)),
-                ('cta_boton_texto', models.CharField(default='Contribuir con Amor', max_length=60)),
-                ('cta_placeholder_otro', models.CharField(default='$ Otro', max_length=40)),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "slug",
+                    models.SlugField(
+                        help_text="Ej: home_callout", max_length=60, unique=True
+                    ),
+                ),
+                (
+                    "titulo_superior",
+                    models.CharField(default="Llamado Consciente", max_length=120),
+                ),
+                (
+                    "titulo",
+                    models.CharField(
+                        default="Sanación y Regeneración en Chambalabamba",
+                        max_length=180,
+                    ),
+                ),
+                (
+                    "descripcion",
+                    models.TextField(
+                        default="En nuestra Ecocentro, practicamos la sanación y el cultivo de una conciencia ecológica y espiritual. Tu apoyo nos ayuda a expandir este espacio de transformación, donde la tierra y el ser se armonizan."
+                    ),
+                ),
+                (
+                    "progreso",
+                    models.PositiveIntegerField(
+                        default=55, help_text="0–100 (muestra la barra de progreso)"
+                    ),
+                ),
+                (
+                    "cta_titulo",
+                    models.CharField(default="Apoya este Espacio", max_length=120),
+                ),
+                (
+                    "cta_boton_texto",
+                    models.CharField(default="Contribuir con Amor", max_length=60),
+                ),
+                (
+                    "cta_placeholder_otro",
+                    models.CharField(default="$ Otro", max_length=40),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
             ],
             options={
-                'verbose_name': 'Sección de Donaciones / Donations Section',
-                'verbose_name_plural': 'Secciones de Donaciones / Donations Sections',
-                'ordering': ['orden', 'slug'],
+                "verbose_name": "Sección de Donaciones / Donations Section",
+                "verbose_name_plural": "Secciones de Donaciones / Donations Sections",
+                "ordering": ["orden", "slug"],
             },
         ),
         migrations.CreateModel(
-            name='DonacionMonto',
+            name="DonacionMonto",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('etiqueta', models.CharField(help_text='Ej: "$100"', max_length=20)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('section', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='montos', to='donaciones.donacionsection')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("etiqueta", models.CharField(help_text='Ej: "$100"', max_length=20)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                (
+                    "section",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="montos",
+                        to="donaciones.donacionsection",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Monto sugerido / Suggested Amount',
-                'verbose_name_plural': 'Montos sugeridos / Suggested Amounts',
-                'ordering': ['orden', 'id'],
+                "verbose_name": "Monto sugerido / Suggested Amount",
+                "verbose_name_plural": "Montos sugeridos / Suggested Amounts",
+                "ordering": ["orden", "id"],
             },
         ),
     ]

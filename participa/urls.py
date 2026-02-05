@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import estancias_list,estancia_detail
+from .views import estancias_list, estancia_detail
 
 app_name = "participa"
 urlpatterns = [

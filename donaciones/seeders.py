@@ -1,7 +1,6 @@
 from django.core.management import call_command
 from django.db import connection, transaction
 from pathlib import Path
-from .models import DonacionSection, DonacionMonto # Keep existing model imports
 
 # Define the seeds for the donaciones app
 SEEDS = [
@@ -9,6 +8,7 @@ SEEDS = [
     ("donaciones_home_callout.json", "donaciones:home_callout:v1"),
     ("donaciones_static_default.json", "donaciones:static_default:v1"),
 ]
+
 
 def _seed_donaciones_once(sender, **kwargs):
     # Check if the signal is for the 'donaciones' app
@@ -29,7 +29,9 @@ def _seed_donaciones_once(sender, **kwargs):
 
             fixture_path = base_dir / "fixtures" / filename
             if not fixture_path.exists():
-                print(f"[seed_donaciones] Skipped: Fixture '{fixture_path}' does not exist.")
+                print(
+                    f"[seed_donaciones] Skipped: Fixture '{fixture_path}' does not exist."
+                )
                 continue
 
             # Load the fixture
@@ -41,6 +43,7 @@ def _seed_donaciones_once(sender, **kwargs):
             print(f"[seed_donaciones] Marked '{tag}' as run.")
 
     print("[seed_donaciones] Seeding process completed.")
+
 
 # Note: The actual mechanism to trigger _seed_donaciones_once (e.g., using Django signals)
 # would need to be set up elsewhere, typically in the app's AppConfig.
@@ -64,8 +67,12 @@ def _seed_donaciones_once(sender, **kwargs):
 # we'll make seed_donaciones call the fixture loading logic.
 # In a real app, this might be handled by a custom management command or a signal.
 
+
 def seed_donaciones():
-    _seed_donaciones_once(sender=None, kwargs={}) # Pass dummy sender/kwargs if not using signals
+    _seed_donaciones_once(
+        sender=None, kwargs={}
+    )  # Pass dummy sender/kwargs if not using signals
+
 
 # If you want to run this manually, you can call seed_donaciones() after migrations.
 # Example: python manage.py runscript seed_donaciones

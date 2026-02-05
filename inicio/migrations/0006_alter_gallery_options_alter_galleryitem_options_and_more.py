@@ -4,23 +4,39 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('inicio', '0005_gallery_galleryitem'),
+        ("inicio", "0005_gallery_galleryitem"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='gallery',
-            options={'ordering': ['orden', '-creado'], 'verbose_name': 'Galeria ultimo evento', 'verbose_name_plural': 'Galeria ultimos eventos'},
+            name="gallery",
+            options={
+                "ordering": ["orden", "-creado"],
+                "verbose_name": "Galeria ultimo evento",
+                "verbose_name_plural": "Galeria ultimos eventos",
+            },
         ),
         migrations.AlterModelOptions(
-            name='galleryitem',
-            options={'ordering': ['orden', '-creado'], 'verbose_name': 'Galeria ultimo evento item', 'verbose_name_plural': 'Galeria ultimo evento item'},
+            name="galleryitem",
+            options={
+                "ordering": ["orden", "-creado"],
+                "verbose_name": "Galeria ultimo evento item",
+                "verbose_name_plural": "Galeria ultimo evento item",
+            },
         ),
         migrations.AlterField(
-            model_name='gallery',
-            name='seccion',
-            field=models.CharField(choices=[('home_cabecera', 'Home – Cabecera'), ('home_ult_evento', 'Home – Último evento'), ('nosotros_cabecera', 'Nosotros – Cabecera'), ('proyectos_movimiento', 'Home – Proyecto movimiento')], default='home_cabecera', max_length=50),
+            model_name="gallery",
+            name="seccion",
+            field=models.CharField(
+                choices=[
+                    ("home_cabecera", "Home – Cabecera"),
+                    ("home_ult_evento", "Home – Último evento"),
+                    ("nosotros_cabecera", "Nosotros – Cabecera"),
+                    ("proyectos_movimiento", "Home – Proyecto movimiento"),
+                ],
+                default="home_cabecera",
+                max_length=50,
+            ),
         ),
     ]

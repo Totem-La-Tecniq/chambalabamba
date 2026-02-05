@@ -4,9 +4,8 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('inicio', '0019_rename_portadas_gallery_portada'),
+        ("inicio", "0019_rename_portadas_gallery_portada"),
     ]
 
     operations = [
@@ -15,9 +14,9 @@ class Migration(migrations.Migration):
             database_operations=[],
             state_operations=[
                 migrations.RenameField(
-                    model_name='gallery',
-                    old_name='portadas',
-                    new_name='portada',
+                    model_name="gallery",
+                    old_name="portadas",
+                    new_name="portada",
                 ),
             ],
         ),

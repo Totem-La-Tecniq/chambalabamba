@@ -5,35 +5,44 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('inicio', '0003_alter_heroslide_creado_alter_instafoto_creado_and_more'),
+        ("inicio", "0003_alter_heroslide_creado_alter_instafoto_creado_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='heroslide',
-            name='actualizado',
-            field=models.DateTimeField(auto_now=True, db_default=django.db.models.functions.datetime.Now()),
+            model_name="heroslide",
+            name="actualizado",
+            field=models.DateTimeField(
+                auto_now=True, db_default=django.db.models.functions.datetime.Now()
+            ),
         ),
         migrations.AlterField(
-            model_name='instafoto',
-            name='actualizado',
-            field=models.DateTimeField(auto_now=True, db_default=django.db.models.functions.datetime.Now()),
+            model_name="instafoto",
+            name="actualizado",
+            field=models.DateTimeField(
+                auto_now=True, db_default=django.db.models.functions.datetime.Now()
+            ),
         ),
         migrations.AlterField(
-            model_name='productoitem',
-            name='actualizado',
-            field=models.DateTimeField(auto_now=True, db_default=django.db.models.functions.datetime.Now()),
+            model_name="productoitem",
+            name="actualizado",
+            field=models.DateTimeField(
+                auto_now=True, db_default=django.db.models.functions.datetime.Now()
+            ),
         ),
         migrations.AlterField(
-            model_name='proyectocard',
-            name='actualizado',
-            field=models.DateTimeField(auto_now=True, db_default=django.db.models.functions.datetime.Now()),
+            model_name="proyectocard",
+            name="actualizado",
+            field=models.DateTimeField(
+                auto_now=True, db_default=django.db.models.functions.datetime.Now()
+            ),
         ),
         migrations.AlterField(
-            model_name='valorcard',
-            name='actualizado',
-            field=models.DateTimeField(auto_now=True, db_default=django.db.models.functions.datetime.Now()),
+            model_name="valorcard",
+            name="actualizado",
+            field=models.DateTimeField(
+                auto_now=True, db_default=django.db.models.functions.datetime.Now()
+            ),
         ),
     ]

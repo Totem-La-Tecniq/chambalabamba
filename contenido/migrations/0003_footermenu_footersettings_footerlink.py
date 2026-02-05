@@ -6,58 +6,129 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('contenido', '0002_alter_flyer_options_alter_gallery_options'),
+        ("contenido", "0002_alter_flyer_options_alter_gallery_options"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='FooterMenu',
+            name="FooterMenu",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(default='Nuestra propuesta', max_length=120)),
-                ('order', models.PositiveIntegerField(default=1, validators=[django.core.validators.MinValueValidator(1)])),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(default="Nuestra propuesta", max_length=120)),
+                (
+                    "order",
+                    models.PositiveIntegerField(
+                        default=1,
+                        validators=[django.core.validators.MinValueValidator(1)],
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Footer – Menú',
-                'verbose_name_plural': 'Footer – Menús',
-                'ordering': ['order', 'id'],
+                "verbose_name": "Footer – Menú",
+                "verbose_name_plural": "Footer – Menús",
+                "ordering": ["order", "id"],
             },
         ),
         migrations.CreateModel(
-            name='FooterSettings',
+            name="FooterSettings",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Sobre Chambalabamba', max_length=120)),
-                ('text', models.TextField(default='Una ecoaldea viva en Vilcabamba donde florece la libertad, el arte y la conciencia. Promovemos un estilo de vida autosostenible y en armonía con la Tierra.')),
-                ('link_label', models.CharField(default='Conócenos', max_length=80)),
-                ('url', models.CharField(blank=True, help_text="Puede ser ruta relativa ('/nosotros/') o absoluta.", max_length=255)),
-                ('named_url', models.CharField(blank=True, help_text="Nombre de URL de Django (toma prioridad si está). Ej: 'nosotros:nuestro_camino'", max_length=120)),
-                ('named_url_kwargs', models.JSONField(blank=True, help_text="Opcional: kwargs para reverse() en JSON. Ej: {'slug':'filosofia'}", null=True)),
-                ('open_in_new_tab', models.BooleanField(default=False)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(default="Sobre Chambalabamba", max_length=120),
+                ),
+                (
+                    "text",
+                    models.TextField(
+                        default="Una ecoaldea viva en Vilcabamba donde florece la libertad, el arte y la conciencia. Promovemos un estilo de vida autosostenible y en armonía con la Tierra."
+                    ),
+                ),
+                ("link_label", models.CharField(default="Conócenos", max_length=80)),
+                (
+                    "url",
+                    models.CharField(
+                        blank=True,
+                        help_text="Puede ser ruta relativa ('/nosotros/') o absoluta.",
+                        max_length=255,
+                    ),
+                ),
+                (
+                    "named_url",
+                    models.CharField(
+                        blank=True,
+                        help_text="Nombre de URL de Django (toma prioridad si está). Ej: 'nosotros:nuestro_camino'",
+                        max_length=120,
+                    ),
+                ),
+                (
+                    "named_url_kwargs",
+                    models.JSONField(
+                        blank=True,
+                        help_text="Opcional: kwargs para reverse() en JSON. Ej: {'slug':'filosofia'}",
+                        null=True,
+                    ),
+                ),
+                ("open_in_new_tab", models.BooleanField(default=False)),
             ],
             options={
-                'verbose_name': 'Footer – Sobre Chambalabamba',
-                'verbose_name_plural': 'Footer – Sobre Chambalabamba',
+                "verbose_name": "Footer – Sobre Chambalabamba",
+                "verbose_name_plural": "Footer – Sobre Chambalabamba",
             },
         ),
         migrations.CreateModel(
-            name='FooterLink',
+            name="FooterLink",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('label', models.CharField(max_length=150)),
-                ('url', models.CharField(blank=True, max_length=255)),
-                ('named_url', models.CharField(blank=True, max_length=120)),
-                ('named_url_kwargs', models.JSONField(blank=True, null=True)),
-                ('open_in_new_tab', models.BooleanField(default=False)),
-                ('order', models.PositiveIntegerField(default=1, validators=[django.core.validators.MinValueValidator(1)])),
-                ('menu', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='links', to='contenido.footermenu')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("label", models.CharField(max_length=150)),
+                ("url", models.CharField(blank=True, max_length=255)),
+                ("named_url", models.CharField(blank=True, max_length=120)),
+                ("named_url_kwargs", models.JSONField(blank=True, null=True)),
+                ("open_in_new_tab", models.BooleanField(default=False)),
+                (
+                    "order",
+                    models.PositiveIntegerField(
+                        default=1,
+                        validators=[django.core.validators.MinValueValidator(1)],
+                    ),
+                ),
+                (
+                    "menu",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="links",
+                        to="contenido.footermenu",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Footer – Link',
-                'verbose_name_plural': 'Footer – Links',
-                'ordering': ['order', 'id'],
+                "verbose_name": "Footer – Link",
+                "verbose_name_plural": "Footer – Links",
+                "ordering": ["order", "id"],
             },
         ),
     ]

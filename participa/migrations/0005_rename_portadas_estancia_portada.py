@@ -4,11 +4,8 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('participa', '0004_rename_portadas_estancia_portada'),
+        ("participa", "0004_rename_portadas_estancia_portada"),
     ]
 
-    operations = [
-
-    ]
+    operations = []

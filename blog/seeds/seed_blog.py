@@ -3,18 +3,19 @@ from django.core.management import call_command
 from django.db import connection, transaction
 from pathlib import Path
 
-FIXTURE_FILE = "blog_all.json"      # nombre del único JSON
-SEED_TAG = "blog:all:v4"            # súbelo (v2, v3...) si quieres recargar
+FIXTURE_FILE = "blog_all.json"  # nombre del único JSON
+SEED_TAG = "blog:all:v4"  # súbelo (v2, v3...) si quieres recargar
+
 
 def _seed_blog_once(sender, **kwargs):
     if sender.label != "blog":
         return
 
-    seeds_dir = Path(__file__).resolve().parent     # blog/seeds
-    app_dir   = seeds_dir.parent                    # blog/
+    seeds_dir = Path(__file__).resolve().parent  # blog/seeds
+    app_dir = seeds_dir.parent  # blog/
     candidates = [
-        seeds_dir / "fixtures" / FIXTURE_FILE,      # blog/seeds/fixtures/blog_all.json
-        app_dir / "fixtures" / FIXTURE_FILE,        # blog/fixtures/blog_all.json
+        seeds_dir / "fixtures" / FIXTURE_FILE,  # blog/seeds/fixtures/blog_all.json
+        app_dir / "fixtures" / FIXTURE_FILE,  # blog/fixtures/blog_all.json
     ]
 
     with connection.cursor() as cur, transaction.atomic():

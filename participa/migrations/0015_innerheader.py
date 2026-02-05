@@ -4,23 +4,41 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('participa', '0014_breadcrumbitem_guidedvisitspage_breadcrumb_slug'),
+        ("participa", "0014_breadcrumbitem_guidedvisitspage_breadcrumb_slug"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='InnerHeader',
+            name="InnerHeader",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Visitas guiadas', max_length=120)),
-                ('breadcrumb_label', models.CharField(default='Visitas guiadas', max_length=120)),
-                ('background', models.ImageField(blank=True, help_text='Imagen de fondo del header (inner header)', null=True, upload_to='participa/images/visitas-guiadas/')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(default="Visitas guiadas", max_length=120)),
+                (
+                    "breadcrumb_label",
+                    models.CharField(default="Visitas guiadas", max_length=120),
+                ),
+                (
+                    "background",
+                    models.ImageField(
+                        blank=True,
+                        help_text="Imagen de fondo del header (inner header)",
+                        null=True,
+                        upload_to="participa/images/visitas-guiadas/",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Visitas · Inner Header',
-                'verbose_name_plural': 'Visitas · Inner Header',
+                "verbose_name": "Visitas · Inner Header",
+                "verbose_name_plural": "Visitas · Inner Header",
             },
         ),
     ]

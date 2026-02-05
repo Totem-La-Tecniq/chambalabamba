@@ -11,8 +11,8 @@
       "body_html": "",
       "estado": "current",
       "url": "",
-      "creado": "2025-09-25T12:20:24",
-      "actualizado": "2025-09-25T12:20:24"
+      "creado": "2025-09-25T12:20:24Z",
+      "actualizado": "2025-09-25T12:20:24Z"
     }
   },
   {
@@ -27,8 +27,8 @@
       "body_html": "",
       "estado": "current",
       "url": "",
-      "creado": "2025-09-25T12:20:24",
-      "actualizado": "2025-09-25T12:20:24"
+      "creado": "2025-09-25T12:20:24Z",
+      "actualizado": "2025-09-25T12:20:24Z"
     }
   },
   {
@@ -43,8 +43,8 @@
       "alt": "Semillas",
       "creditos": "",
       "is_header": true,
-      "creado": "2025-09-25T12:20:24",
-      "actualizado": "2025-09-25T12:20:24"
+      "creado": "2025-09-25T12:20:24Z",
+      "actualizado": "2025-09-25T12:20:24Z"
     }
   },
   {
@@ -59,8 +59,8 @@
       "alt": "Camas",
       "creditos": "",
       "is_header": false,
-      "creado": "2025-09-25T12:20:24",
-      "actualizado": "2025-09-25T12:20:24"
+      "creado": "2025-09-25T12:20:24Z",
+      "actualizado": "2025-09-25T12:20:24Z"
     }
   },
   {
@@ -75,8 +75,8 @@
       "alt": "Filtro",
       "creditos": "",
       "is_header": true,
-      "creado": "2025-09-25T12:20:24",
-      "actualizado": "2025-09-25T12:20:24"
+      "creado": "2025-09-25T12:20:24Z",
+      "actualizado": "2025-09-25T12:20:24Z"
     }
   }
 ]

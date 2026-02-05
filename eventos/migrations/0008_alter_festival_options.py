@@ -4,14 +4,16 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('eventos', '0007_festival_flyer_alter_festival_image'),
+        ("eventos", "0007_festival_flyer_alter_festival_image"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='festival',
-            options={'verbose_name': 'Sección: Lista de Festivales', 'verbose_name_plural': 'Sección: Lista de Festivales'},
+            name="festival",
+            options={
+                "verbose_name": "Sección: Lista de Festivales",
+                "verbose_name_plural": "Sección: Lista de Festivales",
+            },
         ),
     ]

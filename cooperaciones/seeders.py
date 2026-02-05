@@ -14,6 +14,7 @@ SEEDS = [
 # Tag para el copiado de media (imágenes) por única vez
 MEDIA_SEED_TAG = "coops:media:v1"
 
+
 def _load_fixtures_once(base_dir):
     with connection.cursor() as cur, transaction.atomic():
         cur.execute("CREATE TABLE IF NOT EXISTS seed_run(tag TEXT PRIMARY KEY)")
@@ -36,10 +37,10 @@ def _load_fixtures_once(base_dir):
             cur.execute("INSERT INTO seed_run(tag) VALUES(%s)", [tag])
             print(f"[seed_coops] Marcado tag {tag}")
 
+
 def _seed_cooperaciones_once(sender, **kwargs):
     # Se asegura de ejecutar solo cuando migra la app cooperaciones
     if sender.label != APP_LABEL:
         return
     base_dir = Path(__file__).resolve().parent
     _load_fixtures_once(base_dir)
-

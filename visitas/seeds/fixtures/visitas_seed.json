@@ -9,7 +9,8 @@
       "intro_image": "visitas/landing/escuela_01.png",
       "intro_html": "<p>Te invitamos a recorrer la ecoaldea y conocer nuestros espacios vivos, la escuela, el río y los huertos. Cada visita es guiada por anfitriones que comparten la visión y el modo de vida.</p>",
       "sidebar_html": "<h4 style='color:#1b5e20'>Info útil</h4><ul><li>Trae gorra y agua</li><li>Protector solar y sandalias</li><li>Aporte consciente</li></ul>",
-      "instagram_embed": "https://www.instagram.com/p/XXXXXXXXXXX/"
+      "instagram_embed": "https://www.instagram.com/p/XXXXXXXXXXX/",
+      "actualizado": "2025-10-01T10:00:00Z"
     }
   },
 
@@ -39,7 +40,9 @@
       "portada": "visitas/portadas/escuela_01.png",
       "inner_bg_override": "visitas/inner/escuela_01.png",
       "meta_title": "",
-      "meta_description": ""
+      "meta_description": "",
+      "creado": "2025-09-15T10:00:00Z",
+      "actualizado": "2025-09-15T10:00:00Z"
     }
   },
   {
@@ -68,7 +71,9 @@
       "portada": "visitas/portadas/cuidado-agua.png",
       "inner_bg_override": "",
       "meta_title": "",
-      "meta_description": ""
+      "meta_description": "",
+      "creado": "2025-09-18T10:00:00Z",
+      "actualizado": "2025-09-18T10:00:00Z"
     }
   },
   {
@@ -97,7 +102,9 @@
       "portada": "visitas/portadas/huerta.png",
       "inner_bg_override": "",
       "meta_title": "",
-      "meta_description": ""
+      "meta_description": "",
+      "creado": "2025-09-20T10:00:00Z",
+      "actualizado": "2025-09-20T10:00:00Z"
     }
   },
 
@@ -108,7 +115,9 @@
       "imagen": "visitas/galeria/escuela_01.jpg",
       "alt": "Aula abierta con pizarra",
       "creditos": "Equipo",
-      "is_header": true
+      "is_header": true,
+      "creado": "2025-09-15T12:00:00Z",
+      "actualizado": "2025-09-15T12:00:00Z"
     }
   },
   { "model": "visitas.guidedvisitphoto", "pk": 2,
@@ -118,7 +127,9 @@
       "imagen": "visitas/galeria/escuela2.jpg",
       "alt": "Maloca central",
       "creditos": "Equipo",
-      "is_header": true
+      "is_header": true,
+      "creado": "2025-09-15T12:10:00Z",
+      "actualizado": "2025-09-15T12:10:00Z"
     }
   },
   { "model": "visitas.guidedvisitphoto", "pk": 3,
@@ -128,7 +139,9 @@
       "imagen": "visitas/galeria/escuela-3.png",
       "alt": "Espacio de convivencia",
       "creditos": "Equipo",
-      "is_header": false
+      "is_header": false,
+      "creado": "2025-09-15T12:20:00Z",
+      "actualizado": "2025-09-15T12:20:00Z"
     }
   },
 
@@ -139,7 +152,9 @@
       "imagen": "visitas/galeria/agua-1.png",
       "alt": "Ribera del río",
       "creditos": "Equipo",
-      "is_header": true
+      "is_header": true,
+      "creado": "2025-09-18T12:00:00Z",
+      "actualizado": "2025-09-18T12:00:00Z"
     }
   },
   { "model": "visitas.guidedvisitphoto", "pk": 5,
@@ -149,7 +164,9 @@
       "imagen": "visitas/galeria/agua-2.png",
       "alt": "Sistema de biofiltros",
       "creditos": "Equipo",
-      "is_header": true
+      "is_header": true,
+      "creado": "2025-09-18T12:10:00Z",
+      "actualizado": "2025-09-18T12:10:00Z"
     }
   },
   { "model": "visitas.guidedvisitphoto", "pk": 6,
@@ -159,7 +176,9 @@
       "imagen": "visitas/galeria/agua-3.png",
       "alt": "Ciclo del agua",
       "creditos": "Equipo",
-      "is_header": false
+      "is_header": false,
+      "creado": "2025-09-18T12:20:00Z",
+      "actualizado": "2025-09-18T12:20:00Z"
     }
   },
 
@@ -170,7 +189,9 @@
       "imagen": "visitas/galeria/huerta-1.png",
       "alt": "Camas de cultivo",
       "creditos": "Equipo",
-      "is_header": true
+      "is_header": true,
+      "creado": "2025-09-20T12:00:00Z",
+      "actualizado": "2025-09-20T12:00:00Z"
     }
   },
   { "model": "visitas.guidedvisitphoto", "pk": 8,
@@ -180,7 +201,9 @@
       "imagen": "visitas/galeria/huerta-2.png",
       "alt": "Compost y materia orgánica",
       "creditos": "Equipo",
-      "is_header": true
+      "is_header": true,
+      "creado": "2025-09-20T12:10:00Z",
+      "actualizado": "2025-09-20T12:10:00Z"
     }
   },
   { "model": "visitas.guidedvisitphoto", "pk": 9,
@@ -190,7 +213,9 @@
       "imagen": "visitas/galeria/huerta-3.png",
       "alt": "Semilleros y plantines",
       "creditos": "Equipo",
-      "is_header": false
+      "is_header": false,
+      "creado": "2025-09-20T12:20:00Z",
+      "actualizado": "2025-09-20T12:20:00Z"
     }
   }
 ]

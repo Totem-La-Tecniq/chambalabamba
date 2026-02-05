@@ -4,15 +4,18 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('inicio', '0021_sectionheader_alter_gallery_seccion'),
+        ("inicio", "0021_sectionheader_alter_gallery_seccion"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='gallery',
-            name='descripcion_breve',
-            field=models.CharField(blank=True, help_text='Texto corto que se muestra sobre la portada (tarjeta).', max_length=200),
+            model_name="gallery",
+            name="descripcion_breve",
+            field=models.CharField(
+                blank=True,
+                help_text="Texto corto que se muestra sobre la portada (tarjeta).",
+                max_length=200,
+            ),
         ),
     ]

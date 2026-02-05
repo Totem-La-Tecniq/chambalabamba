@@ -6,12 +6,31 @@ import bleach  # <-- nuevo
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 # Configura qué HTML permites en cuerpo_html (ajústalo a tu gusto)
-ALLOWED_TAGS = ["p","br","strong","em","ul","ol","li","a","h2","h3","h4","blockquote","img"]
-ALLOWED_ATTRS = {"a": ["href","title","rel","target"], "img": ["src","alt","title"]}
-ALLOWED_PROTOCOLS = ["http","https","mailto","data"]
+ALLOWED_TAGS = [
+    "p",
+    "br",
+    "strong",
+    "em",
+    "ul",
+    "ol",
+    "li",
+    "a",
+    "h2",
+    "h3",
+    "h4",
+    "blockquote",
+    "img",
+]
+ALLOWED_ATTRS = {
+    "a": ["href", "title", "rel", "target"],
+    "img": ["src", "alt", "title"],
+}
+ALLOWED_PROTOCOLS = ["http", "https", "mailto", "data"]
+
 
 class BlogCommentForm(forms.ModelForm):
     hp = forms.CharField(required=False, widget=forms.HiddenInput)
+
     class Meta:
         model = BlogComment
         fields = ("parent", "nombre", "email", "website", "cuerpo", "hp")
@@ -20,23 +39,36 @@ class BlogCommentForm(forms.ModelForm):
             "nombre": forms.TextInput(attrs={"placeholder": "Nombre"}),
             "email": forms.EmailInput(attrs={"placeholder": "Email (opcional)"}),
             "website": forms.URLInput(attrs={"placeholder": "Sitio (opcional)"}),
-            "cuerpo": forms.Textarea(attrs={"rows": 4, "placeholder": "Escribe tu comentario…"}),
+            "cuerpo": forms.Textarea(
+                attrs={"rows": 4, "placeholder": "Escribe tu comentario…"}
+            ),
         }
+
     def clean_hp(self):
         v = self.cleaned_data.get("hp")
         if v:
             raise forms.ValidationError("Error de validación.")
         return v
 
+
 class BlogPostForm(forms.ModelForm):
     cuerpo_html = forms.CharField(widget=CKEditorUploadingWidget())
+
     class Meta:
         model = BlogPost
         fields = [
-            "titulo", "resumen", "cuerpo_html", "portada",
-            "categoria", "tags",
-            "tipo", "video_url", "audio_url", "enlace_externo",
-            "publicado", "fecha_publicacion",
+            "titulo",
+            "resumen",
+            "cuerpo_html",
+            "portada",
+            "categoria",
+            "tags",
+            "tipo",
+            "video_url",
+            "audio_url",
+            "enlace_externo",
+            "publicado",
+            "fecha_publicacion",
         ]
         widgets = {
             "resumen": forms.Textarea(attrs={"rows": 3}),
@@ -69,7 +101,11 @@ class BlogPostForm(forms.ModelForm):
         if img:
             if img.size > 2 * 1024 * 1024:  # 2MB
                 raise forms.ValidationError("La portada no debe superar 2MB.")
-            if getattr(img, "content_type", "") not in {"image/jpeg","image/png","image/webp"}:
+            if getattr(img, "content_type", "") not in {
+                "image/jpeg",
+                "image/png",
+                "image/webp",
+            }:
                 raise forms.ValidationError("Formato no soportado (usa JPG/PNG/WEBP).")
         return img
 
@@ -83,6 +119,7 @@ class BlogPostForm(forms.ModelForm):
         cand = base
         i = 1
         from .models import BlogPost
+
         while BlogPost.objects.filter(slug=cand).exists():
             cand = f"{base}-{i}"
             i += 1

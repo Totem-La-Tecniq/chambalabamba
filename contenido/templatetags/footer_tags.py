@@ -2,9 +2,11 @@
 from django import template
 from django.urls import reverse, NoReverseMatch
 from contenido.models import FooterSettings, FooterMenu
-import json, ast
+import json
+import ast
 
 register = template.Library()
+
 
 def _parse_kwargs(raw):
     """Acepta JSON, 'null'/'none'/vacío y también dict con comillas simples."""
@@ -27,20 +29,17 @@ def _parse_kwargs(raw):
         pass
     return {}
 
+
 @register.inclusion_tag("partials/sub_footer_info.html", takes_context=True)
 def render_footer(context):
     about = FooterSettings.objects.first()
-    menus = (
-        FooterMenu.objects
-        .prefetch_related("links")
-        .order_by("order")
-    )
+    menus = FooterMenu.objects.prefetch_related("links").order_by("order")
 
     # Resolver hrefs de cada link
     for menu in menus:
         links = list(menu.links.all())
         try:
-            links.sort(key=lambda l: (getattr(l, "order", 0), l.id))
+            links.sort(key=lambda link: (getattr(link, "order", 0), link.id))
         except Exception:
             pass
 
@@ -63,7 +62,9 @@ def render_footer(context):
 
             # propiedades derivadas para el template
             link.resolved_href = href
-            link.target_attr = '_blank' if getattr(link, "open_in_new_tab", False) else None
+            link.target_attr = (
+                "_blank" if getattr(link, "open_in_new_tab", False) else None
+            )
 
         # lista con atributos extra (sin guion bajo: accesible en templates)
         menu.links_resolved = links
@@ -76,7 +77,9 @@ def render_footer(context):
         about.resolved_href = None
         if a_named:
             try:
-                about.resolved_href = reverse(a_named, kwargs=_parse_kwargs(a_kwargs_raw))
+                about.resolved_href = reverse(
+                    a_named, kwargs=_parse_kwargs(a_kwargs_raw)
+                )
             except NoReverseMatch:
                 about.resolved_href = a_url or None
         elif a_url:

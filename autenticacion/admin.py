@@ -7,6 +7,7 @@ from .models import TipoUsuario, PerfilUsuario
 
 User = get_user_model()
 
+
 @admin.register(TipoUsuario)
 class TipoUsuarioAdmin(admin.ModelAdmin):
     list_display = ("nombre", "slug", "role_group")

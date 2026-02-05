@@ -5,160 +5,451 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('eventos', '0011_escuelaheader_escuelaintrosection_escuelasidebar_and_more'),
+        ("eventos", "0011_escuelaheader_escuelaintrosection_escuelasidebar_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='RetirosActivitiesSection',
+            name="RetirosActivitiesSection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Prácticas y experiencias', max_length=160, verbose_name='Título')),
-                ('paragraph', models.TextField(blank=True, verbose_name='Párrafo')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Prácticas y experiencias",
+                        max_length=160,
+                        verbose_name="Título",
+                    ),
+                ),
+                ("paragraph", models.TextField(blank=True, verbose_name="Párrafo")),
             ],
             options={
-                'verbose_name': '5.4 Sección: Actividades de Retiros',
-                'verbose_name_plural': '5.4 Sección: Actividades de Retiros',
+                "verbose_name": "5.4 Sección: Actividades de Retiros",
+                "verbose_name_plural": "5.4 Sección: Actividades de Retiros",
             },
         ),
         migrations.CreateModel(
-            name='RetirosGallerySection',
+            name="RetirosGallerySection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Espacios sagrados de transformación', max_length=160, verbose_name='Título')),
-                ('paragraph', models.TextField(blank=True, verbose_name='Párrafo')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Espacios sagrados de transformación",
+                        max_length=160,
+                        verbose_name="Título",
+                    ),
+                ),
+                ("paragraph", models.TextField(blank=True, verbose_name="Párrafo")),
             ],
             options={
-                'verbose_name': '5.5 Sección: Galería de Retiros',
-                'verbose_name_plural': '5.5 Sección: Galería de Retiros',
+                "verbose_name": "5.5 Sección: Galería de Retiros",
+                "verbose_name_plural": "5.5 Sección: Galería de Retiros",
             },
         ),
         migrations.CreateModel(
-            name='RetirosHeader',
+            name="RetirosHeader",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Retiros', max_length=120, verbose_name='Título')),
-                ('breadcrumb_label', models.CharField(default='Retiros', max_length=120, verbose_name='Breadcrumb actual')),
-                ('background', models.ImageField(blank=True, help_text='Imagen de fondo del header', null=True, upload_to='eventos/')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Retiros", max_length=120, verbose_name="Título"
+                    ),
+                ),
+                (
+                    "breadcrumb_label",
+                    models.CharField(
+                        default="Retiros",
+                        max_length=120,
+                        verbose_name="Breadcrumb actual",
+                    ),
+                ),
+                (
+                    "background",
+                    models.ImageField(
+                        blank=True,
+                        help_text="Imagen de fondo del header",
+                        null=True,
+                        upload_to="eventos/",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': '5.1 Sección: Header de Retiros',
-                'verbose_name_plural': '5.1 Sección: Header de Retiros',
+                "verbose_name": "5.1 Sección: Header de Retiros",
+                "verbose_name_plural": "5.1 Sección: Header de Retiros",
             },
         ),
         migrations.CreateModel(
-            name='RetirosIntroSection',
+            name="RetirosIntroSection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('main_image', models.ImageField(blank=True, help_text='Imagen principal de la sección de introducción', null=True, upload_to='eventos/')),
-                ('title', models.CharField(default='Descubre y conecta con tu esencia', max_length=160, verbose_name='Título')),
-                ('quote', models.CharField(blank=True, max_length=255, verbose_name='Cita')),
-                ('sidebar_title', models.CharField(default='Un viaje hacia tu interior', max_length=160, verbose_name='Título del sidebar')),
-                ('sidebar_paragraph1', models.TextField(blank=True, verbose_name='Párrafo 1 del sidebar')),
-                ('sidebar_paragraph2', models.TextField(blank=True, verbose_name='Párrafo 2 del sidebar')),
-                ('sidebar_paragraph3', models.TextField(blank=True, verbose_name='Párrafo 3 del sidebar')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "main_image",
+                    models.ImageField(
+                        blank=True,
+                        help_text="Imagen principal de la sección de introducción",
+                        null=True,
+                        upload_to="eventos/",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Descubre y conecta con tu esencia",
+                        max_length=160,
+                        verbose_name="Título",
+                    ),
+                ),
+                (
+                    "quote",
+                    models.CharField(blank=True, max_length=255, verbose_name="Cita"),
+                ),
+                (
+                    "sidebar_title",
+                    models.CharField(
+                        default="Un viaje hacia tu interior",
+                        max_length=160,
+                        verbose_name="Título del sidebar",
+                    ),
+                ),
+                (
+                    "sidebar_paragraph1",
+                    models.TextField(blank=True, verbose_name="Párrafo 1 del sidebar"),
+                ),
+                (
+                    "sidebar_paragraph2",
+                    models.TextField(blank=True, verbose_name="Párrafo 2 del sidebar"),
+                ),
+                (
+                    "sidebar_paragraph3",
+                    models.TextField(blank=True, verbose_name="Párrafo 3 del sidebar"),
+                ),
             ],
             options={
-                'verbose_name': '5.2 Sección: Introducción de Retiros',
-                'verbose_name_plural': '5.2 Sección: Introducción de Retiros',
+                "verbose_name": "5.2 Sección: Introducción de Retiros",
+                "verbose_name_plural": "5.2 Sección: Introducción de Retiros",
             },
         ),
         migrations.CreateModel(
-            name='RetirosTestimonialSection',
+            name="RetirosTestimonialSection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Voces de transformación', max_length=160, verbose_name='Título')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Voces de transformación",
+                        max_length=160,
+                        verbose_name="Título",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': '5.6 Sección: Testimonios de Retiros',
-                'verbose_name_plural': '5.6 Sección: Testimonios de Retiros',
+                "verbose_name": "5.6 Sección: Testimonios de Retiros",
+                "verbose_name_plural": "5.6 Sección: Testimonios de Retiros",
             },
         ),
         migrations.CreateModel(
-            name='RetirosTypesSection',
+            name="RetirosTypesSection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Modalidades de transformación', max_length=160, verbose_name='Título')),
-                ('paragraph', models.TextField(blank=True, verbose_name='Párrafo')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Modalidades de transformación",
+                        max_length=160,
+                        verbose_name="Título",
+                    ),
+                ),
+                ("paragraph", models.TextField(blank=True, verbose_name="Párrafo")),
             ],
             options={
-                'verbose_name': '5.3 Sección: Tipos de Retiros',
-                'verbose_name_plural': '5.3 Sección: Tipos de Retiros',
+                "verbose_name": "5.3 Sección: Tipos de Retiros",
+                "verbose_name_plural": "5.3 Sección: Tipos de Retiros",
             },
         ),
         migrations.CreateModel(
-            name='RetiroActivity',
+            name="RetiroActivity",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=120, verbose_name='Título')),
-                ('description', models.TextField(verbose_name='Descripción')),
-                ('section', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='activities', to='eventos.retirosactivitiessection')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=120, verbose_name="Título")),
+                ("description", models.TextField(verbose_name="Descripción")),
+                (
+                    "section",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="activities",
+                        to="eventos.retirosactivitiessection",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Actividad de Retiro',
-                'verbose_name_plural': 'Actividades de Retiro',
+                "verbose_name": "Actividad de Retiro",
+                "verbose_name_plural": "Actividades de Retiro",
             },
         ),
         migrations.CreateModel(
-            name='RetirosGalleryImage',
+            name="RetirosGalleryImage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(help_text='Imagen para la galería', upload_to='eventos/gallery/')),
-                ('alt_text', models.CharField(blank=True, max_length=255, verbose_name='Texto alternativo')),
-                ('section', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='images', to='eventos.retirosgallerysection')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        help_text="Imagen para la galería", upload_to="eventos/gallery/"
+                    ),
+                ),
+                (
+                    "alt_text",
+                    models.CharField(
+                        blank=True, max_length=255, verbose_name="Texto alternativo"
+                    ),
+                ),
+                (
+                    "section",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="images",
+                        to="eventos.retirosgallerysection",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Imagen de la Galería de Retiros',
-                'verbose_name_plural': 'Imágenes de la Galería de Retiros',
+                "verbose_name": "Imagen de la Galería de Retiros",
+                "verbose_name_plural": "Imágenes de la Galería de Retiros",
             },
         ),
         migrations.CreateModel(
-            name='RetirosPage',
+            name="RetirosPage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('enabled', models.BooleanField(default=True, verbose_name='Habilitado')),
-                ('second_quote', models.TextField(blank=True, verbose_name='Segunda Cita')),
-                ('activities_section', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.retirosactivitiessection', verbose_name='Sección de Actividades')),
-                ('gallery_section', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.retirosgallerysection', verbose_name='Sección de Galería')),
-                ('header', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.retirosheader', verbose_name='Header')),
-                ('intro', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.retirosintrosection', verbose_name='Sección de Introducción')),
-                ('testimonial_section', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.retirostestimonialsection', verbose_name='Sección de Testimonios')),
-                ('types_section', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.retirostypessection', verbose_name='Sección de Tipos de Retiros')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "enabled",
+                    models.BooleanField(default=True, verbose_name="Habilitado"),
+                ),
+                (
+                    "second_quote",
+                    models.TextField(blank=True, verbose_name="Segunda Cita"),
+                ),
+                (
+                    "activities_section",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.retirosactivitiessection",
+                        verbose_name="Sección de Actividades",
+                    ),
+                ),
+                (
+                    "gallery_section",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.retirosgallerysection",
+                        verbose_name="Sección de Galería",
+                    ),
+                ),
+                (
+                    "header",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.retirosheader",
+                        verbose_name="Header",
+                    ),
+                ),
+                (
+                    "intro",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.retirosintrosection",
+                        verbose_name="Sección de Introducción",
+                    ),
+                ),
+                (
+                    "testimonial_section",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.retirostestimonialsection",
+                        verbose_name="Sección de Testimonios",
+                    ),
+                ),
+                (
+                    "types_section",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.retirostypessection",
+                        verbose_name="Sección de Tipos de Retiros",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': '5. Página: Retiros',
-                'verbose_name_plural': '5. Página: Retiros',
+                "verbose_name": "5. Página: Retiros",
+                "verbose_name_plural": "5. Página: Retiros",
             },
         ),
         migrations.CreateModel(
-            name='RetiroTestimonial',
+            name="RetiroTestimonial",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('quote', models.TextField(verbose_name='Testimonio')),
-                ('author', models.CharField(max_length=120, verbose_name='Autor')),
-                ('location', models.CharField(blank=True, max_length=120, verbose_name='Ubicación')),
-                ('image', models.ImageField(blank=True, help_text='Imagen del autor', null=True, upload_to='eventos/testimonials/')),
-                ('section', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='testimonials', to='eventos.retirostestimonialsection')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("quote", models.TextField(verbose_name="Testimonio")),
+                ("author", models.CharField(max_length=120, verbose_name="Autor")),
+                (
+                    "location",
+                    models.CharField(
+                        blank=True, max_length=120, verbose_name="Ubicación"
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True,
+                        help_text="Imagen del autor",
+                        null=True,
+                        upload_to="eventos/testimonials/",
+                    ),
+                ),
+                (
+                    "section",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="testimonials",
+                        to="eventos.retirostestimonialsection",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Testimonio de Retiro',
-                'verbose_name_plural': 'Testimonios de Retiro',
+                "verbose_name": "Testimonio de Retiro",
+                "verbose_name_plural": "Testimonios de Retiro",
             },
         ),
         migrations.CreateModel(
-            name='RetiroType',
+            name="RetiroType",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(blank=True, help_text='Imagen del tipo de retiro', null=True, upload_to='eventos/')),
-                ('title', models.CharField(max_length=120, verbose_name='Título')),
-                ('description', models.CharField(max_length=255, verbose_name='Descripción')),
-                ('section', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='types', to='eventos.retirostypessection')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True,
+                        help_text="Imagen del tipo de retiro",
+                        null=True,
+                        upload_to="eventos/",
+                    ),
+                ),
+                ("title", models.CharField(max_length=120, verbose_name="Título")),
+                (
+                    "description",
+                    models.CharField(max_length=255, verbose_name="Descripción"),
+                ),
+                (
+                    "section",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="types",
+                        to="eventos.retirostypessection",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Tipo de Retiro',
-                'verbose_name_plural': 'Tipos de Retiros',
+                "verbose_name": "Tipo de Retiro",
+                "verbose_name_plural": "Tipos de Retiros",
             },
         ),
     ]

@@ -1,12 +1,14 @@
 # apps/donaciones/models.py
 from django.db import models
-from django.utils.text import slugify
+
 
 class DonacionSection(models.Model):
     # Identificador para colocarla donde la necesites (ej. "home_callout")
     slug = models.SlugField(max_length=60, unique=True, help_text="Ej: home_callout")
     titulo_superior = models.CharField(max_length=120, default="Llamado Consciente")
-    titulo = models.CharField(max_length=180, default="Sanación y Regeneración en Chambalabamba")
+    titulo = models.CharField(
+        max_length=180, default="Sanación y Regeneración en Chambalabamba"
+    )
     descripcion = models.TextField(
         default=(
             "En nuestra Ecocentro, practicamos la sanación y el cultivo de una "
@@ -19,14 +21,30 @@ class DonacionSection(models.Model):
     cta_placeholder_otro = models.CharField(max_length=40, default="$ Otro")
 
     # New fields for admin-manageable content
-    intro_text = models.TextField(blank=True, null=True, help_text="Introductory text for the main donation page.")
+    intro_text = models.TextField(
+        blank=True, null=True, help_text="Introductory text for the main donation page."
+    )
     # Setting a default image path. User will need to ensure this file exists or provide their own.
-    donation_image = models.ImageField(upload_to='donations/', blank=True, null=True, default='donations/default_donation_image.png', help_text="Image for the main donation page. Defaults to 'donations/default_donation_image.png'.")
-    success_title = models.CharField(max_length=120, default="¡Gracias por tu donación!")
-    success_message = models.TextField(default="Tu donación ha sido procesada exitosamente. Agradecemos tu apoyo.")
+    donation_image = models.ImageField(
+        upload_to="donations/",
+        blank=True,
+        null=True,
+        default="donations/default_donation_image.png",
+        help_text="Image for the main donation page. Defaults to 'donations/default_donation_image.png'.",
+    )
+    success_title = models.CharField(
+        max_length=120, default="¡Gracias por tu donación!"
+    )
+    success_message = models.TextField(
+        default="Tu donación ha sido procesada exitosamente. Agradecemos tu apoyo."
+    )
     canceled_title = models.CharField(max_length=120, default="Donación Cancelada")
-    canceled_message = models.TextField(default="Tu donación ha sido cancelada. Si tienes algún problema, por favor, contáctanos.")
-    paypal_redirect_message = models.TextField(default="Por favor, espera mientras te redirigimos a PayPal para completar tu donación.")
+    canceled_message = models.TextField(
+        default="Tu donación ha sido cancelada. Si tienes algún problema, por favor, contáctanos."
+    )
+    paypal_redirect_message = models.TextField(
+        default="Por favor, espera mientras te redirigimos a PayPal para completar tu donación."
+    )
 
     publicado = models.BooleanField(default=True)
     orden = models.PositiveIntegerField(default=0)
@@ -41,7 +59,9 @@ class DonacionSection(models.Model):
 
 
 class DonacionMonto(models.Model):
-    section = models.ForeignKey(DonacionSection, on_delete=models.CASCADE, related_name="montos")
+    section = models.ForeignKey(
+        DonacionSection, on_delete=models.CASCADE, related_name="montos"
+    )
     # Guarda el valor como entero en centavos o como texto. Aquí simple:
     etiqueta = models.CharField(max_length=20, help_text='Ej: "$100"')
     orden = models.PositiveIntegerField(default=0)
@@ -54,6 +74,7 @@ class DonacionMonto(models.Model):
     def __str__(self):
         return f"{self.section.slug}: {self.etiqueta}"
 
+
 class Donacion(models.Model):
     nombre = models.CharField(max_length=100)
     email = models.EmailField()
@@ -62,19 +83,35 @@ class Donacion(models.Model):
     creado_en = models.DateTimeField(auto_now_add=True)
     completado = models.BooleanField(default=False)
 
+
 def __str__(self):
-        return f"Donación de {self.nombre} por {self.monto}"
+    return f"Donación de {self.nombre} por {self.monto}"
 
 
 class DonacionesStatic(models.Model):
     titulo = models.CharField(max_length=200, default="Apoyo a Chambalabamba")
     contenido = models.TextField(
         help_text="Contenido principal de la página de donaciones. Puedes usar HTML si es necesario.",
-        default="<p>Para realizar una donación y apoyar nuestros proyectos, por favor contáctanos a través de...</p>"
+        default="<p>Para realizar una donación y apoyar nuestros proyectos, por favor contáctanos a través de...</p>",
     )
-    email_contacto = models.EmailField(max_length=254, blank=True, null=True, help_text="Correo electrónico de contacto para donaciones.")
-    telefono_contacto = models.CharField(max_length=20, blank=True, null=True, help_text="Teléfono de contacto para donaciones.")
-    imagen = models.ImageField(upload_to='donaciones_static/', blank=True, null=True, help_text="Imagen opcional para la página de donaciones.")
+    email_contacto = models.EmailField(
+        max_length=254,
+        blank=True,
+        null=True,
+        help_text="Correo electrónico de contacto para donaciones.",
+    )
+    telefono_contacto = models.CharField(
+        max_length=20,
+        blank=True,
+        null=True,
+        help_text="Teléfono de contacto para donaciones.",
+    )
+    imagen = models.ImageField(
+        upload_to="donaciones_static/",
+        blank=True,
+        null=True,
+        help_text="Imagen opcional para la página de donaciones.",
+    )
     publicado = models.BooleanField(default=True)
 
     class Meta:

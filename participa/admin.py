@@ -3,34 +3,55 @@ from django.contrib import admin
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.utils.html import format_html
-from .models import (VoluntariadoPage,
-                     ContentBlock,               # ya lo usas en Voluntariado
+from .models import (
+    VoluntariadoPage,
+    ContentBlock,  # ya lo usas en Voluntariado
+    EstanciasIntro,  # singleton de la sección
+)
+from .models import ProyectoVoluntariado
 
-    EstanciasIntro# singleton de la sección
-                    )
+from .models import (
+    ParticipaPage,
+    ParticipaHeader,
+    Estancia,
+    EstanciaFoto,
+    EstanciaSpec,
+    InstaGallery,
+    InstaItem,  # si no los usas aún, quedan ocultos
+)
+from django.contrib.admin.sites import AlreadyRegistered
+
 
 class SingletonAdmin(admin.ModelAdmin):
-    def has_add_permission(self, request): return not self.model.objects.exists()
+    def has_add_permission(self, request):
+        return not self.model.objects.exists()
+
     def changelist_view(self, request, extra_context=None):
         obj = self.model.objects.first()
         if obj:
             from django.shortcuts import redirect
+
             return redirect(f"./{obj.pk}/change/")
         return super().changelist_view(request, extra_context)
+
 
 # 🔒 Ocultar del sidebar pero mantener búsqueda para el autocompletado
 class HiddenModelAdmin(admin.ModelAdmin):
     def get_model_perms(self, request):
         return {}  # sin permisos -> no aparece en el índice
+
     # opcional: también bloquear “Add” directo por URL
     def has_add_permission(self, request):
         return False
+
     # necesario para que autocomplete_fields funcione bien
     search_fields = ("title", "body_html")
+
 
 @admin.register(ContentBlock)
 class ContentBlockAdmin(HiddenModelAdmin):
     pass
+
 
 @admin.register(VoluntariadoPage)
 class VoluntariadoPageAdmin(SingletonAdmin):
@@ -39,8 +60,17 @@ class VoluntariadoPageAdmin(SingletonAdmin):
     fieldsets = (
         ("Estado", {"fields": ("publicado",)}),
         ("Cabecera", {"fields": ("titulo", "subtitulo", "background", "thumb")}),
-        ("Bloques", {"fields": ("about_block", "edit_about_link",
-                                "ambiente_block", "edit_ambiente_link")}),
+        (
+            "Bloques",
+            {
+                "fields": (
+                    "about_block",
+                    "edit_about_link",
+                    "ambiente_block",
+                    "edit_ambiente_link",
+                )
+            },
+        ),
         ("Texto de introducción (fallback)", {"fields": ("intro_html",)}),
         ("Quote", {"fields": ("quote_text", "quote_author")}),
         ("Instagram", {"fields": ("instagram_embed_url",)}),
@@ -51,32 +81,35 @@ class VoluntariadoPageAdmin(SingletonAdmin):
     # ---------------- helpers de enlace directo ----------------
     def edit_about_link(self, obj):
         if obj and obj.about_block_id:
-            url = reverse("admin:participa_contentblock_change", args=[obj.about_block_id])
-            return format_html('<a class="button" href="{}" target="_blank">Editar “{}”</a>', url, obj.about_block)
+            url = reverse(
+                "admin:participa_contentblock_change", args=[obj.about_block_id]
+            )
+            return format_html(
+                '<a class="button" href="{}" target="_blank">Editar “{}”</a>',
+                url,
+                obj.about_block,
+            )
         return "—"
+
     edit_about_link.short_description = "Editar About"
 
     def edit_ambiente_link(self, obj):
         if obj and obj.ambiente_block_id:
-            url = reverse("admin:participa_contentblock_change", args=[obj.ambiente_block_id])
-            return format_html('<a class="button" href="{}" target="_blank">Editar “{}”</a>', url, obj.ambiente_block)
+            url = reverse(
+                "admin:participa_contentblock_change", args=[obj.ambiente_block_id]
+            )
+            return format_html(
+                '<a class="button" href="{}" target="_blank">Editar “{}”</a>',
+                url,
+                obj.ambiente_block,
+            )
         return "—"
+
     edit_ambiente_link.short_description = "Editar Ambiente"
 
 
-
 # apps/estancias/admin.py
-from django.contrib import admin
-from django.utils.html import format_html
-from django.urls import reverse
-from django.shortcuts import redirect
-from django.db import models
 
-from .models import (
-    ParticipaPage, ParticipaHeader,
-    Estancia, EstanciaFoto, EstanciaSpec,
-    InstaGallery, InstaItem,  # si no los usas aún, quedan ocultos
-)
 
 class EstanciasIntroInline(admin.StackedInline):
     model = EstanciasIntro
@@ -87,23 +120,32 @@ class EstanciasIntroInline(admin.StackedInline):
         ("Estilo", {"fields": ("bg_color", "margin_top_px")}),
     )
 
+
 # ──────────────────────────────────────────────────────────────────────────────
 # Utilidades
 # ──────────────────────────────────────────────────────────────────────────────
 class HiddenModelAdmin(admin.ModelAdmin):
     """No aparece en el índice del admin."""
-    def get_model_perms(self, request): return {}
+
+    def get_model_perms(self, request):
+        return {}
+
     # útil si los usas vía autocomplete
     search_fields = ("id",)
 
+
 class SingletonAdmin(admin.ModelAdmin):
     """Redirige el changelist al único registro y evita múltiples 'add'."""
-    def has_add_permission(self, request): return not self.model.objects.exists()
+
+    def has_add_permission(self, request):
+        return not self.model.objects.exists()
+
     def changelist_view(self, request, extra_context=None):
         obj = self.model.objects.first()
         if obj:
             return redirect(f"./{obj.pk}/change/")
         return super().changelist_view(request, extra_context)
+
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Inlines
@@ -117,8 +159,12 @@ class EstanciaFotoInline(admin.TabularInline):
 
     def preview(self, obj):
         if getattr(obj, "imagen", None):
-            return format_html('<img src="{}" style="height:60px; border-radius:4px;" />', obj.imagen.url)
+            return format_html(
+                '<img src="{}" style="height:60px; border-radius:4px;" />',
+                obj.imagen.url,
+            )
         return "—"
+
 
 class EstanciaSpecInline(admin.TabularInline):
     model = EstanciaSpec
@@ -126,20 +172,22 @@ class EstanciaSpecInline(admin.TabularInline):
     fields = ("orden", "clave", "valor")
     ordering = ("orden", "id")
 
+
 # ──────────────────────────────────────────────────────────────────────────────
 # Estancia (listado principal)
 # ──────────────────────────────────────────────────────────────────────────────
-from django.contrib.admin.sites import AlreadyRegistered, NotRegistered
+
 
 class HiddenModelAdmin(admin.ModelAdmin):
-    def get_model_perms(self, request): return {}
+    def get_model_perms(self, request):
+        return {}
 
-from .models import ParticipaHeader
 
 try:
     admin.site.register(ParticipaHeader, HiddenModelAdmin)
 except AlreadyRegistered:
     pass
+
 
 @admin.register(Estancia)
 class EstanciaAdmin(admin.ModelAdmin):
@@ -164,17 +212,24 @@ class EstanciaAdmin(admin.ModelAdmin):
     def portada_preview(self, obj):
         # usa tu campo 'portada' de Estancia
         if getattr(obj, "portada", None):
-            return format_html('<img src="{}" style="height:80px; border-radius:6px;" />', obj.portada.url)
+            return format_html(
+                '<img src="{}" style="height:80px; border-radius:6px;" />',
+                obj.portada.url,
+            )
         return "—"
+
     portada_preview.short_description = "Preview portada"
 
     def publicar(self, request, queryset):
         queryset.update(publicado=True)
+
     publicar.short_description = "Marcar como publicados"
 
     def despublicar(self, request, queryset):
         queryset.update(publicado=False)
+
     despublicar.short_description = "Marcar como NO publicados"
+
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Página Participa (singleton con preview del header)
@@ -191,8 +246,12 @@ class ParticipaPageAdmin(SingletonAdmin):
     def header_preview(self, obj):
         hdr = obj.header
         if hdr and getattr(hdr, "background", None):
-            return format_html('<img src="{}" style="height:80px;border-radius:6px;" />', hdr.background.url)
+            return format_html(
+                '<img src="{}" style="height:80px;border-radius:6px;" />',
+                hdr.background.url,
+            )
         return "—"
+
     header_preview.short_description = "Preview fondo"
 
     def edit_header_link(self, obj):
@@ -202,13 +261,19 @@ class ParticipaPageAdmin(SingletonAdmin):
             url_name = f"admin:{hdr._meta.app_label}_{hdr._meta.model_name}_change"
             try:
                 url = reverse(url_name, args=[hdr.pk])
-                return format_html('<a class="button" href="{}" target="_blank">Editar header</a>', url)
+                return format_html(
+                    '<a class="button" href="{}" target="_blank">Editar header</a>', url
+                )
             except Exception:
                 # Evita que el admin casque si por algo no está registrado
-                return format_html('<span style="color:#999">URL no disponible ({})</span>', url_name)
+                return format_html(
+                    '<span style="color:#999">URL no disponible ({})</span>', url_name
+                )
         return "—"
 
     inlines = [EstanciasIntroInline]
+
+
 # Ocultar del sidebar: Header + modelos “base”
 try:
     admin.site.register(ParticipaHeader, HiddenModelAdmin)
@@ -223,10 +288,7 @@ for mdl in (InstaGallery, InstaItem):
         pass
 
 
-#*************************PROYECTOS DE VOLUNTARIADO*****************************#
-from django.contrib import admin
-from .models import ProyectoVoluntariado
-
+# *************************PROYECTOS DE VOLUNTARIADO*****************************#
 @admin.register(ProyectoVoluntariado)
 class ProyectoVoluntariadoAdmin(admin.ModelAdmin):
     list_display = ("nombre", "publicado", "orden")

@@ -5,46 +5,81 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('visitas', '0021_alter_guidedvisit_actualizado_and_more'),
+        ("visitas", "0021_alter_guidedvisit_actualizado_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='PageHeader',
+            name="PageHeader",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('slug', models.SlugField(unique=True)),
-                ('title', models.CharField(blank=True, default='', max_length=150)),
-                ('subtitle', models.CharField(blank=True, default='', max_length=200)),
-                ('background', models.ImageField(blank=True, null=True, upload_to='headers/')),
-                ('is_active', models.BooleanField(default=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("slug", models.SlugField(unique=True)),
+                ("title", models.CharField(blank=True, default="", max_length=150)),
+                ("subtitle", models.CharField(blank=True, default="", max_length=200)),
+                (
+                    "background",
+                    models.ImageField(blank=True, null=True, upload_to="headers/"),
+                ),
+                ("is_active", models.BooleanField(default=True)),
             ],
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='actualizado',
-            field=models.DateTimeField(auto_now=True, db_default=datetime.datetime(2025, 10, 8, 21, 26, 5, 960022, tzinfo=datetime.timezone.utc)),
+            model_name="guidedvisit",
+            name="actualizado",
+            field=models.DateTimeField(
+                auto_now=True,
+                db_default=datetime.datetime(
+                    2025, 10, 8, 21, 26, 5, 960022, tzinfo=datetime.timezone.utc
+                ),
+            ),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='creado',
-            field=models.DateTimeField(auto_now_add=True, db_default=datetime.datetime(2025, 10, 8, 21, 26, 5, 960002, tzinfo=datetime.timezone.utc)),
+            model_name="guidedvisit",
+            name="creado",
+            field=models.DateTimeField(
+                auto_now_add=True,
+                db_default=datetime.datetime(
+                    2025, 10, 8, 21, 26, 5, 960002, tzinfo=datetime.timezone.utc
+                ),
+            ),
         ),
         migrations.AlterField(
-            model_name='guidedvisitphoto',
-            name='actualizado',
-            field=models.DateTimeField(auto_now=True, db_default=datetime.datetime(2025, 10, 8, 21, 26, 5, 960827, tzinfo=datetime.timezone.utc)),
+            model_name="guidedvisitphoto",
+            name="actualizado",
+            field=models.DateTimeField(
+                auto_now=True,
+                db_default=datetime.datetime(
+                    2025, 10, 8, 21, 26, 5, 960827, tzinfo=datetime.timezone.utc
+                ),
+            ),
         ),
         migrations.AlterField(
-            model_name='guidedvisitphoto',
-            name='creado',
-            field=models.DateTimeField(auto_now_add=True, db_default=datetime.datetime(2025, 10, 8, 21, 26, 5, 960806, tzinfo=datetime.timezone.utc)),
+            model_name="guidedvisitphoto",
+            name="creado",
+            field=models.DateTimeField(
+                auto_now_add=True,
+                db_default=datetime.datetime(
+                    2025, 10, 8, 21, 26, 5, 960806, tzinfo=datetime.timezone.utc
+                ),
+            ),
         ),
         migrations.AlterField(
-            model_name='visitslanding',
-            name='actualizado',
-            field=models.DateTimeField(auto_now=True, db_default=datetime.datetime(2025, 10, 8, 21, 26, 5, 959159, tzinfo=datetime.timezone.utc)),
+            model_name="visitslanding",
+            name="actualizado",
+            field=models.DateTimeField(
+                auto_now=True,
+                db_default=datetime.datetime(
+                    2025, 10, 8, 21, 26, 5, 959159, tzinfo=datetime.timezone.utc
+                ),
+            ),
         ),
     ]

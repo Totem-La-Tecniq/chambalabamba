@@ -6,151 +6,352 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('blog', '0002_remove_post_categorias_remove_post_autor_and_more'),
-        ('proyectos', '0001_initial'),
+        ("blog", "0002_remove_post_categorias_remove_post_autor_and_more"),
+        ("proyectos", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='BlogAuthor',
+            name="BlogAuthor",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=120)),
-                ('slug', models.SlugField(unique=True)),
-                ('foto', models.ImageField(blank=True, null=True, upload_to='blog/autores/')),
-                ('bio', models.TextField(blank=True, default='')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nombre", models.CharField(max_length=120)),
+                ("slug", models.SlugField(unique=True)),
+                (
+                    "foto",
+                    models.ImageField(blank=True, null=True, upload_to="blog/autores/"),
+                ),
+                ("bio", models.TextField(blank=True, default="")),
             ],
         ),
         migrations.CreateModel(
-            name='BlogCategory',
+            name="BlogCategory",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=80)),
-                ('slug', models.SlugField(unique=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nombre", models.CharField(max_length=80)),
+                ("slug", models.SlugField(unique=True)),
             ],
             options={
-                'verbose_name': 'Categoría',
-                'verbose_name_plural': 'Categorías',
+                "verbose_name": "Categoría",
+                "verbose_name_plural": "Categorías",
             },
         ),
         migrations.CreateModel(
-            name='BlogHeader',
+            name="BlogHeader",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Blog', max_length=120)),
-                ('breadcrumb_label', models.CharField(default='Blog', max_length=120)),
-                ('background', models.ImageField(blank=True, null=True, upload_to='blog/header/')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(default="Blog", max_length=120)),
+                ("breadcrumb_label", models.CharField(default="Blog", max_length=120)),
+                (
+                    "background",
+                    models.ImageField(blank=True, null=True, upload_to="blog/header/"),
+                ),
             ],
             options={
-                'verbose_name': 'Blog · Inner Header',
-                'verbose_name_plural': 'Blog · Inner Header',
+                "verbose_name": "Blog · Inner Header",
+                "verbose_name_plural": "Blog · Inner Header",
             },
         ),
         migrations.CreateModel(
-            name='BlogTag',
+            name="BlogTag",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=60, unique=True)),
-                ('slug', models.SlugField(unique=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nombre", models.CharField(max_length=60, unique=True)),
+                ("slug", models.SlugField(unique=True)),
             ],
             options={
-                'verbose_name': 'Tag',
-                'verbose_name_plural': 'Tags',
+                "verbose_name": "Tag",
+                "verbose_name_plural": "Tags",
             },
         ),
         migrations.CreateModel(
-            name='BlogPage',
+            name="BlogPage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('enabled', models.BooleanField(default=True)),
-                ('intro_html', models.TextField(blank=True, default='')),
-                ('volunteer_url', models.URLField(blank=True, default='')),
-                ('donate_url', models.URLField(blank=True, default='')),
-                ('header', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='blog.blogheader')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("enabled", models.BooleanField(default=True)),
+                ("intro_html", models.TextField(blank=True, default="")),
+                ("volunteer_url", models.URLField(blank=True, default="")),
+                ("donate_url", models.URLField(blank=True, default="")),
+                (
+                    "header",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="blog.blogheader",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Página de Blog',
-                'verbose_name_plural': 'Página de Blog',
+                "verbose_name": "Página de Blog",
+                "verbose_name_plural": "Página de Blog",
             },
         ),
         migrations.CreateModel(
-            name='BlogPost',
+            name="BlogPost",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(blank=True, default=django.utils.timezone.now, null=True)),
-                ('actualizado', models.DateTimeField(blank=True, default=django.utils.timezone.now, null=True)),
-                ('titulo', models.CharField(max_length=180)),
-                ('slug', models.SlugField(unique=True)),
-                ('resumen', models.TextField(blank=True, default='')),
-                ('cuerpo_html', models.TextField(blank=True, default='')),
-                ('portada', models.ImageField(blank=True, null=True, upload_to='blog/portadas/')),
-                ('tipo', models.CharField(choices=[('standard', 'Estándar'), ('gallery', 'Galería'), ('video', 'Video embebido'), ('audio', 'Audio embebido'), ('link', 'Enlace')], default='standard', max_length=12)),
-                ('video_url', models.URLField(blank=True, default='')),
-                ('audio_url', models.URLField(blank=True, default='')),
-                ('enlace_externo', models.URLField(blank=True, default='')),
-                ('fecha_publicacion', models.DateTimeField(default=django.utils.timezone.now)),
-                ('comentarios_count', models.PositiveIntegerField(default=0)),
-                ('autor', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='posts', to='blog.blogauthor')),
-                ('categoria', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='posts', to='blog.blogcategory')),
-                ('tags', models.ManyToManyField(blank=True, related_name='posts', to='blog.blogtag')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                (
+                    "creado",
+                    models.DateTimeField(
+                        blank=True, default=django.utils.timezone.now, null=True
+                    ),
+                ),
+                (
+                    "actualizado",
+                    models.DateTimeField(
+                        blank=True, default=django.utils.timezone.now, null=True
+                    ),
+                ),
+                ("titulo", models.CharField(max_length=180)),
+                ("slug", models.SlugField(unique=True)),
+                ("resumen", models.TextField(blank=True, default="")),
+                ("cuerpo_html", models.TextField(blank=True, default="")),
+                (
+                    "portada",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="blog/portadas/"
+                    ),
+                ),
+                (
+                    "tipo",
+                    models.CharField(
+                        choices=[
+                            ("standard", "Estándar"),
+                            ("gallery", "Galería"),
+                            ("video", "Video embebido"),
+                            ("audio", "Audio embebido"),
+                            ("link", "Enlace"),
+                        ],
+                        default="standard",
+                        max_length=12,
+                    ),
+                ),
+                ("video_url", models.URLField(blank=True, default="")),
+                ("audio_url", models.URLField(blank=True, default="")),
+                ("enlace_externo", models.URLField(blank=True, default="")),
+                (
+                    "fecha_publicacion",
+                    models.DateTimeField(default=django.utils.timezone.now),
+                ),
+                ("comentarios_count", models.PositiveIntegerField(default=0)),
+                (
+                    "autor",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="posts",
+                        to="blog.blogauthor",
+                    ),
+                ),
+                (
+                    "categoria",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="posts",
+                        to="blog.blogcategory",
+                    ),
+                ),
+                (
+                    "tags",
+                    models.ManyToManyField(
+                        blank=True, related_name="posts", to="blog.blogtag"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Post',
-                'verbose_name_plural': 'Posts',
-                'ordering': ('orden', '-creado'),
-                'abstract': False,
+                "verbose_name": "Post",
+                "verbose_name_plural": "Posts",
+                "ordering": ("orden", "-creado"),
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='BlogSidebarWidget',
+            name="BlogSidebarWidget",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(blank=True, default=django.utils.timezone.now, null=True)),
-                ('actualizado', models.DateTimeField(blank=True, default=django.utils.timezone.now, null=True)),
-                ('tipo', models.CharField(choices=[('search', 'Buscador'), ('text', 'Texto'), ('latest_posts', 'Últimos posts'), ('projects', 'Proyectos actuales'), ('tags', 'Tags'), ('recent_work', 'Recent Work (carrusel)'), ('archives', 'Archivos por mes'), ('cta_volunteer', 'CTA Voluntariado'), ('cta_donate', 'CTA Donaciones'), ('custom_html', 'HTML libre')], max_length=20)),
-                ('titulo', models.CharField(blank=True, default='', max_length=120)),
-                ('body_html', models.TextField(blank=True, default='')),
-                ('limite', models.PositiveIntegerField(default=5)),
-                ('link_label', models.CharField(blank=True, default='', max_length=120)),
-                ('link_url', models.URLField(blank=True, default='')),
-                ('page', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='widgets', to='blog.blogpage')),
-                ('proyectos', models.ManyToManyField(blank=True, related_name='blog_widgets', to='proyectos.project')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                (
+                    "creado",
+                    models.DateTimeField(
+                        blank=True, default=django.utils.timezone.now, null=True
+                    ),
+                ),
+                (
+                    "actualizado",
+                    models.DateTimeField(
+                        blank=True, default=django.utils.timezone.now, null=True
+                    ),
+                ),
+                (
+                    "tipo",
+                    models.CharField(
+                        choices=[
+                            ("search", "Buscador"),
+                            ("text", "Texto"),
+                            ("latest_posts", "Últimos posts"),
+                            ("projects", "Proyectos actuales"),
+                            ("tags", "Tags"),
+                            ("recent_work", "Recent Work (carrusel)"),
+                            ("archives", "Archivos por mes"),
+                            ("cta_volunteer", "CTA Voluntariado"),
+                            ("cta_donate", "CTA Donaciones"),
+                            ("custom_html", "HTML libre"),
+                        ],
+                        max_length=20,
+                    ),
+                ),
+                ("titulo", models.CharField(blank=True, default="", max_length=120)),
+                ("body_html", models.TextField(blank=True, default="")),
+                ("limite", models.PositiveIntegerField(default=5)),
+                (
+                    "link_label",
+                    models.CharField(blank=True, default="", max_length=120),
+                ),
+                ("link_url", models.URLField(blank=True, default="")),
+                (
+                    "page",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="widgets",
+                        to="blog.blogpage",
+                    ),
+                ),
+                (
+                    "proyectos",
+                    models.ManyToManyField(
+                        blank=True, related_name="blog_widgets", to="proyectos.project"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Sidebar · Widget',
-                'verbose_name_plural': 'Sidebar · Widgets',
-                'ordering': ('orden', '-creado'),
-                'abstract': False,
+                "verbose_name": "Sidebar · Widget",
+                "verbose_name_plural": "Sidebar · Widgets",
+                "ordering": ("orden", "-creado"),
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='BlogPostPhoto',
+            name="BlogPostPhoto",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(blank=True, default=django.utils.timezone.now, null=True)),
-                ('actualizado', models.DateTimeField(blank=True, default=django.utils.timezone.now, null=True)),
-                ('imagen', models.ImageField(upload_to='blog/gallery/')),
-                ('titulo', models.CharField(blank=True, max_length=160)),
-                ('alt', models.CharField(blank=True, max_length=160)),
-                ('creditos', models.CharField(blank=True, max_length=160)),
-                ('is_header', models.BooleanField(default=False, help_text='Usar como cabecera/slide principal')),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='fotos', to='blog.blogpost')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                (
+                    "creado",
+                    models.DateTimeField(
+                        blank=True, default=django.utils.timezone.now, null=True
+                    ),
+                ),
+                (
+                    "actualizado",
+                    models.DateTimeField(
+                        blank=True, default=django.utils.timezone.now, null=True
+                    ),
+                ),
+                ("imagen", models.ImageField(upload_to="blog/gallery/")),
+                ("titulo", models.CharField(blank=True, max_length=160)),
+                ("alt", models.CharField(blank=True, max_length=160)),
+                ("creditos", models.CharField(blank=True, max_length=160)),
+                (
+                    "is_header",
+                    models.BooleanField(
+                        default=False, help_text="Usar como cabecera/slide principal"
+                    ),
+                ),
+                (
+                    "post",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="fotos",
+                        to="blog.blogpost",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Post · Foto',
-                'verbose_name_plural': 'Post · Galería',
-                'ordering': ('orden', 'id'),
-                'constraints': [models.UniqueConstraint(condition=models.Q(('is_header', True)), fields=('post',), name='unique_header_photo_per_blogpost')],
+                "verbose_name": "Post · Foto",
+                "verbose_name_plural": "Post · Galería",
+                "ordering": ("orden", "id"),
+                "constraints": [
+                    models.UniqueConstraint(
+                        condition=models.Q(("is_header", True)),
+                        fields=("post",),
+                        name="unique_header_photo_per_blogpost",
+                    )
+                ],
             },
         ),
     ]

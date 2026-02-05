@@ -8,6 +8,7 @@ import os
 SEED_TAG = os.getenv("INICIO_SEED_TAG", "inicio:v18")
 FIXTURE_FILENAME = os.getenv("INICIO_FIXTURE", "inicio_seed.json")
 
+
 def seed_inicio_once(sender, **kwargs):
     """
     Carga el fixture de inicio una sola vez por BD.

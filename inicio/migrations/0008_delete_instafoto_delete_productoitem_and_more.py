@@ -4,25 +4,37 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('inicio', '0007_alter_gallery_seccion'),
+        ("inicio", "0007_alter_gallery_seccion"),
     ]
 
     operations = [
         migrations.DeleteModel(
-            name='InstaFoto',
+            name="InstaFoto",
         ),
         migrations.DeleteModel(
-            name='ProductoItem',
+            name="ProductoItem",
         ),
         migrations.AlterModelOptions(
-            name='gallery',
-            options={'ordering': ['orden', '-creado'], 'verbose_name': 'Galeria', 'verbose_name_plural': 'Galerias'},
+            name="gallery",
+            options={
+                "ordering": ["orden", "-creado"],
+                "verbose_name": "Galeria",
+                "verbose_name_plural": "Galerias",
+            },
         ),
         migrations.AlterField(
-            model_name='gallery',
-            name='seccion',
-            field=models.CharField(choices=[('home_cabecera', 'Home – Ultimos-Eventos'), ('nosotros_cabecera', 'Nosotros – Cabecera'), ('proyectos_movimiento', 'Home – Proyecto movimiento'), ('participa_estancias', 'Participa – Estancias')], default='home_cabecera', max_length=50),
+            model_name="gallery",
+            name="seccion",
+            field=models.CharField(
+                choices=[
+                    ("home_cabecera", "Home – Ultimos-Eventos"),
+                    ("nosotros_cabecera", "Nosotros – Cabecera"),
+                    ("proyectos_movimiento", "Home – Proyecto movimiento"),
+                    ("participa_estancias", "Participa – Estancias"),
+                ],
+                default="home_cabecera",
+                max_length=50,
+            ),
         ),
     ]

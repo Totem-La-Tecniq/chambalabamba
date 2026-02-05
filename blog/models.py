@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
-from django.utils import timezone
+from django.conf import settings
 
 
 def validate_local_or_url(value):
@@ -14,7 +14,9 @@ def validate_local_or_url(value):
     try:
         URLValidator(schemes=("http", "https"))(value)
     except ValidationError:
-        raise ValidationError("Ingrese una URL válida (http(s)://…) o una ruta interna que empiece con '/'.")
+        raise ValidationError(
+            "Ingrese una URL válida (http(s)://…) o una ruta interna que empiece con '/'."
+        )
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -37,6 +39,7 @@ class BaseOrdenPublicado(models.Model):
         self.actualizado = now
         return super().save(*args, **kwargs)
 
+
 # ──────────────────────────────────────────────────────────────────────────────
 # Página & Header (inner header)
 # ──────────────────────────────────────────────────────────────────────────────
@@ -52,9 +55,12 @@ class BlogHeader(models.Model):
     def __str__(self):
         return self.title
 
+
 class BlogPage(models.Model):
     enabled = models.BooleanField(default=True)
-    header = models.OneToOneField(BlogHeader, on_delete=models.SET_NULL, null=True, blank=True)
+    header = models.OneToOneField(
+        BlogHeader, on_delete=models.SET_NULL, null=True, blank=True
+    )
 
     # (opcional) textos generales
     intro_html = models.TextField(blank=True, default="")
@@ -70,6 +76,7 @@ class BlogPage(models.Model):
     def __str__(self):
         return "Página del Blog"
 
+
 # ──────────────────────────────────────────────────────────────────────────────
 # Taxonomía y autoría
 # ──────────────────────────────────────────────────────────────────────────────
@@ -82,6 +89,7 @@ class BlogAuthor(models.Model):
     def __str__(self):
         return self.nombre
 
+
 class BlogCategory(models.Model):
     nombre = models.CharField(max_length=80)
     slug = models.SlugField(unique=True)
@@ -92,6 +100,7 @@ class BlogCategory(models.Model):
 
     def __str__(self):
         return self.nombre
+
 
 class BlogTag(models.Model):
     nombre = models.CharField(max_length=60, unique=True)
@@ -104,21 +113,34 @@ class BlogTag(models.Model):
     def __str__(self):
         return self.nombre
 
+
 # ──────────────────────────────────────────────────────────────────────────────
 # Post + Galería
 # ──────────────────────────────────────────────────────────────────────────────
 class BlogPost(BaseOrdenPublicado):
     TIPO = [
         ("standard", "Estándar"),
-        ("gallery",  "Galería"),
-        ("video",    "Video embebido"),
-        ("audio",    "Audio embebido"),
-        ("link",     "Enlace"),
+        ("gallery", "Galería"),
+        ("video", "Video embebido"),
+        ("audio", "Audio embebido"),
+        ("link", "Enlace"),
     ]
     titulo = models.CharField(max_length=180)
     slug = models.SlugField(unique=True)
-    autor = models.ForeignKey(BlogAuthor, on_delete=models.SET_NULL, null=True, blank=True, related_name="posts")
-    categoria = models.ForeignKey(BlogCategory, on_delete=models.SET_NULL, null=True, blank=True, related_name="posts")
+    autor = models.ForeignKey(
+        BlogAuthor,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="posts",
+    )
+    categoria = models.ForeignKey(
+        BlogCategory,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="posts",
+    )
     tags = models.ManyToManyField(BlogTag, blank=True, related_name="posts")
 
     resumen = models.TextField(blank=True, default="")
@@ -142,7 +164,11 @@ class BlogPost(BaseOrdenPublicado):
 
     @property
     def header_image(self):
-        hdr = self.fotos.filter(publicado=True, is_header=True).order_by("orden", "id").first()
+        hdr = (
+            self.fotos.filter(publicado=True, is_header=True)
+            .order_by("orden", "id")
+            .first()
+        )
         if hdr and hdr.imagen:
             return hdr.imagen
         if self.portada:
@@ -150,13 +176,16 @@ class BlogPost(BaseOrdenPublicado):
         first = self.fotos.filter(publicado=True).order_by("orden", "id").first()
         return first.imagen if first else None
 
+
 class BlogPostPhoto(BaseOrdenPublicado):
     post = models.ForeignKey(BlogPost, on_delete=models.CASCADE, related_name="fotos")
     imagen = models.ImageField(upload_to="blog/gallery/")
     titulo = models.CharField(max_length=160, blank=True)
     alt = models.CharField(max_length=160, blank=True)
     creditos = models.CharField(max_length=160, blank=True)
-    is_header = models.BooleanField(default=False, help_text="Usar como cabecera/slide principal")
+    is_header = models.BooleanField(
+        default=False, help_text="Usar como cabecera/slide principal"
+    )
 
     class Meta:
         ordering = ("orden", "id")
@@ -164,13 +193,15 @@ class BlogPostPhoto(BaseOrdenPublicado):
         verbose_name_plural = "Post · Galería"
         constraints = [
             models.UniqueConstraint(
-                fields=["post"], condition=models.Q(is_header=True),
-                name="unique_header_photo_per_blogpost"
+                fields=["post"],
+                condition=models.Q(is_header=True),
+                name="unique_header_photo_per_blogpost",
             )
         ]
 
     def __str__(self):
         return self.titulo or f"Foto {self.pk} · {self.post}"
+
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Sidebar widgets
@@ -195,7 +226,9 @@ class BlogSidebarWidget(BaseOrdenPublicado):
     limite = models.PositiveIntegerField(default=5)
 
     # selección de proyectos (opcional) — se usa si existe app 'proyectos'
-    proyectos = models.ManyToManyField("proyectos.Project", blank=True, related_name="blog_widgets")
+    proyectos = models.ManyToManyField(
+        "proyectos.Project", blank=True, related_name="blog_widgets"
+    )
 
     # enlaces CTA (usados según tipo)
     link_label = models.CharField(max_length=120, blank=True, default="")
@@ -208,31 +241,39 @@ class BlogSidebarWidget(BaseOrdenPublicado):
     def __str__(self):
         return f"{self.get_tipo_display()} · {self.titulo or 'sin título'}"
 
-###############################comentarios###############################
-from django.conf import settings
-from django.utils import timezone
 
+###############################comentarios###############################
 class BlogComment(models.Model):
     class Status(models.TextChoices):
-        PENDING  = "pending",  "Pendiente"
+        PENDING = "pending", "Pendiente"
         APPROVED = "approved", "Aprobado"
         REJECTED = "rejected", "Rechazado"
-        SPAM     = "spam",     "Spam"
+        SPAM = "spam", "Spam"
 
-    post = models.ForeignKey("BlogPost", on_delete=models.CASCADE, related_name="comentarios")
-    parent = models.ForeignKey("self", null=True, blank=True, on_delete=models.CASCADE, related_name="replies")
+    post = models.ForeignKey(
+        "BlogPost", on_delete=models.CASCADE, related_name="comentarios"
+    )
+    parent = models.ForeignKey(
+        "self", null=True, blank=True, on_delete=models.CASCADE, related_name="replies"
+    )
 
     # Autoría (usuario autenticado opcional + campos públicos)
-    user = models.ForeignKey(getattr(settings, "AUTH_USER_MODEL", "auth.User"),
-                             null=True, blank=True, on_delete=models.SET_NULL,
-                             related_name="blog_comments")
+    user = models.ForeignKey(
+        getattr(settings, "AUTH_USER_MODEL", "auth.User"),
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="blog_comments",
+    )
     nombre = models.CharField(max_length=120, blank=True)
     email = models.EmailField(blank=True)
     website = models.URLField(blank=True)
 
     cuerpo = models.TextField()
 
-    status = models.CharField(max_length=10, choices=Status.choices, default=Status.PENDING)
+    status = models.CharField(
+        max_length=10, choices=Status.choices, default=Status.PENDING
+    )
     creado = models.DateTimeField(default=timezone.now, null=True, blank=True)
     actualizado = models.DateTimeField(default=timezone.now, null=True, blank=True)
 

@@ -1,8 +1,11 @@
 from django.db import models
 from django.urls import reverse
 
+
 class CabeceraCoops(models.Model):
-    h5 = models.CharField("Subtítulo (h5)", max_length=120, default="Alianzas que nos potencian")
+    h5 = models.CharField(
+        "Subtítulo (h5)", max_length=120, default="Alianzas que nos potencian"
+    )
     h2 = models.CharField("Título (h2)", max_length=140, default="Cooperaciones")
     subtitulo = models.CharField("Bajada (opcional)", max_length=200, blank=True)
     hero = models.ImageField(upload_to="coops/hero/", blank=True, null=True)
@@ -15,6 +18,7 @@ class CabeceraCoops(models.Model):
 
     def __str__(self):
         return f"{self.h5} / {self.h2}"
+
 
 class CoopCategoria(models.Model):
     nombre = models.CharField(max_length=120)
@@ -30,9 +34,14 @@ class CoopCategoria(models.Model):
     def __str__(self):
         return self.nombre
 
+
 class Cooperacion(models.Model):
     categoria = models.ForeignKey(
-        CoopCategoria, on_delete=models.SET_NULL, null=True, blank=True, related_name="coops"
+        CoopCategoria,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="coops",
     )
     nombre = models.CharField(max_length=180)
     slug = models.SlugField(max_length=200, unique=True)
@@ -58,8 +67,11 @@ class Cooperacion(models.Model):
     def get_absolute_url(self):
         return reverse("coops:detalle", kwargs={"slug": self.slug})
 
+
 class CoopFoto(models.Model):
-    coop = models.ForeignKey(Cooperacion, related_name="fotos", on_delete=models.CASCADE)
+    coop = models.ForeignKey(
+        Cooperacion, related_name="fotos", on_delete=models.CASCADE
+    )
     imagen = models.ImageField(upload_to="coops/fotos/")
     alt = models.CharField(max_length=140, blank=True)
     publicado = models.BooleanField(default=True)

@@ -5,16 +5,20 @@ from blog.models import BlogComment
 
 
 def _recount_comments(post):
-    from django.db.models import Count
     from .models import BlogComment
-    n = BlogComment.objects.filter(post=post, status=BlogComment.Status.APPROVED).count()
+
+    n = BlogComment.objects.filter(
+        post=post, status=BlogComment.Status.APPROVED
+    ).count()
     if post.comentarios_count != n:
         post.comentarios_count = n
         post.save(update_fields=["comentarios_count", "actualizado"])
 
+
 @receiver(post_save, sender=BlogComment)
 def _comment_saved(sender, instance, **kwargs):
     _recount_comments(instance.post)
+
 
 @receiver(post_delete, sender=BlogComment)
 def _comment_deleted(sender, instance, **kwargs):

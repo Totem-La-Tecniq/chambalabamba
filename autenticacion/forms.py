@@ -24,19 +24,19 @@ class SignupForm(UserCreationForm):
         label="Nombre público",
         max_length=150,
         required=False,
-        help_text="Cómo quieres que te vean en el sitio."
+        help_text="Cómo quieres que te vean en el sitio.",
     )
     telefono = forms.CharField(
         label="Teléfono",
         max_length=30,
         required=False,
-        help_text="Para coordinaciones (opcional)."
+        help_text="Para coordinaciones (opcional).",
     )
     bio = forms.CharField(
         label="Sobre ti",
         widget=forms.Textarea(attrs={"rows": 3}),
         required=False,
-        help_text="Cuéntanos brevemente quién eres (opcional)."
+        help_text="Cuéntanos brevemente quién eres (opcional).",
     )
 
     class Meta(UserCreationForm.Meta):
@@ -100,9 +100,18 @@ class PerfilResidenteForm(forms.ModelForm):
     Si más adelante agregas campos específicos de residente al modelo (por ejemplo:
     fecha_residencia_desde, area_aporte, disponibilidad), solo añádelos aquí a 'fields'.
     """
+
     class Meta:
         model = PerfilUsuario
-        fields = ("display_name", "telefono", "bio", "rol_en_comunidad", "areas_aporte", "disponibilidad", "fecha_residencia_desde")
+        fields = (
+            "display_name",
+            "telefono",
+            "bio",
+            "rol_en_comunidad",
+            "areas_aporte",
+            "disponibilidad",
+            "fecha_residencia_desde",
+        )
         widgets = {
             "bio": forms.Textarea(attrs={"rows": 4}),
         }
@@ -122,11 +131,12 @@ class PerfilRoleForm(forms.ModelForm):
     Form para uso interno (staff). Permite cambiar el tipo_usuario.
     Tus signals sincronizan los grupos automáticamente.
     """
+
     tipo_usuario = forms.ModelChoiceField(
         label="Rol",
         queryset=TipoUsuario.objects.all(),
         required=True,
-        help_text="Selecciona el rol del usuario (ej. Externo, Residente)."
+        help_text="Selecciona el rol del usuario (ej. Externo, Residente).",
     )
 
     class Meta:
@@ -140,12 +150,18 @@ class PerfilUpdateForm(forms.ModelForm):
     - Si tipo = 'residente'  → muestra campos extra (rol_en_comunidad, …)
     - Si tipo = 'externo'    → oculta esos campos y los limpia al guardar
     """
+
     class Meta:
         model = PerfilUsuario
         fields = (
-            "tipo_usuario",          # el usuario puede cambiar su tipo si lo permites
-            "display_name", "telefono", "bio",
-            "rol_en_comunidad", "areas_aporte", "disponibilidad", "fecha_residencia_desde",
+            "tipo_usuario",  # el usuario puede cambiar su tipo si lo permites
+            "display_name",
+            "telefono",
+            "bio",
+            "rol_en_comunidad",
+            "areas_aporte",
+            "disponibilidad",
+            "fecha_residencia_desde",
         )
         widgets = {
             "bio": forms.Textarea(attrs={"rows": 3}),
@@ -156,7 +172,12 @@ class PerfilUpdateForm(forms.ModelForm):
         }
 
     # Campos exclusivos de residentes
-    RESIDENT_ONLY = ("rol_en_comunidad", "areas_aporte", "disponibilidad", "fecha_residencia_desde")
+    RESIDENT_ONLY = (
+        "rol_en_comunidad",
+        "areas_aporte",
+        "disponibilidad",
+        "fecha_residencia_desde",
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

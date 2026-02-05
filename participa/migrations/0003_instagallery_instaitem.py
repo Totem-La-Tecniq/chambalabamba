@@ -6,50 +6,106 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('participa', '0002_participaheader_participapage'),
+        ("participa", "0002_participaheader_participapage"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='InstaGallery',
+            name="InstaGallery",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True, db_default=django.db.models.functions.datetime.Now())),
-                ('actualizado', models.DateTimeField(auto_now=True, db_default=django.db.models.functions.datetime.Now())),
-                ('titulo', models.CharField(blank=True, max_length=120)),
-                ('slug', models.SlugField(blank=True, max_length=160, unique=True)),
-                ('seccion', models.CharField(choices=[('participa_instagram', 'Participa – Instagram'), ('home_instagram', 'Home – Instagram')], default='participa_instagram', max_length=40)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                (
+                    "creado",
+                    models.DateTimeField(
+                        auto_now_add=True,
+                        db_default=django.db.models.functions.datetime.Now(),
+                    ),
+                ),
+                (
+                    "actualizado",
+                    models.DateTimeField(
+                        auto_now=True,
+                        db_default=django.db.models.functions.datetime.Now(),
+                    ),
+                ),
+                ("titulo", models.CharField(blank=True, max_length=120)),
+                ("slug", models.SlugField(blank=True, max_length=160, unique=True)),
+                (
+                    "seccion",
+                    models.CharField(
+                        choices=[
+                            ("participa_instagram", "Participa – Instagram"),
+                            ("home_instagram", "Home – Instagram"),
+                        ],
+                        default="participa_instagram",
+                        max_length=40,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Galería Instagram',
-                'verbose_name_plural': 'Galerías Instagram',
-                'ordering': ['orden', '-creado'],
-                'abstract': False,
+                "verbose_name": "Galería Instagram",
+                "verbose_name_plural": "Galerías Instagram",
+                "ordering": ["orden", "-creado"],
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='InstaItem',
+            name="InstaItem",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True, db_default=django.db.models.functions.datetime.Now())),
-                ('actualizado', models.DateTimeField(auto_now=True, db_default=django.db.models.functions.datetime.Now())),
-                ('titulo', models.CharField(blank=True, max_length=120)),
-                ('imagen', models.ImageField(upload_to='participa/instagram/')),
-                ('alt', models.CharField(blank=True, max_length=160)),
-                ('enlace', models.URLField(blank=True)),
-                ('galeria', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', to='participa.instagallery')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                (
+                    "creado",
+                    models.DateTimeField(
+                        auto_now_add=True,
+                        db_default=django.db.models.functions.datetime.Now(),
+                    ),
+                ),
+                (
+                    "actualizado",
+                    models.DateTimeField(
+                        auto_now=True,
+                        db_default=django.db.models.functions.datetime.Now(),
+                    ),
+                ),
+                ("titulo", models.CharField(blank=True, max_length=120)),
+                ("imagen", models.ImageField(upload_to="participa/instagram/")),
+                ("alt", models.CharField(blank=True, max_length=160)),
+                ("enlace", models.URLField(blank=True)),
+                (
+                    "galeria",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="items",
+                        to="participa.instagallery",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Foto Instagram',
-                'verbose_name_plural': 'Fotos Instagram',
-                'ordering': ['orden', '-creado'],
-                'abstract': False,
+                "verbose_name": "Foto Instagram",
+                "verbose_name_plural": "Fotos Instagram",
+                "ordering": ["orden", "-creado"],
+                "abstract": False,
             },
         ),
     ]

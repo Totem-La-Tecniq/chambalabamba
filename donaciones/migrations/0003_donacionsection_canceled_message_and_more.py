@@ -4,45 +4,60 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('donaciones', '0002_donacion'),
+        ("donaciones", "0002_donacion"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='donacionsection',
-            name='canceled_message',
-            field=models.TextField(default='Tu donación ha sido cancelada. Si tienes algún problema, por favor, contáctanos.'),
+            model_name="donacionsection",
+            name="canceled_message",
+            field=models.TextField(
+                default="Tu donación ha sido cancelada. Si tienes algún problema, por favor, contáctanos."
+            ),
         ),
         migrations.AddField(
-            model_name='donacionsection',
-            name='canceled_title',
-            field=models.CharField(default='Donación Cancelada', max_length=120),
+            model_name="donacionsection",
+            name="canceled_title",
+            field=models.CharField(default="Donación Cancelada", max_length=120),
         ),
         migrations.AddField(
-            model_name='donacionsection',
-            name='donation_image',
-            field=models.ImageField(blank=True, default='donations/default_donation_image.png', help_text="Image for the main donation page. Defaults to 'donations/default_donation_image.png'.", null=True, upload_to='donations/'),
+            model_name="donacionsection",
+            name="donation_image",
+            field=models.ImageField(
+                blank=True,
+                default="donations/default_donation_image.png",
+                help_text="Image for the main donation page. Defaults to 'donations/default_donation_image.png'.",
+                null=True,
+                upload_to="donations/",
+            ),
         ),
         migrations.AddField(
-            model_name='donacionsection',
-            name='intro_text',
-            field=models.TextField(blank=True, help_text='Introductory text for the main donation page.', null=True),
+            model_name="donacionsection",
+            name="intro_text",
+            field=models.TextField(
+                blank=True,
+                help_text="Introductory text for the main donation page.",
+                null=True,
+            ),
         ),
         migrations.AddField(
-            model_name='donacionsection',
-            name='paypal_redirect_message',
-            field=models.TextField(default='Por favor, espera mientras te redirigimos a PayPal para completar tu donación.'),
+            model_name="donacionsection",
+            name="paypal_redirect_message",
+            field=models.TextField(
+                default="Por favor, espera mientras te redirigimos a PayPal para completar tu donación."
+            ),
         ),
         migrations.AddField(
-            model_name='donacionsection',
-            name='success_message',
-            field=models.TextField(default='Tu donación ha sido procesada exitosamente. Agradecemos tu apoyo.'),
+            model_name="donacionsection",
+            name="success_message",
+            field=models.TextField(
+                default="Tu donación ha sido procesada exitosamente. Agradecemos tu apoyo."
+            ),
         ),
         migrations.AddField(
-            model_name='donacionsection',
-            name='success_title',
-            field=models.CharField(default='¡Gracias por tu donación!', max_length=120),
+            model_name="donacionsection",
+            name="success_title",
+            field=models.CharField(default="¡Gracias por tu donación!", max_length=120),
         ),
     ]

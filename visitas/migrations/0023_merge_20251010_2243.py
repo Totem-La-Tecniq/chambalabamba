@@ -4,11 +4,9 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('visitas', '0022_alter_guidedvisit_actualizado_and_more'),
-        ('visitas', '0022_pageheader_alter_guidedvisit_actualizado_and_more'),
+        ("visitas", "0022_alter_guidedvisit_actualizado_and_more"),
+        ("visitas", "0022_pageheader_alter_guidedvisit_actualizado_and_more"),
     ]
 
-    operations = [
-    ]
+    operations = []

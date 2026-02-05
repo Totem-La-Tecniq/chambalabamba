@@ -2,6 +2,7 @@
 from django.core.management.base import BaseCommand
 from core.utils.seed_media import copy_seed_media
 
+
 class Command(BaseCommand):
     help = "Copia imágenes semilla hacia MEDIA_ROOT"
 

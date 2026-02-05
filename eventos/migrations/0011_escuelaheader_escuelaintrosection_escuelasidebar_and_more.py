@@ -5,92 +5,262 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('eventos', '0010_artesdiversitysection_artesgallerysection_and_more'),
+        ("eventos", "0010_artesdiversitysection_artesgallerysection_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='EscuelaHeader',
+            name="EscuelaHeader",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Escuela Viva', max_length=120, verbose_name='Título')),
-                ('breadcrumb_label', models.CharField(default='Escuela', max_length=120, verbose_name='Breadcrumb actual')),
-                ('background', models.ImageField(blank=True, help_text='Imagen de fondo del header', null=True, upload_to='eventos/')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Escuela Viva", max_length=120, verbose_name="Título"
+                    ),
+                ),
+                (
+                    "breadcrumb_label",
+                    models.CharField(
+                        default="Escuela",
+                        max_length=120,
+                        verbose_name="Breadcrumb actual",
+                    ),
+                ),
+                (
+                    "background",
+                    models.ImageField(
+                        blank=True,
+                        help_text="Imagen de fondo del header",
+                        null=True,
+                        upload_to="eventos/",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': '4.1 Sección: Header de Escuela',
-                'verbose_name_plural': '4.1 Sección: Header de Escuela',
+                "verbose_name": "4.1 Sección: Header de Escuela",
+                "verbose_name_plural": "4.1 Sección: Header de Escuela",
             },
         ),
         migrations.CreateModel(
-            name='EscuelaIntroSection',
+            name="EscuelaIntroSection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('main_image', models.ImageField(blank=True, help_text='Imagen principal de la sección de introducción', null=True, upload_to='eventos/')),
-                ('title', models.CharField(default='Conoce la escuela, nuestra filosofía e infraestructura', max_length=160, verbose_name='Título')),
-                ('paragraph', models.TextField(blank=True, verbose_name='Párrafo')),
-                ('quote', models.CharField(blank=True, max_length=255, verbose_name='Cita')),
-                ('gallery_title', models.CharField(default='Nuestro dia a dia', max_length=160, verbose_name='Título de la galería')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "main_image",
+                    models.ImageField(
+                        blank=True,
+                        help_text="Imagen principal de la sección de introducción",
+                        null=True,
+                        upload_to="eventos/",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Conoce la escuela, nuestra filosofía e infraestructura",
+                        max_length=160,
+                        verbose_name="Título",
+                    ),
+                ),
+                ("paragraph", models.TextField(blank=True, verbose_name="Párrafo")),
+                (
+                    "quote",
+                    models.CharField(blank=True, max_length=255, verbose_name="Cita"),
+                ),
+                (
+                    "gallery_title",
+                    models.CharField(
+                        default="Nuestro dia a dia",
+                        max_length=160,
+                        verbose_name="Título de la galería",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': '4.2 Sección: Introducción de Escuela',
-                'verbose_name_plural': '4.2 Sección: Introducción de Escuela',
+                "verbose_name": "4.2 Sección: Introducción de Escuela",
+                "verbose_name_plural": "4.2 Sección: Introducción de Escuela",
             },
         ),
         migrations.CreateModel(
-            name='EscuelaSidebar',
+            name="EscuelaSidebar",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Un ambiente diseñado para el desarrollo infantil', max_length=160, verbose_name='Título')),
-                ('paragraph', models.TextField(blank=True, verbose_name='Párrafo')),
-                ('instagram_url', models.URLField(blank=True, verbose_name='URL del post de Instagram')),
-                ('projects_title', models.CharField(default='Proyectos de la escuela en curso', max_length=160, verbose_name='Título de los proyectos')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Un ambiente diseñado para el desarrollo infantil",
+                        max_length=160,
+                        verbose_name="Título",
+                    ),
+                ),
+                ("paragraph", models.TextField(blank=True, verbose_name="Párrafo")),
+                (
+                    "instagram_url",
+                    models.URLField(
+                        blank=True, verbose_name="URL del post de Instagram"
+                    ),
+                ),
+                (
+                    "projects_title",
+                    models.CharField(
+                        default="Proyectos de la escuela en curso",
+                        max_length=160,
+                        verbose_name="Título de los proyectos",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': '4.3 Sección: Sidebar de Escuela',
-                'verbose_name_plural': '4.3 Sección: Sidebar de Escuela',
+                "verbose_name": "4.3 Sección: Sidebar de Escuela",
+                "verbose_name_plural": "4.3 Sección: Sidebar de Escuela",
             },
         ),
         migrations.CreateModel(
-            name='EscuelaGalleryImage',
+            name="EscuelaGalleryImage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(help_text='Imagen para la galería', upload_to='eventos/gallery/')),
-                ('alt_text', models.CharField(blank=True, max_length=255, verbose_name='Texto alternativo')),
-                ('section', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='gallery_images', to='eventos.escuelaintrosection')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        help_text="Imagen para la galería", upload_to="eventos/gallery/"
+                    ),
+                ),
+                (
+                    "alt_text",
+                    models.CharField(
+                        blank=True, max_length=255, verbose_name="Texto alternativo"
+                    ),
+                ),
+                (
+                    "section",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="gallery_images",
+                        to="eventos.escuelaintrosection",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Imagen de la Galería de Escuela',
-                'verbose_name_plural': 'Imágenes de la Galería de Escuela',
+                "verbose_name": "Imagen de la Galería de Escuela",
+                "verbose_name_plural": "Imágenes de la Galería de Escuela",
             },
         ),
         migrations.CreateModel(
-            name='EscuelaProject',
+            name="EscuelaProject",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=120, verbose_name='Nombre del proyecto')),
-                ('url', models.URLField(blank=True, verbose_name='URL del proyecto')),
-                ('sidebar', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='projects', to='eventos.escuelasidebar')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        max_length=120, verbose_name="Nombre del proyecto"
+                    ),
+                ),
+                ("url", models.URLField(blank=True, verbose_name="URL del proyecto")),
+                (
+                    "sidebar",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="projects",
+                        to="eventos.escuelasidebar",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Proyecto de Escuela',
-                'verbose_name_plural': 'Proyectos de Escuela',
+                "verbose_name": "Proyecto de Escuela",
+                "verbose_name_plural": "Proyectos de Escuela",
             },
         ),
         migrations.CreateModel(
-            name='EscuelaPage',
+            name="EscuelaPage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('enabled', models.BooleanField(default=True, verbose_name='Habilitado')),
-                ('header', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.escuelaheader', verbose_name='Header')),
-                ('intro', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.escuelaintrosection', verbose_name='Sección de Introducción')),
-                ('sidebar', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.escuelasidebar', verbose_name='Sidebar')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "enabled",
+                    models.BooleanField(default=True, verbose_name="Habilitado"),
+                ),
+                (
+                    "header",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.escuelaheader",
+                        verbose_name="Header",
+                    ),
+                ),
+                (
+                    "intro",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.escuelaintrosection",
+                        verbose_name="Sección de Introducción",
+                    ),
+                ),
+                (
+                    "sidebar",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.escuelasidebar",
+                        verbose_name="Sidebar",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': '4. Página: Escuela',
-                'verbose_name_plural': '4. Página: Escuela',
+                "verbose_name": "4. Página: Escuela",
+                "verbose_name_plural": "4. Página: Escuela",
             },
         ),
     ]

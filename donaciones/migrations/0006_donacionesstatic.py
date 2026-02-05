@@ -4,26 +4,66 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('donaciones', '0005_remove_donacionsection_progreso'),
+        ("donaciones", "0005_remove_donacionsection_progreso"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='DonacionesStatic',
+            name="DonacionesStatic",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('titulo', models.CharField(default='Apoyo a Chambalabamba', max_length=200)),
-                ('contenido', models.TextField(default='<p>Para realizar una donación y apoyar nuestros proyectos, por favor contáctanos a través de...</p>', help_text='Contenido principal de la página de donaciones. Puedes usar HTML si es necesario.')),
-                ('email_contacto', models.EmailField(blank=True, help_text='Correo electrónico de contacto para donaciones.', max_length=254, null=True)),
-                ('telefono_contacto', models.CharField(blank=True, help_text='Teléfono de contacto para donaciones.', max_length=20, null=True)),
-                ('imagen', models.ImageField(blank=True, help_text='Imagen opcional para la página de donaciones.', null=True, upload_to='donaciones_static/')),
-                ('publicado', models.BooleanField(default=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "titulo",
+                    models.CharField(default="Apoyo a Chambalabamba", max_length=200),
+                ),
+                (
+                    "contenido",
+                    models.TextField(
+                        default="<p>Para realizar una donación y apoyar nuestros proyectos, por favor contáctanos a través de...</p>",
+                        help_text="Contenido principal de la página de donaciones. Puedes usar HTML si es necesario.",
+                    ),
+                ),
+                (
+                    "email_contacto",
+                    models.EmailField(
+                        blank=True,
+                        help_text="Correo electrónico de contacto para donaciones.",
+                        max_length=254,
+                        null=True,
+                    ),
+                ),
+                (
+                    "telefono_contacto",
+                    models.CharField(
+                        blank=True,
+                        help_text="Teléfono de contacto para donaciones.",
+                        max_length=20,
+                        null=True,
+                    ),
+                ),
+                (
+                    "imagen",
+                    models.ImageField(
+                        blank=True,
+                        help_text="Imagen opcional para la página de donaciones.",
+                        null=True,
+                        upload_to="donaciones_static/",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
             ],
             options={
-                'verbose_name': 'Página Estática de Donaciones',
-                'verbose_name_plural': 'Páginas Estáticas de Donaciones',
+                "verbose_name": "Página Estática de Donaciones",
+                "verbose_name_plural": "Páginas Estáticas de Donaciones",
             },
         ),
     ]

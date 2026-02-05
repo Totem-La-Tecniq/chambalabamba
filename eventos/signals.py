@@ -4,6 +4,7 @@ from django.core.management import call_command
 
 from .models import Festival, Taller  # importa ambos modelos
 
+
 @receiver(post_migrate)
 def seed_eventos(sender, **kwargs):
     """
@@ -17,7 +18,7 @@ def seed_eventos(sender, **kwargs):
 
     fixtures = [
         ("festivales", Festival),
-        ("talleres",   Taller),
+        ("talleres", Taller),
     ]
 
     for fixture_name, model in fixtures:

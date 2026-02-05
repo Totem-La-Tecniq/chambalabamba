@@ -5,12 +5,14 @@ from pathlib import Path
 
 SEED_TAG = "visitas:v4"
 
+
 def _seed_visitas_once(sender, **kwargs):
     with connection.cursor() as cur, transaction.atomic():
         cur.execute("CREATE TABLE IF NOT EXISTS seed_run(tag TEXT PRIMARY KEY)")
         cur.execute("SELECT 1 FROM seed_run WHERE tag=%s", [SEED_TAG])
         if cur.fetchone():
-            print(f"[seed_visitas] Ya corrido {SEED_TAG}"); return
+            print(f"[seed_visitas] Ya corrido {SEED_TAG}")
+            return
 
         fx = Path(__file__).resolve().parent / "fixtures" / "visitas_seed.json"
         if fx.exists():

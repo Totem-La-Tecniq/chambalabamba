@@ -21,6 +21,7 @@ class IngresarView(LoginView):
     template_name = "autenticacion/login.html"
     redirect_authenticated_user = True
 
+
 class SalirView(LogoutView):
     next_page = reverse_lazy("home")  # ajusta a tu home
 
@@ -32,7 +33,7 @@ def registro(request):
     if request.method == "POST":
         form = SignupForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            form.save()
             messages.success(request, "¡Cuenta creada! Ya puedes iniciar sesión.")
             return redirect("login")
     else:
@@ -76,6 +77,7 @@ def es_residente(u):
     except PerfilUsuario.DoesNotExist:
         return False
 
+
 @login_required
 @user_passes_test(es_residente)
 def area_residentes(request):
@@ -85,6 +87,7 @@ def area_residentes(request):
 # ---- Vista Staff para cambiar rol de un usuario -------------------------------
 def es_staff(u):
     return u.is_staff
+
 
 @login_required
 @user_passes_test(es_staff)
@@ -96,10 +99,15 @@ def cambiar_rol_usuario(request, user_id):
         if form.is_valid():
             form.save()  # signals sincronizan grupos
             messages.success(request, "Rol actualizado correctamente.")
-            return redirect(reverse("admin_perfil_detalle", args=[perfil.user_id]) if
-                            "admin_perfil_detalle" in [p.name for p in request.resolver_match.namespaces]
-                            else reverse("perfil"))
+            return redirect(
+                reverse("admin_perfil_detalle", args=[perfil.user_id])
+                if "admin_perfil_detalle"
+                in [p.name for p in request.resolver_match.namespaces]
+                else reverse("perfil")
+            )
     else:
         form = PerfilRoleForm(instance=perfil)
 
-    return render(request, "autenticacion/cambiar_rol.html", {"form": form, "perfil": perfil})
+    return render(
+        request, "autenticacion/cambiar_rol.html", {"form": form, "perfil": perfil}
+    )

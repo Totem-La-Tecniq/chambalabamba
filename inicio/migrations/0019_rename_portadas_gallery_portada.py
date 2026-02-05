@@ -4,11 +4,8 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('inicio', '0018_rename_portadas_gallery_portada'),
+        ("inicio", "0018_rename_portadas_gallery_portada"),
     ]
 
-    operations = [
-
-    ]
+    operations = []

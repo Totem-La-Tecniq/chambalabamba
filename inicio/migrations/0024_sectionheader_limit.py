@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('inicio', '0023_alter_sectionheader_seccion'),
+        ("inicio", "0023_alter_sectionheader_seccion"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='sectionheader',
-            name='limit',
+            model_name="sectionheader",
+            name="limit",
             field=models.PositiveSmallIntegerField(default=12),
         ),
     ]

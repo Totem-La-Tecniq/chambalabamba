@@ -6,85 +6,237 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='GuidedVisit',
+            name="GuidedVisit",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('titulo', models.CharField(max_length=160)),
-                ('slug', models.SlugField(blank=True, unique=True)),
-                ('breve', models.CharField(blank=True, max_length=200)),
-                ('descripcion_html', models.TextField(blank=True)),
-                ('ubicacion', models.CharField(blank=True, max_length=140)),
-                ('punto_encuentro', models.CharField(blank=True, max_length=140)),
-                ('duracion_minutos', models.PositiveIntegerField(default=60)),
-                ('cupo_maximo', models.PositiveIntegerField(blank=True, null=True)),
-                ('fecha_inicio', models.DateField(blank=True, null=True)),
-                ('fecha_fin', models.DateField(blank=True, null=True)),
-                ('horario_text', models.CharField(blank=True, max_length=120)),
-                ('frecuencia_text', models.CharField(blank=True, max_length=120)),
-                ('aporte_text', models.CharField(blank=True, max_length=120)),
-                ('organizador', models.CharField(blank=True, max_length=120)),
-                ('organizador_url', models.URLField(blank=True)),
-                ('contacto_email', models.EmailField(blank=True, max_length=254)),
-                ('contacto_whatsapp', models.CharField(blank=True, max_length=40)),
-                ('portada', models.ImageField(blank=True, help_text='Imagen destacada para grillas/listados.', null=True, upload_to='participa/visitas/portadas/')),
-                ('inner_bg_override', models.ImageField(blank=True, help_text='Opcional: reemplaza el fondo del inner-header en el detalle.', null=True, upload_to='participa/visitas/inner/')),
-                ('meta_title', models.CharField(blank=True, max_length=160)),
-                ('meta_description', models.CharField(blank=True, max_length=200)),
-                ('creado', models.DateTimeField(auto_now_add=True, db_default=datetime.datetime(2025, 9, 23, 15, 52, 58, 393026, tzinfo=datetime.timezone.utc))),
-                ('actualizado', models.DateTimeField(auto_now=True, db_default=datetime.datetime(2025, 9, 23, 15, 52, 58, 393040, tzinfo=datetime.timezone.utc))),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("titulo", models.CharField(max_length=160)),
+                ("slug", models.SlugField(blank=True, unique=True)),
+                ("breve", models.CharField(blank=True, max_length=200)),
+                ("descripcion_html", models.TextField(blank=True)),
+                ("ubicacion", models.CharField(blank=True, max_length=140)),
+                ("punto_encuentro", models.CharField(blank=True, max_length=140)),
+                ("duracion_minutos", models.PositiveIntegerField(default=60)),
+                ("cupo_maximo", models.PositiveIntegerField(blank=True, null=True)),
+                ("fecha_inicio", models.DateField(blank=True, null=True)),
+                ("fecha_fin", models.DateField(blank=True, null=True)),
+                ("horario_text", models.CharField(blank=True, max_length=120)),
+                ("frecuencia_text", models.CharField(blank=True, max_length=120)),
+                ("aporte_text", models.CharField(blank=True, max_length=120)),
+                ("organizador", models.CharField(blank=True, max_length=120)),
+                ("organizador_url", models.URLField(blank=True)),
+                ("contacto_email", models.EmailField(blank=True, max_length=254)),
+                ("contacto_whatsapp", models.CharField(blank=True, max_length=40)),
+                (
+                    "portada",
+                    models.ImageField(
+                        blank=True,
+                        help_text="Imagen destacada para grillas/listados.",
+                        null=True,
+                        upload_to="participa/visitas/portadas/",
+                    ),
+                ),
+                (
+                    "inner_bg_override",
+                    models.ImageField(
+                        blank=True,
+                        help_text="Opcional: reemplaza el fondo del inner-header en el detalle.",
+                        null=True,
+                        upload_to="participa/visitas/inner/",
+                    ),
+                ),
+                ("meta_title", models.CharField(blank=True, max_length=160)),
+                ("meta_description", models.CharField(blank=True, max_length=200)),
+                (
+                    "creado",
+                    models.DateTimeField(
+                        auto_now_add=True,
+                        db_default=datetime.datetime(
+                            2025,
+                            9,
+                            23,
+                            15,
+                            52,
+                            58,
+                            393026,
+                            tzinfo=datetime.timezone.utc,
+                        ),
+                    ),
+                ),
+                (
+                    "actualizado",
+                    models.DateTimeField(
+                        auto_now=True,
+                        db_default=datetime.datetime(
+                            2025,
+                            9,
+                            23,
+                            15,
+                            52,
+                            58,
+                            393040,
+                            tzinfo=datetime.timezone.utc,
+                        ),
+                    ),
+                ),
             ],
             options={
-                'verbose_name': '2) Visita guiada',
-                'verbose_name_plural': '2) Visitas guiadas',
-                'ordering': ('orden', 'titulo'),
+                "verbose_name": "2) Visita guiada",
+                "verbose_name_plural": "2) Visitas guiadas",
+                "ordering": ("orden", "titulo"),
             },
         ),
         migrations.CreateModel(
-            name='VisitsLanding',
+            name="VisitsLanding",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('title', models.CharField(default='Visitas guiadas', max_length=120, verbose_name='Título de la página')),
-                ('background', models.ImageField(blank=True, null=True, upload_to='participa/visitas/landing/', verbose_name='Imagen de cabecera (inner header)')),
-                ('intro_html', models.TextField(blank=True, help_text='Cuerpo principal en HTML.')),
-                ('sidebar_html', models.TextField(blank=True, help_text='Sidebar en HTML.')),
-                ('instagram_embed', models.URLField(blank=True, help_text='URL a reel/post (opcional).')),
-                ('actualizado', models.DateTimeField(auto_now=True, db_default=datetime.datetime(2025, 9, 23, 15, 52, 58, 392479, tzinfo=datetime.timezone.utc))),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                (
+                    "title",
+                    models.CharField(
+                        default="Visitas guiadas",
+                        max_length=120,
+                        verbose_name="Título de la página",
+                    ),
+                ),
+                (
+                    "background",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="participa/visitas/landing/",
+                        verbose_name="Imagen de cabecera (inner header)",
+                    ),
+                ),
+                (
+                    "intro_html",
+                    models.TextField(blank=True, help_text="Cuerpo principal en HTML."),
+                ),
+                (
+                    "sidebar_html",
+                    models.TextField(blank=True, help_text="Sidebar en HTML."),
+                ),
+                (
+                    "instagram_embed",
+                    models.URLField(
+                        blank=True, help_text="URL a reel/post (opcional)."
+                    ),
+                ),
+                (
+                    "actualizado",
+                    models.DateTimeField(
+                        auto_now=True,
+                        db_default=datetime.datetime(
+                            2025,
+                            9,
+                            23,
+                            15,
+                            52,
+                            58,
+                            392479,
+                            tzinfo=datetime.timezone.utc,
+                        ),
+                    ),
+                ),
             ],
             options={
-                'verbose_name': '1) Página de Visitas guiadas (landing)',
-                'verbose_name_plural': '1) Página de Visitas guiadas (landing)',
+                "verbose_name": "1) Página de Visitas guiadas (landing)",
+                "verbose_name_plural": "1) Página de Visitas guiadas (landing)",
             },
         ),
         migrations.CreateModel(
-            name='GuidedVisitPhoto',
+            name="GuidedVisitPhoto",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('titulo', models.CharField(blank=True, max_length=140)),
-                ('imagen', models.ImageField(upload_to='participa/visitas/galeria/')),
-                ('alt', models.CharField(blank=True, max_length=200)),
-                ('creditos', models.CharField(blank=True, max_length=140)),
-                ('is_header', models.BooleanField(default=True, help_text='Incluye en slider/galería de cabecera del detalle.')),
-                ('creado', models.DateTimeField(auto_now_add=True, db_default=datetime.datetime(2025, 9, 23, 15, 52, 58, 393580, tzinfo=datetime.timezone.utc))),
-                ('actualizado', models.DateTimeField(auto_now=True, db_default=datetime.datetime(2025, 9, 23, 15, 52, 58, 393595, tzinfo=datetime.timezone.utc))),
-                ('visita', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='fotos', to='visitas.guidedvisit')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("titulo", models.CharField(blank=True, max_length=140)),
+                ("imagen", models.ImageField(upload_to="participa/visitas/galeria/")),
+                ("alt", models.CharField(blank=True, max_length=200)),
+                ("creditos", models.CharField(blank=True, max_length=140)),
+                (
+                    "is_header",
+                    models.BooleanField(
+                        default=True,
+                        help_text="Incluye en slider/galería de cabecera del detalle.",
+                    ),
+                ),
+                (
+                    "creado",
+                    models.DateTimeField(
+                        auto_now_add=True,
+                        db_default=datetime.datetime(
+                            2025,
+                            9,
+                            23,
+                            15,
+                            52,
+                            58,
+                            393580,
+                            tzinfo=datetime.timezone.utc,
+                        ),
+                    ),
+                ),
+                (
+                    "actualizado",
+                    models.DateTimeField(
+                        auto_now=True,
+                        db_default=datetime.datetime(
+                            2025,
+                            9,
+                            23,
+                            15,
+                            52,
+                            58,
+                            393595,
+                            tzinfo=datetime.timezone.utc,
+                        ),
+                    ),
+                ),
+                (
+                    "visita",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="fotos",
+                        to="visitas.guidedvisit",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': '2.1) Foto de visita guiada',
-                'verbose_name_plural': '2.1) Fotos de visita guiada',
-                'ordering': ('visita', 'orden'),
+                "verbose_name": "2.1) Foto de visita guiada",
+                "verbose_name_plural": "2.1) Fotos de visita guiada",
+                "ordering": ("visita", "orden"),
             },
         ),
     ]

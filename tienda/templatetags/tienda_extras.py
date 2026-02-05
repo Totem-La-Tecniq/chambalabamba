@@ -1,6 +1,7 @@
 from django import template
 from django.db.models import Q
 from tienda.models import Producto, ProductoCategoria
+
 # NUEVO:
 try:
     from inicio.models import SectionHeader
@@ -8,6 +9,7 @@ except Exception:
     SectionHeader = None
 
 register = template.Library()
+
 
 def productos_por_categoria(cat_key: str, limit=None):
     """Devuelve productos publicados por slug/nombre de categoría."""
@@ -18,9 +20,9 @@ def productos_por_categoria(cat_key: str, limit=None):
     qs = (
         Producto.objects.filter(publicado=True)
         .filter(
-            Q(categoria__slug=cat_key) |
-            Q(categoria__slug__iexact=cat_key) |
-            Q(categoria__nombre__iexact=cat_key)
+            Q(categoria__slug=cat_key)
+            | Q(categoria__slug__iexact=cat_key)
+            | Q(categoria__nombre__iexact=cat_key)
         )
         .select_related("categoria")
         .order_by("orden", "-creado")
@@ -42,6 +44,7 @@ def productos_por_categoria(cat_key: str, limit=None):
             pass
     return qs
 
+
 @register.inclusion_tag("tienda/_products_tabs.html")
 def products_tabs(
     header_h5=None,  # <-- default None para permitir override
@@ -53,7 +56,9 @@ def products_tabs(
     tabs = []
     # ==== NUEVO: intentar leer títulos desde SectionHeader si no vinieron por parámetro ====
     if (header_h2 is None or header_h5 is None) and SectionHeader is not None:
-        hdr = SectionHeader.objects.filter(seccion="tienda_tabs", publicado=True).first()
+        hdr = SectionHeader.objects.filter(
+            seccion="tienda_tabs", publicado=True
+        ).first()
         if hdr:
             if header_h2 is None:
                 header_h2 = hdr.title or "Productos"
@@ -69,17 +74,22 @@ def products_tabs(
         pass
     else:
         cats = (
-            ProductoCategoria.objects
-            .filter(publicado=True, productos__publicado=True)
+            ProductoCategoria.objects.filter(publicado=True, productos__publicado=True)
             .order_by("orden", "nombre")
             .distinct()
         )
         for c in cats:
-            tabs.append({"id": c.slug, "title": c.nombre, "items": productos_por_categoria(c.slug, limit)})
+            tabs.append(
+                {
+                    "id": c.slug,
+                    "title": c.nombre,
+                    "items": productos_por_categoria(c.slug, limit),
+                }
+            )
 
     return {
         "header_h5": header_h5,
         "header_h2": header_h2,
         "tabs": tabs,
-        "hide_header": hide_header,   # ya lo tienes
+        "hide_header": hide_header,  # ya lo tienes
     }

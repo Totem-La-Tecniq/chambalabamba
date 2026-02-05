@@ -4,25 +4,33 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('nosotros', '0001_initial'),
+        ("nosotros", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='ecoaldeacard',
-            name='icon',
-            field=models.ImageField(blank=True, help_text='Icono ~60px de alto', null=True, upload_to='nosotros/'),
+            model_name="ecoaldeacard",
+            name="icon",
+            field=models.ImageField(
+                blank=True,
+                help_text="Icono ~60px de alto",
+                null=True,
+                upload_to="nosotros/",
+            ),
         ),
         migrations.AlterField(
-            model_name='ecoaldeacard',
-            name='link_text',
-            field=models.CharField(blank=True, max_length=120, verbose_name='Texto del enlace'),
+            model_name="ecoaldeacard",
+            name="link_text",
+            field=models.CharField(
+                blank=True, max_length=120, verbose_name="Texto del enlace"
+            ),
         ),
         migrations.AlterField(
-            model_name='ecoaldeacard',
-            name='link_url',
-            field=models.CharField(blank=True, max_length=300, verbose_name='URL del enlace'),
+            model_name="ecoaldeacard",
+            name="link_url",
+            field=models.CharField(
+                blank=True, max_length=300, verbose_name="URL del enlace"
+            ),
         ),
     ]

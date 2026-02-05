@@ -4,15 +4,24 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('inicio', '0022_gallery_descripcion_breve'),
+        ("inicio", "0022_gallery_descripcion_breve"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='sectionheader',
-            name='seccion',
-            field=models.CharField(choices=[('home_ultimos_eventos', 'Home – Últimos Eventos'), ('nosotros_cabecera', 'Nosotros – Cabecera'), ('proyectos_movimiento', 'Home – Proyectos en Movimiento'), ('participa_estancias', 'Participa – Estancias'), ('tienda_tabs', 'Tienda – Tabs')], max_length=50, unique=True),
+            model_name="sectionheader",
+            name="seccion",
+            field=models.CharField(
+                choices=[
+                    ("home_ultimos_eventos", "Home – Últimos Eventos"),
+                    ("nosotros_cabecera", "Nosotros – Cabecera"),
+                    ("proyectos_movimiento", "Home – Proyectos en Movimiento"),
+                    ("participa_estancias", "Participa – Estancias"),
+                    ("tienda_tabs", "Tienda – Tabs"),
+                ],
+                max_length=50,
+                unique=True,
+            ),
         ),
     ]

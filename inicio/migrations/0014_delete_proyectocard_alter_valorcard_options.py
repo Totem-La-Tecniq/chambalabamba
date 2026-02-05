@@ -4,17 +4,20 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('inicio', '0013_alter_heroslide_options'),
+        ("inicio", "0013_alter_heroslide_options"),
     ]
 
     operations = [
         migrations.DeleteModel(
-            name='ProyectoCard',
+            name="ProyectoCard",
         ),
         migrations.AlterModelOptions(
-            name='valorcard',
-            options={'ordering': ['orden', '-creado'], 'verbose_name': 'Pilares', 'verbose_name_plural': 'Pilares'},
+            name="valorcard",
+            options={
+                "ordering": ["orden", "-creado"],
+                "verbose_name": "Pilares",
+                "verbose_name_plural": "Pilares",
+            },
         ),
     ]
