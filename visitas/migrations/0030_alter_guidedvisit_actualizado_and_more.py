@@ -4,35 +4,34 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('visitas', '0029_alter_guidedvisit_actualizado_and_more'),
+        ("visitas", "0029_alter_guidedvisit_actualizado_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='actualizado',
+            model_name="guidedvisit",
+            name="actualizado",
             field=models.DateTimeField(auto_now=True),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='creado',
+            model_name="guidedvisit",
+            name="creado",
             field=models.DateTimeField(auto_now_add=True),
         ),
         migrations.AlterField(
-            model_name='guidedvisitphoto',
-            name='actualizado',
+            model_name="guidedvisitphoto",
+            name="actualizado",
             field=models.DateTimeField(auto_now=True),
         ),
         migrations.AlterField(
-            model_name='guidedvisitphoto',
-            name='creado',
+            model_name="guidedvisitphoto",
+            name="creado",
             field=models.DateTimeField(auto_now_add=True),
         ),
         migrations.AlterField(
-            model_name='visitslanding',
-            name='actualizado',
+            model_name="visitslanding",
+            name="actualizado",
             field=models.DateTimeField(auto_now=True),
         ),
     ]

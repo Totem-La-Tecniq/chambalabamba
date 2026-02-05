@@ -4,22 +4,29 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('donaciones', '0001_initial'),
+        ("donaciones", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Donacion',
+            name="Donacion",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=100)),
-                ('email', models.EmailField(max_length=254)),
-                ('monto', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('paypal_id', models.CharField(blank=True, max_length=100, null=True)),
-                ('creado_en', models.DateTimeField(auto_now_add=True)),
-                ('completado', models.BooleanField(default=False)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nombre", models.CharField(max_length=100)),
+                ("email", models.EmailField(max_length=254)),
+                ("monto", models.DecimalField(decimal_places=2, max_digits=10)),
+                ("paypal_id", models.CharField(blank=True, max_length=100, null=True)),
+                ("creado_en", models.DateTimeField(auto_now_add=True)),
+                ("completado", models.BooleanField(default=False)),
             ],
         ),
     ]

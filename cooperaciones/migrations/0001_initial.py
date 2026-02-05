@@ -5,81 +5,157 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='CabeceraCoops',
+            name="CabeceraCoops",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('h5', models.CharField(default='Alianzas que nos potencian', max_length=120, verbose_name='Subtítulo (h5)')),
-                ('h2', models.CharField(default='Cooperaciones', max_length=140, verbose_name='Título (h2)')),
-                ('subtitulo', models.CharField(blank=True, max_length=200, verbose_name='Bajada (opcional)')),
-                ('hero', models.ImageField(blank=True, null=True, upload_to='coops/hero/')),
-                ('publicado', models.BooleanField(default=True)),
-                ('actualizado', models.DateTimeField(auto_now=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "h5",
+                    models.CharField(
+                        default="Alianzas que nos potencian",
+                        max_length=120,
+                        verbose_name="Subtítulo (h5)",
+                    ),
+                ),
+                (
+                    "h2",
+                    models.CharField(
+                        default="Cooperaciones",
+                        max_length=140,
+                        verbose_name="Título (h2)",
+                    ),
+                ),
+                (
+                    "subtitulo",
+                    models.CharField(
+                        blank=True, max_length=200, verbose_name="Bajada (opcional)"
+                    ),
+                ),
+                (
+                    "hero",
+                    models.ImageField(blank=True, null=True, upload_to="coops/hero/"),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("actualizado", models.DateTimeField(auto_now=True)),
             ],
             options={
-                'verbose_name': 'Cabecera de Cooperaciones',
-                'verbose_name_plural': 'Cabeceras de Cooperaciones',
+                "verbose_name": "Cabecera de Cooperaciones",
+                "verbose_name_plural": "Cabeceras de Cooperaciones",
             },
         ),
         migrations.CreateModel(
-            name='CoopCategoria',
+            name="CoopCategoria",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=120)),
-                ('slug', models.SlugField(max_length=150, unique=True)),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nombre", models.CharField(max_length=120)),
+                ("slug", models.SlugField(max_length=150, unique=True)),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
             ],
             options={
-                'verbose_name': 'Categoría de cooperación',
-                'verbose_name_plural': 'Categorías de cooperación',
-                'ordering': ['orden', 'nombre'],
+                "verbose_name": "Categoría de cooperación",
+                "verbose_name_plural": "Categorías de cooperación",
+                "ordering": ["orden", "nombre"],
             },
         ),
         migrations.CreateModel(
-            name='Cooperacion',
+            name="Cooperacion",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=180)),
-                ('slug', models.SlugField(max_length=200, unique=True)),
-                ('pais', models.CharField(blank=True, max_length=80)),
-                ('logo', models.ImageField(blank=True, null=True, upload_to='coops/logos/')),
-                ('portada', models.ImageField(blank=True, null=True, upload_to='coops/portadas/')),
-                ('excerpt', models.CharField(blank=True, max_length=240)),
-                ('descripcion', models.TextField(blank=True)),
-                ('url_externa', models.URLField(blank=True)),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True)),
-                ('categoria', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='coops', to='cooperaciones.coopcategoria')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nombre", models.CharField(max_length=180)),
+                ("slug", models.SlugField(max_length=200, unique=True)),
+                ("pais", models.CharField(blank=True, max_length=80)),
+                (
+                    "logo",
+                    models.ImageField(blank=True, null=True, upload_to="coops/logos/"),
+                ),
+                (
+                    "portada",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="coops/portadas/"
+                    ),
+                ),
+                ("excerpt", models.CharField(blank=True, max_length=240)),
+                ("descripcion", models.TextField(blank=True)),
+                ("url_externa", models.URLField(blank=True)),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("creado", models.DateTimeField(auto_now_add=True)),
+                (
+                    "categoria",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="coops",
+                        to="cooperaciones.coopcategoria",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Cooperación',
-                'verbose_name_plural': 'Cooperaciones',
-                'ordering': ['orden', '-creado'],
+                "verbose_name": "Cooperación",
+                "verbose_name_plural": "Cooperaciones",
+                "ordering": ["orden", "-creado"],
             },
         ),
         migrations.CreateModel(
-            name='CoopFoto',
+            name="CoopFoto",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('imagen', models.ImageField(upload_to='coops/fotos/')),
-                ('alt', models.CharField(blank=True, max_length=140)),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('coop', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='fotos', to='cooperaciones.cooperacion')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("imagen", models.ImageField(upload_to="coops/fotos/")),
+                ("alt", models.CharField(blank=True, max_length=140)),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                (
+                    "coop",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="fotos",
+                        to="cooperaciones.cooperacion",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Foto de cooperación',
-                'verbose_name_plural': 'Fotos de cooperación',
-                'ordering': ['orden', 'id'],
+                "verbose_name": "Foto de cooperación",
+                "verbose_name_plural": "Fotos de cooperación",
+                "ordering": ["orden", "id"],
             },
         ),
     ]

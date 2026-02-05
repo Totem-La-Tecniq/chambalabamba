@@ -4,7 +4,7 @@ from pathlib import Path
 
 # (fixture, tag) — cada tag se guarda en la tabla seed_run para no recargar
 SEEDS = [
-    ("nosotros.json", "nosotros:v8"),                 # el que ya tienes
+    ("nosotros.json", "nosotros:v8"),  # el que ya tienes
     ("pilar_ecologia.json", "nosotros:pilar:ecologia:v3"),  # nuevo
     ("pilar_economia.json", "nosotros:pilar:economia:v2"),  # nuevo
     ("pilar_sociocultural.json", "nosotros:pilar:sociocultural:v2"),  # nuevo
@@ -13,6 +13,7 @@ SEEDS = [
     ("principios_valores.json", "nosotros:topic:principios:v3"),
     ("territorio.json", "nosotros:topic:territorio:v2"),
 ]
+
 
 def _seed_nosotros_once(sender, **kwargs):
     if sender.label != "nosotros":

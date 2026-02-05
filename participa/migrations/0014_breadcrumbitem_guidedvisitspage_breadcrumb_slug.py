@@ -4,31 +4,43 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('participa', '0013_delete_breadcrumbitem_delete_visitaspageheader_and_more'),
+        ("participa", "0013_delete_breadcrumbitem_delete_visitaspageheader_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='BreadcrumbItem',
+            name="BreadcrumbItem",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('seccion_slug', models.SlugField(max_length=120)),
-                ('label', models.CharField(max_length=120)),
-                ('url', models.CharField(blank=True, default='/', max_length=300)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('publicado', models.BooleanField(default=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("seccion_slug", models.SlugField(max_length=120)),
+                ("label", models.CharField(max_length=120)),
+                ("url", models.CharField(blank=True, default="/", max_length=300)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("publicado", models.BooleanField(default=True)),
             ],
             options={
-                'verbose_name': 'Breadcrumb (ítem)',
-                'verbose_name_plural': 'Breadcrumb (ítems)',
-                'ordering': ['orden', 'id'],
+                "verbose_name": "Breadcrumb (ítem)",
+                "verbose_name_plural": "Breadcrumb (ítems)",
+                "ordering": ["orden", "id"],
             },
         ),
         migrations.AddField(
-            model_name='guidedvisitspage',
-            name='breadcrumb_slug',
-            field=models.SlugField(default='visitas-guiadas', help_text='Clave para agrupar los ítems del breadcrumb de esta sección.', max_length=120, unique=True),
+            model_name="guidedvisitspage",
+            name="breadcrumb_slug",
+            field=models.SlugField(
+                default="visitas-guiadas",
+                help_text="Clave para agrupar los ítems del breadcrumb de esta sección.",
+                max_length=120,
+                unique=True,
+            ),
         ),
     ]

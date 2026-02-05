@@ -4,25 +4,45 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('tienda', '0001_initial'),
+        ("tienda", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='TiendaLanding',
+            name="TiendaLanding",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('title', models.CharField(default='Tienda', max_length=160)),
-                ('intro_html', models.TextField(blank=True, help_text='Texto de bienvenida (HTML).')),
-                ('cta_text', models.CharField(blank=True, default='Ver productos', max_length=60)),
-                ('cta_url', models.CharField(blank=True, default='/tienda/', max_length=200)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("title", models.CharField(default="Tienda", max_length=160)),
+                (
+                    "intro_html",
+                    models.TextField(
+                        blank=True, help_text="Texto de bienvenida (HTML)."
+                    ),
+                ),
+                (
+                    "cta_text",
+                    models.CharField(
+                        blank=True, default="Ver productos", max_length=60
+                    ),
+                ),
+                (
+                    "cta_url",
+                    models.CharField(blank=True, default="/tienda/", max_length=200),
+                ),
             ],
             options={
-                'verbose_name': 'Página de Tienda (landing)',
-                'verbose_name_plural': 'Página de Tienda (landing)',
+                "verbose_name": "Página de Tienda (landing)",
+                "verbose_name_plural": "Página de Tienda (landing)",
             },
         ),
     ]

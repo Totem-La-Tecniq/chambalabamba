@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from .models import ProductoCategoria, Producto, ProductoImagen
 
+
 @admin.register(ProductoCategoria)
 class ProductoCategoriaAdmin(admin.ModelAdmin):
     list_display = ("nombre", "slug", "publicado", "orden")
@@ -21,14 +22,26 @@ class ProductoImagenInline(admin.TabularInline):
 
     def mini(self, obj):
         if obj.imagen:
-            return format_html('<img src="{}" style="height:40px;border-radius:6px">', obj.imagen.url)
+            return format_html(
+                '<img src="{}" style="height:40px;border-radius:6px">', obj.imagen.url
+            )
         return "—"
+
     mini.short_description = "Preview"
 
 
 @admin.register(Producto)
 class ProductoAdmin(admin.ModelAdmin):
-    list_display = ("mini", "titulo", "categoria", "precio", "precio_tachado", "publicado", "orden", "creado")
+    list_display = (
+        "mini",
+        "titulo",
+        "categoria",
+        "precio",
+        "precio_tachado",
+        "publicado",
+        "orden",
+        "creado",
+    )
     list_display_links = ("titulo",)  # hace clickeable el título
     list_editable = ("publicado", "orden")
     list_filter = ("publicado", "categoria")
@@ -48,18 +61,26 @@ class ProductoAdmin(admin.ModelAdmin):
 
     def mini(self, obj):
         if obj.imagen_portada:
-            return format_html('<img src="{}" style="height:40px;border-radius:6px">', obj.imagen_portada.url)
+            return format_html(
+                '<img src="{}" style="height:40px;border-radius:6px">',
+                obj.imagen_portada.url,
+            )
         return "—"
+
     mini.short_description = " "
 
     def marcar_publicados(self, request, queryset):
         updated = queryset.update(publicado=True)
         self.message_user(request, f"{updated} producto(s) marcados como publicados.")
+
     marcar_publicados.short_description = "Publicar seleccionados"
 
     def marcar_no_publicados(self, request, queryset):
         updated = queryset.update(publicado=False)
-        self.message_user(request, f"{updated} producto(s) marcados como NO publicados.")
+        self.message_user(
+            request, f"{updated} producto(s) marcados como NO publicados."
+        )
+
     marcar_no_publicados.short_description = "Ocultar seleccionados"
 
 
@@ -67,6 +88,7 @@ class ProductoAdmin(admin.ModelAdmin):
 class _Hidden(admin.ModelAdmin):
     def get_model_perms(self, request):
         return {}
+
 
 @admin.register(ProductoImagen)
 class ProductoImagenAdmin(_Hidden):
@@ -77,6 +99,9 @@ class ProductoImagenAdmin(_Hidden):
 
     def mini(self, obj):
         if obj.imagen:
-            return format_html('<img src="{}" style="height:40px;border-radius:6px">', obj.imagen.url)
+            return format_html(
+                '<img src="{}" style="height:40px;border-radius:6px">', obj.imagen.url
+            )
         return "—"
+
     mini.short_description = "Preview"

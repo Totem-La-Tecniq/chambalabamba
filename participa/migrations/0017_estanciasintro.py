@@ -5,27 +5,63 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('participa', '0016_delete_breadcrumbitem_remove_guidedvisitphoto_visita_and_more'),
+        (
+            "participa",
+            "0016_delete_breadcrumbitem_remove_guidedvisitphoto_visita_and_more",
+        ),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='EstanciasIntro',
+            name="EstanciasIntro",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='¡Vive Eco-Centro Chambalabamba: Elige tu estancia!', max_length=160)),
-                ('body_html', models.TextField(blank=True, default='Tu lugar de descanso en la ecoaldea. Hospédate con nosotros y disfruta de ritmos lentos y amaneceres serenos. Un alquiler con sentido: comodidad simple, naturaleza y quietud interior.')),
-                ('quote_text', models.CharField(blank=True, default='"El conocimiento compartido se multiplica, la experiencia vivida se transforma en sabiduría"', max_length=300)),
-                ('bg_color', models.CharField(default='#f8f9fa', max_length=20)),
-                ('margin_top_px', models.PositiveIntegerField(default=40)),
-                ('publicado', models.BooleanField(default=True)),
-                ('page', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='intro', to='participa.participapage')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="¡Vive Eco-Centro Chambalabamba: Elige tu estancia!",
+                        max_length=160,
+                    ),
+                ),
+                (
+                    "body_html",
+                    models.TextField(
+                        blank=True,
+                        default="Tu lugar de descanso en la ecoaldea. Hospédate con nosotros y disfruta de ritmos lentos y amaneceres serenos. Un alquiler con sentido: comodidad simple, naturaleza y quietud interior.",
+                    ),
+                ),
+                (
+                    "quote_text",
+                    models.CharField(
+                        blank=True,
+                        default='"El conocimiento compartido se multiplica, la experiencia vivida se transforma en sabiduría"',
+                        max_length=300,
+                    ),
+                ),
+                ("bg_color", models.CharField(default="#f8f9fa", max_length=20)),
+                ("margin_top_px", models.PositiveIntegerField(default=40)),
+                ("publicado", models.BooleanField(default=True)),
+                (
+                    "page",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="intro",
+                        to="participa.participapage",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Bloque intro Estancias',
-                'verbose_name_plural': 'Bloque intro Estancias',
+                "verbose_name": "Bloque intro Estancias",
+                "verbose_name_plural": "Bloque intro Estancias",
             },
         ),
     ]

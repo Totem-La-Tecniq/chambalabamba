@@ -1,18 +1,19 @@
-
 # apps/contenido/admin.py
 from django.contrib import admin
-from .models import MediaAsset, Gallery, GalleryItem, Flyer, Placement
-from django.contrib import admin
+from .models import MediaAsset, Gallery, GalleryItem, Placement
 from .models import FooterSettings, FooterMenu, FooterLink
+
 
 @admin.register(MediaAsset)
 class MediaAssetAdmin(admin.ModelAdmin):
     list_display = ("titulo", "creado")
     search_fields = ("titulo", "tags")
 
+
 class GalleryItemInline(admin.TabularInline):
     model = GalleryItem
     extra = 1
+
 
 @admin.register(Gallery)
 class GalleryAdmin(admin.ModelAdmin):
@@ -21,11 +22,13 @@ class GalleryAdmin(admin.ModelAdmin):
     search_fields = ("titulo",)
     inlines = [GalleryItemInline]
 
-#@admin.register(Flyer)
+
+# @admin.register(Flyer)
 class FlyerAdmin(admin.ModelAdmin):
     list_display = ("titulo", "ratio", "publicado", "creado")
     list_filter = ("publicado", "ratio")
     search_fields = ("titulo",)
+
 
 @admin.register(Placement)
 class PlacementAdmin(admin.ModelAdmin):
@@ -34,18 +37,37 @@ class PlacementAdmin(admin.ModelAdmin):
     search_fields = ("key",)
 
 
-
 @admin.register(FooterSettings)
 class FooterSettingsAdmin(admin.ModelAdmin):
     fieldsets = (
         ("Contenido", {"fields": ("title", "text")}),
-        ("Enlace", {"fields": ("link_label", "named_url", "named_url_kwargs", "url", "open_in_new_tab")}),
+        (
+            "Enlace",
+            {
+                "fields": (
+                    "link_label",
+                    "named_url",
+                    "named_url_kwargs",
+                    "url",
+                    "open_in_new_tab",
+                )
+            },
+        ),
     )
+
 
 class FooterLinkInline(admin.TabularInline):
     model = FooterLink
     extra = 1
-    fields = ("order", "label", "named_url", "named_url_kwargs", "url", "open_in_new_tab")
+    fields = (
+        "order",
+        "label",
+        "named_url",
+        "named_url_kwargs",
+        "url",
+        "open_in_new_tab",
+    )
+
 
 @admin.register(FooterMenu)
 class FooterMenuAdmin(admin.ModelAdmin):

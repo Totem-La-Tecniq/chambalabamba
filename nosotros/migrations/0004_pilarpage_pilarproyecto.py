@@ -6,51 +6,137 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('nosotros', '0003_alter_aboutsection_options_and_more'),
+        ("nosotros", "0003_alter_aboutsection_options_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='PilarPage',
+            name="PilarPage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('titulo', models.CharField(max_length=160, verbose_name='Título de la página')),
-                ('slug', models.SlugField(max_length=180, unique=True)),
-                ('header_fondo', models.ImageField(blank=True, null=True, upload_to='nosotros/pilares/headers/', verbose_name='Imagen de cabecera (fondo)')),
-                ('breadcrumb_parent', models.CharField(default='Pilares', max_length=80, verbose_name='Breadcrumb intermedio')),
-                ('breadcrumb_current', models.CharField(default='Ecología', max_length=80, verbose_name='Breadcrumb actual')),
-                ('imagen_destacada', models.ImageField(blank=True, null=True, upload_to='nosotros/pilares/destacadas/', verbose_name='Imagen destacada (arriba del texto)')),
-                ('subtitulo', models.CharField(default='Pilar Ecología', max_length=160, verbose_name='Subtítulo / Encabezado del cuerpo')),
-                ('cuerpo_html', ckeditor_uploader.fields.RichTextUploadingField(blank=True, verbose_name='Cuerpo (HTML)')),
-                ('cita_html', ckeditor_uploader.fields.RichTextUploadingField(blank=True, verbose_name='Cita / Blockquote (HTML)')),
-                ('side_fundamentos_titulo', models.CharField(default='Fundamentos de nuestra convivencia', max_length=160, verbose_name='Título fund. convivencia')),
-                ('side_fundamentos_texto', ckeditor_uploader.fields.RichTextUploadingField(blank=True, verbose_name='Texto fundamentos')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "titulo",
+                    models.CharField(
+                        max_length=160, verbose_name="Título de la página"
+                    ),
+                ),
+                ("slug", models.SlugField(max_length=180, unique=True)),
+                (
+                    "header_fondo",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="nosotros/pilares/headers/",
+                        verbose_name="Imagen de cabecera (fondo)",
+                    ),
+                ),
+                (
+                    "breadcrumb_parent",
+                    models.CharField(
+                        default="Pilares",
+                        max_length=80,
+                        verbose_name="Breadcrumb intermedio",
+                    ),
+                ),
+                (
+                    "breadcrumb_current",
+                    models.CharField(
+                        default="Ecología",
+                        max_length=80,
+                        verbose_name="Breadcrumb actual",
+                    ),
+                ),
+                (
+                    "imagen_destacada",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="nosotros/pilares/destacadas/",
+                        verbose_name="Imagen destacada (arriba del texto)",
+                    ),
+                ),
+                (
+                    "subtitulo",
+                    models.CharField(
+                        default="Pilar Ecología",
+                        max_length=160,
+                        verbose_name="Subtítulo / Encabezado del cuerpo",
+                    ),
+                ),
+                (
+                    "cuerpo_html",
+                    ckeditor_uploader.fields.RichTextUploadingField(
+                        blank=True, verbose_name="Cuerpo (HTML)"
+                    ),
+                ),
+                (
+                    "cita_html",
+                    ckeditor_uploader.fields.RichTextUploadingField(
+                        blank=True, verbose_name="Cita / Blockquote (HTML)"
+                    ),
+                ),
+                (
+                    "side_fundamentos_titulo",
+                    models.CharField(
+                        default="Fundamentos de nuestra convivencia",
+                        max_length=160,
+                        verbose_name="Título fund. convivencia",
+                    ),
+                ),
+                (
+                    "side_fundamentos_texto",
+                    ckeditor_uploader.fields.RichTextUploadingField(
+                        blank=True, verbose_name="Texto fundamentos"
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("creado", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'verbose_name': 'Pilar',
-                'verbose_name_plural': 'Pilares',
-                'ordering': ('orden', 'titulo'),
+                "verbose_name": "Pilar",
+                "verbose_name_plural": "Pilares",
+                "ordering": ("orden", "titulo"),
             },
         ),
         migrations.CreateModel(
-            name='PilarProyecto',
+            name="PilarProyecto",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('titulo', models.CharField(max_length=160)),
-                ('url', models.URLField(blank=True, verbose_name='URL (opcional)')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('pilar', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='proyectos', to='nosotros.pilarpage')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("titulo", models.CharField(max_length=160)),
+                ("url", models.URLField(blank=True, verbose_name="URL (opcional)")),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                (
+                    "pilar",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="proyectos",
+                        to="nosotros.pilarpage",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Proyecto actual',
-                'verbose_name_plural': 'Proyectos actuales',
-                'ordering': ('orden', 'titulo'),
+                "verbose_name": "Proyecto actual",
+                "verbose_name_plural": "Proyectos actuales",
+                "ordering": ("orden", "titulo"),
             },
         ),
     ]

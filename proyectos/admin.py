@@ -1,20 +1,33 @@
 # proyectos/admin.py
 from django.contrib import admin
 from django.utils.html import format_html
-from django.contrib.contenttypes.admin import GenericTabularInline
 from .models import Project, ProjectPhoto, ProjectPlacement
+
 
 class ProjectPhotoInline(admin.TabularInline):
     model = ProjectPhoto
     extra = 1
-    fields = ("publicado", "orden", "imagen", "preview", "titulo", "alt", "creditos", "is_header")
+    fields = (
+        "publicado",
+        "orden",
+        "imagen",
+        "preview",
+        "titulo",
+        "alt",
+        "creditos",
+        "is_header",
+    )
     readonly_fields = ("preview",)
     ordering = ("orden", "id")
 
     def preview(self, obj):
         if getattr(obj, "imagen", None):
-            return format_html('<img src="{}" style="height:60px;border-radius:4px;" />', obj.imagen.url)
+            return format_html(
+                '<img src="{}" style="height:60px;border-radius:4px;" />',
+                obj.imagen.url,
+            )
         return "—"
+
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
@@ -26,6 +39,7 @@ class ProjectAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("titulo",)}
     inlines = [ProjectPhotoInline]
     ordering = ("estado", "orden", "titulo")
+
 
 @admin.register(ProjectPlacement)
 class ProjectPlacementAdmin(admin.ModelAdmin):

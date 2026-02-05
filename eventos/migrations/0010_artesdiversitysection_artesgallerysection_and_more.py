@@ -5,105 +5,299 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('eventos', '0009_alter_festival_options_and_more'),
+        ("eventos", "0009_alter_festival_options_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ArtesDiversitySection',
+            name="ArtesDiversitySection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Danza, teatro, música y DIVERSIDAD', max_length=160, verbose_name='Título')),
-                ('paragraph', models.TextField(blank=True, verbose_name='Párrafo')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Danza, teatro, música y DIVERSIDAD",
+                        max_length=160,
+                        verbose_name="Título",
+                    ),
+                ),
+                ("paragraph", models.TextField(blank=True, verbose_name="Párrafo")),
             ],
             options={
-                'verbose_name': '3.3 Sección: Diversidad de Artes',
-                'verbose_name_plural': '3.3 Sección: Diversidad de Artes',
+                "verbose_name": "3.3 Sección: Diversidad de Artes",
+                "verbose_name_plural": "3.3 Sección: Diversidad de Artes",
             },
         ),
         migrations.CreateModel(
-            name='ArtesGallerySection',
+            name="ArtesGallerySection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Momentos de creación colectiva', max_length=160, verbose_name='Título')),
-                ('paragraph', models.TextField(blank=True, verbose_name='Párrafo')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Momentos de creación colectiva",
+                        max_length=160,
+                        verbose_name="Título",
+                    ),
+                ),
+                ("paragraph", models.TextField(blank=True, verbose_name="Párrafo")),
             ],
             options={
-                'verbose_name': '3.4 Sección: Galería de Artes',
-                'verbose_name_plural': '3.4 Sección: Galería de Artes',
+                "verbose_name": "3.4 Sección: Galería de Artes",
+                "verbose_name_plural": "3.4 Sección: Galería de Artes",
             },
         ),
         migrations.CreateModel(
-            name='ArtesHeader',
+            name="ArtesHeader",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Artes', max_length=120, verbose_name='Título')),
-                ('breadcrumb_label', models.CharField(default='Artes', max_length=120, verbose_name='Breadcrumb actual')),
-                ('background', models.ImageField(blank=True, help_text='Imagen de fondo del header', null=True, upload_to='eventos/')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Artes", max_length=120, verbose_name="Título"
+                    ),
+                ),
+                (
+                    "breadcrumb_label",
+                    models.CharField(
+                        default="Artes",
+                        max_length=120,
+                        verbose_name="Breadcrumb actual",
+                    ),
+                ),
+                (
+                    "background",
+                    models.ImageField(
+                        blank=True,
+                        help_text="Imagen de fondo del header",
+                        null=True,
+                        upload_to="eventos/",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': '3.1 Sección: Header de Artes',
-                'verbose_name_plural': '3.1 Sección: Header de Artes',
+                "verbose_name": "3.1 Sección: Header de Artes",
+                "verbose_name_plural": "3.1 Sección: Header de Artes",
             },
         ),
         migrations.CreateModel(
-            name='ArtesIntroSection',
+            name="ArtesIntroSection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('main_image', models.ImageField(blank=True, help_text='Imagen principal de la sección de introducción', null=True, upload_to='eventos/')),
-                ('subtitle', models.CharField(default='En Chambalabamba el arte se vive', max_length=160, verbose_name='Subtítulo')),
-                ('quote', models.CharField(blank=True, max_length=255, verbose_name='Cita')),
-                ('sidebar_title', models.CharField(default='El arte no se detiene en Chambalabamba', max_length=160, verbose_name='Título del sidebar')),
-                ('sidebar_paragraph1', models.TextField(blank=True, verbose_name='Párrafo 1 del sidebar')),
-                ('sidebar_paragraph2', models.TextField(blank=True, verbose_name='Párrafo 2 del sidebar')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "main_image",
+                    models.ImageField(
+                        blank=True,
+                        help_text="Imagen principal de la sección de introducción",
+                        null=True,
+                        upload_to="eventos/",
+                    ),
+                ),
+                (
+                    "subtitle",
+                    models.CharField(
+                        default="En Chambalabamba el arte se vive",
+                        max_length=160,
+                        verbose_name="Subtítulo",
+                    ),
+                ),
+                (
+                    "quote",
+                    models.CharField(blank=True, max_length=255, verbose_name="Cita"),
+                ),
+                (
+                    "sidebar_title",
+                    models.CharField(
+                        default="El arte no se detiene en Chambalabamba",
+                        max_length=160,
+                        verbose_name="Título del sidebar",
+                    ),
+                ),
+                (
+                    "sidebar_paragraph1",
+                    models.TextField(blank=True, verbose_name="Párrafo 1 del sidebar"),
+                ),
+                (
+                    "sidebar_paragraph2",
+                    models.TextField(blank=True, verbose_name="Párrafo 2 del sidebar"),
+                ),
             ],
             options={
-                'verbose_name': '3.2 Sección: Introducción de Artes',
-                'verbose_name_plural': '3.2 Sección: Introducción de Artes',
+                "verbose_name": "3.2 Sección: Introducción de Artes",
+                "verbose_name_plural": "3.2 Sección: Introducción de Artes",
             },
         ),
         migrations.CreateModel(
-            name='Arte',
+            name="Arte",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=120, verbose_name='Título')),
-                ('description', models.CharField(max_length=255, verbose_name='Descripción')),
-                ('image', models.ImageField(blank=True, help_text='Imagen del arte', null=True, upload_to='eventos/')),
-                ('page', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='artes', to='eventos.artesdiversitysection')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=120, verbose_name="Título")),
+                (
+                    "description",
+                    models.CharField(max_length=255, verbose_name="Descripción"),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True,
+                        help_text="Imagen del arte",
+                        null=True,
+                        upload_to="eventos/",
+                    ),
+                ),
+                (
+                    "page",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="artes",
+                        to="eventos.artesdiversitysection",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Arte',
-                'verbose_name_plural': 'Artes',
+                "verbose_name": "Arte",
+                "verbose_name_plural": "Artes",
             },
         ),
         migrations.CreateModel(
-            name='ArtesGalleryImage',
+            name="ArtesGalleryImage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(help_text='Imagen para la galería', upload_to='eventos/gallery/')),
-                ('alt_text', models.CharField(blank=True, max_length=255, verbose_name='Texto alternativo')),
-                ('section', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='images', to='eventos.artesgallerysection')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        help_text="Imagen para la galería", upload_to="eventos/gallery/"
+                    ),
+                ),
+                (
+                    "alt_text",
+                    models.CharField(
+                        blank=True, max_length=255, verbose_name="Texto alternativo"
+                    ),
+                ),
+                (
+                    "section",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="images",
+                        to="eventos.artesgallerysection",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Imagen de la Galería',
-                'verbose_name_plural': 'Imágenes de la Galería',
+                "verbose_name": "Imagen de la Galería",
+                "verbose_name_plural": "Imágenes de la Galería",
             },
         ),
         migrations.CreateModel(
-            name='ArtesPage',
+            name="ArtesPage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('enabled', models.BooleanField(default=True, verbose_name='Habilitado')),
-                ('diversity', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.artesdiversitysection', verbose_name='Sección de Diversidad')),
-                ('gallery', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.artesgallerysection', verbose_name='Sección de Galería')),
-                ('header', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.artesheader', verbose_name='Header')),
-                ('intro', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.artesintrosection', verbose_name='Sección de Introducción')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "enabled",
+                    models.BooleanField(default=True, verbose_name="Habilitado"),
+                ),
+                (
+                    "diversity",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.artesdiversitysection",
+                        verbose_name="Sección de Diversidad",
+                    ),
+                ),
+                (
+                    "gallery",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.artesgallerysection",
+                        verbose_name="Sección de Galería",
+                    ),
+                ),
+                (
+                    "header",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.artesheader",
+                        verbose_name="Header",
+                    ),
+                ),
+                (
+                    "intro",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.artesintrosection",
+                        verbose_name="Sección de Introducción",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': '3. Página: Artes',
-                'verbose_name_plural': '3. Página: Artes',
+                "verbose_name": "3. Página: Artes",
+                "verbose_name_plural": "3. Página: Artes",
             },
         ),
     ]

@@ -4,57 +4,56 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('nosotros', '0007_alter_aboutsection_options_and_more'),
+        ("nosotros", "0007_alter_aboutsection_options_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='GobernanzaPage',
-            fields=[
-            ],
+            name="GobernanzaPage",
+            fields=[],
             options={
-                'verbose_name': '3. Gobernanza',
-                'verbose_name_plural': '3. Gobernanza',
-                'proxy': True,
-                'indexes': [],
-                'constraints': [],
+                "verbose_name": "3. Gobernanza",
+                "verbose_name_plural": "3. Gobernanza",
+                "proxy": True,
+                "indexes": [],
+                "constraints": [],
             },
-            bases=('nosotros.topicpage',),
+            bases=("nosotros.topicpage",),
         ),
         migrations.CreateModel(
-            name='PrincipiosValoresPage',
-            fields=[
-            ],
+            name="PrincipiosValoresPage",
+            fields=[],
             options={
-                'verbose_name': '4. Principios y valores',
-                'verbose_name_plural': '4. Principios y valores',
-                'proxy': True,
-                'indexes': [],
-                'constraints': [],
+                "verbose_name": "4. Principios y valores",
+                "verbose_name_plural": "4. Principios y valores",
+                "proxy": True,
+                "indexes": [],
+                "constraints": [],
             },
-            bases=('nosotros.topicpage',),
+            bases=("nosotros.topicpage",),
         ),
         migrations.CreateModel(
-            name='TerritorioPage',
-            fields=[
-            ],
+            name="TerritorioPage",
+            fields=[],
             options={
-                'verbose_name': '5. Territorio',
-                'verbose_name_plural': '5. Territorio',
-                'proxy': True,
-                'indexes': [],
-                'constraints': [],
+                "verbose_name": "5. Territorio",
+                "verbose_name_plural": "5. Territorio",
+                "proxy": True,
+                "indexes": [],
+                "constraints": [],
             },
-            bases=('nosotros.topicpage',),
+            bases=("nosotros.topicpage",),
         ),
         migrations.AlterModelOptions(
-            name='nosotrospage',
-            options={'verbose_name': '1. Nuestro camino / About Us Page', 'verbose_name_plural': '1. Nuestro camino  / About Us Page'},
+            name="nosotrospage",
+            options={
+                "verbose_name": "1. Nuestro camino / About Us Page",
+                "verbose_name_plural": "1. Nuestro camino  / About Us Page",
+            },
         ),
         migrations.AlterModelOptions(
-            name='pageheader',
+            name="pageheader",
             options={},
         ),
     ]

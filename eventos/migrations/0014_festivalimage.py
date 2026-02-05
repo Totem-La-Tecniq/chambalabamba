@@ -5,23 +5,48 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('eventos', '0013_terapiasbenefitssection_terapiasgallerysection_and_more'),
+        ("eventos", "0013_terapiasbenefitssection_terapiasgallerysection_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='FestivalImage',
+            name="FestivalImage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(upload_to='festivales/gallery/', verbose_name='Imagen de Galería')),
-                ('alt_text', models.CharField(blank=True, max_length=255, verbose_name='Texto alternativo')),
-                ('festival', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='gallery_images', to='eventos.festival')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        upload_to="festivales/gallery/",
+                        verbose_name="Imagen de Galería",
+                    ),
+                ),
+                (
+                    "alt_text",
+                    models.CharField(
+                        blank=True, max_length=255, verbose_name="Texto alternativo"
+                    ),
+                ),
+                (
+                    "festival",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="gallery_images",
+                        to="eventos.festival",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Imagen de Galería del Festival',
-                'verbose_name_plural': 'Imágenes de Galería del Festival',
+                "verbose_name": "Imagen de Galería del Festival",
+                "verbose_name_plural": "Imágenes de Galería del Festival",
             },
         ),
     ]

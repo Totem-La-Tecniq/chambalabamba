@@ -4,22 +4,15 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('participa', '0006_rename_portadas_estancia_portada'),
+        ("participa", "0006_rename_portadas_estancia_portada"),
     ]
 
     operations = [
-        # Evitamos tocar la BD (ya está renombrado en muchos entornos),
-        # pero mantenemos el historial de Django consistente.
-        migrations.SeparateDatabaseAndState(
-            database_operations=[],
-            state_operations=[
-                migrations.RenameField(
-                    model_name='estancia',
-                    old_name='portadas',
-                    new_name='portada',
-                ),
-            ],
+        # Rename the field in both the database and Django's state
+        migrations.RenameField(
+            model_name="estancia",
+            old_name="portadas",
+            new_name="portada",
         ),
     ]

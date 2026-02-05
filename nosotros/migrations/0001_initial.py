@@ -6,126 +6,314 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='AboutSection',
+            name="AboutSection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Chambalabamba, ecoaldea viva', max_length=160)),
-                ('lead', models.TextField(blank=True, verbose_name='Intro (negrita)')),
-                ('body', models.TextField(blank=True, verbose_name='Párrafo')),
-                ('cta_text', models.CharField(blank=True, default='Contact Us', max_length=80, verbose_name='Texto botón')),
-                ('cta_url', models.CharField(blank=True, max_length=300, verbose_name='URL botón')),
-                ('video_url', models.CharField(blank=True, max_length=500, validators=[django.core.validators.URLValidator()], verbose_name='URL de video (Vimeo/YouTube)')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Chambalabamba, ecoaldea viva", max_length=160
+                    ),
+                ),
+                ("lead", models.TextField(blank=True, verbose_name="Intro (negrita)")),
+                ("body", models.TextField(blank=True, verbose_name="Párrafo")),
+                (
+                    "cta_text",
+                    models.CharField(
+                        blank=True,
+                        default="Contact Us",
+                        max_length=80,
+                        verbose_name="Texto botón",
+                    ),
+                ),
+                (
+                    "cta_url",
+                    models.CharField(
+                        blank=True, max_length=300, verbose_name="URL botón"
+                    ),
+                ),
+                (
+                    "video_url",
+                    models.CharField(
+                        blank=True,
+                        max_length=500,
+                        validators=[django.core.validators.URLValidator()],
+                        verbose_name="URL de video (Vimeo/YouTube)",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Sección: About + Video',
-                'verbose_name_plural': 'Sección: About + Video',
+                "verbose_name": "Sección: About + Video",
+                "verbose_name_plural": "Sección: About + Video",
             },
         ),
         migrations.CreateModel(
-            name='EcoAldeaSection',
+            name="EcoAldeaSection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Sé parte de la Eco Aldea', max_length=160)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Sé parte de la Eco Aldea", max_length=160
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Sección: EcoAldea',
-                'verbose_name_plural': 'Sección: EcoAldea',
+                "verbose_name": "Sección: EcoAldea",
+                "verbose_name_plural": "Sección: EcoAldea",
             },
         ),
         migrations.CreateModel(
-            name='HistorySection',
+            name="HistorySection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('subtitle', models.CharField(default='About our History', max_length=120, verbose_name='Subtítulo')),
-                ('title', models.CharField(default='Our Success Story', max_length=120, verbose_name='Título')),
-                ('side_image', models.ImageField(blank=True, null=True, upload_to='nosotros/')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "subtitle",
+                    models.CharField(
+                        default="About our History",
+                        max_length=120,
+                        verbose_name="Subtítulo",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Our Success Story",
+                        max_length=120,
+                        verbose_name="Título",
+                    ),
+                ),
+                (
+                    "side_image",
+                    models.ImageField(blank=True, null=True, upload_to="nosotros/"),
+                ),
             ],
             options={
-                'verbose_name': 'Sección: Historia',
-                'verbose_name_plural': 'Sección: Historia',
+                "verbose_name": "Sección: Historia",
+                "verbose_name_plural": "Sección: Historia",
             },
         ),
         migrations.CreateModel(
-            name='InnerHeader',
+            name="InnerHeader",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Nosotros', max_length=120, verbose_name='Título')),
-                ('breadcrumb_label', models.CharField(default='Nuestro camino', max_length=120, verbose_name='Breadcrumb actual')),
-                ('background', models.ImageField(help_text='Imagen de fondo del header', upload_to='nosotros/')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Nosotros", max_length=120, verbose_name="Título"
+                    ),
+                ),
+                (
+                    "breadcrumb_label",
+                    models.CharField(
+                        default="Nuestro camino",
+                        max_length=120,
+                        verbose_name="Breadcrumb actual",
+                    ),
+                ),
+                (
+                    "background",
+                    models.ImageField(
+                        help_text="Imagen de fondo del header", upload_to="nosotros/"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Sección: Header',
-                'verbose_name_plural': 'Sección: Header',
+                "verbose_name": "Sección: Header",
+                "verbose_name_plural": "Sección: Header",
             },
         ),
         migrations.CreateModel(
-            name='EcoAldeaCard',
+            name="EcoAldeaCard",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('icon', models.ImageField(help_text='Icono 60px aprox.', upload_to='nosotros/')),
-                ('title', models.CharField(max_length=120)),
-                ('text', models.TextField()),
-                ('link_text', models.CharField(blank=True, max_length=120)),
-                ('link_url', models.CharField(blank=True, max_length=300)),
-                ('order', models.PositiveIntegerField(default=0)),
-                ('section', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='cards', to='nosotros.ecoaldeasection')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "icon",
+                    models.ImageField(
+                        help_text="Icono 60px aprox.", upload_to="nosotros/"
+                    ),
+                ),
+                ("title", models.CharField(max_length=120)),
+                ("text", models.TextField()),
+                ("link_text", models.CharField(blank=True, max_length=120)),
+                ("link_url", models.CharField(blank=True, max_length=300)),
+                ("order", models.PositiveIntegerField(default=0)),
+                (
+                    "section",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="cards",
+                        to="nosotros.ecoaldeasection",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Tarjeta EcoAldea',
-                'verbose_name_plural': 'Tarjetas EcoAldea',
-                'ordering': ['order'],
+                "verbose_name": "Tarjeta EcoAldea",
+                "verbose_name_plural": "Tarjetas EcoAldea",
+                "ordering": ["order"],
             },
         ),
         migrations.CreateModel(
-            name='NosotrosPage',
+            name="NosotrosPage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('enabled', models.BooleanField(default=True)),
-                ('about', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='nosotros.aboutsection')),
-                ('ecoaldea', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='nosotros.ecoaldeasection')),
-                ('header', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='nosotros.innerheader')),
-                ('history', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='nosotros.historysection')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("enabled", models.BooleanField(default=True)),
+                (
+                    "about",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="nosotros.aboutsection",
+                    ),
+                ),
+                (
+                    "ecoaldea",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="nosotros.ecoaldeasection",
+                    ),
+                ),
+                (
+                    "header",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="nosotros.innerheader",
+                    ),
+                ),
+                (
+                    "history",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="nosotros.historysection",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Página: Nosotros',
-                'verbose_name_plural': 'Página: Nosotros',
+                "verbose_name": "Página: Nosotros",
+                "verbose_name_plural": "Página: Nosotros",
             },
         ),
         migrations.CreateModel(
-            name='TimelinePeriod',
+            name="TimelinePeriod",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('label', models.CharField(max_length=60, verbose_name='Rango de años')),
-                ('order', models.PositiveIntegerField(default=0)),
-                ('history', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='periods', to='nosotros.historysection')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "label",
+                    models.CharField(max_length=60, verbose_name="Rango de años"),
+                ),
+                ("order", models.PositiveIntegerField(default=0)),
+                (
+                    "history",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="periods",
+                        to="nosotros.historysection",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Periodo (Timeline)',
-                'verbose_name_plural': 'Periodos (Timeline)',
-                'ordering': ['order'],
+                "verbose_name": "Periodo (Timeline)",
+                "verbose_name_plural": "Periodos (Timeline)",
+                "ordering": ["order"],
             },
         ),
         migrations.CreateModel(
-            name='TimelineItem',
+            name="TimelineItem",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=120)),
-                ('body', models.TextField()),
-                ('order', models.PositiveIntegerField(default=0)),
-                ('period', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', to='nosotros.timelineperiod')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=120)),
+                ("body", models.TextField()),
+                ("order", models.PositiveIntegerField(default=0)),
+                (
+                    "period",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="items",
+                        to="nosotros.timelineperiod",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Caja de Timeline',
-                'verbose_name_plural': 'Cajas de Timeline',
-                'ordering': ['order'],
+                "verbose_name": "Caja de Timeline",
+                "verbose_name_plural": "Cajas de Timeline",
+                "ordering": ["order"],
             },
         ),
     ]

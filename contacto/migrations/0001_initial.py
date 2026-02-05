@@ -5,28 +5,49 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Contacto',
+            name="Contacto",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, verbose_name='Nombre')),
-                ('email', models.EmailField(max_length=254, verbose_name='Correo Electrónico')),
-                ('phone', models.CharField(blank=True, max_length=20, null=True, verbose_name='Teléfono')),
-                ('subject', models.CharField(max_length=200, verbose_name='Asunto')),
-                ('message', models.TextField(verbose_name='Mensaje')),
-                ('created_at', models.DateTimeField(default=django.utils.timezone.now, verbose_name='Fecha de envío')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, verbose_name="Nombre")),
+                (
+                    "email",
+                    models.EmailField(
+                        max_length=254, verbose_name="Correo Electrónico"
+                    ),
+                ),
+                (
+                    "phone",
+                    models.CharField(
+                        blank=True, max_length=20, null=True, verbose_name="Teléfono"
+                    ),
+                ),
+                ("subject", models.CharField(max_length=200, verbose_name="Asunto")),
+                ("message", models.TextField(verbose_name="Mensaje")),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        default=django.utils.timezone.now, verbose_name="Fecha de envío"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Contacto',
-                'verbose_name_plural': 'Contactos',
-                'ordering': ['-created_at'],
+                "verbose_name": "Contacto",
+                "verbose_name_plural": "Contactos",
+                "ordering": ["-created_at"],
             },
         ),
     ]

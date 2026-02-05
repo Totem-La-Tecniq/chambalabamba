@@ -6,7 +6,12 @@ register = template.Library()
 # --------- Imports tolerantes ---------
 try:
     # si existen en tu app participa
-    from participa.models import Estancia, InstaGallery, ProyectoVoluntariado, VoluntariadoPage
+    from participa.models import (
+        Estancia,
+        InstaGallery,
+        ProyectoVoluntariado,
+        VoluntariadoPage,
+    )
 except Exception:
     Estancia = InstaGallery = ProyectoVoluntariado = VoluntariadoPage = None
 
@@ -26,8 +31,11 @@ except Exception:
 # ====== ESTANCIAS (admin-override para title/subtitle) ======
 @register.inclusion_tag("participa/estancias/_gallery_headers_estancias.html")
 def gallery_headers_estancias(
-    seccion="participa_estancias", title=None, subtitle=None,
-    limit=None, only_with_portada=True
+    seccion="participa_estancias",
+    title=None,
+    subtitle=None,
+    limit=None,
+    only_with_portada=True,
 ):
     """
     Prioridad de título/subtítulo:
@@ -58,7 +66,9 @@ def gallery_headers_estancias(
         if sh:
             # Soporta both title/titulo, subtitle/subtitulo
             admin_title = getattr(sh, "title", None) or getattr(sh, "titulo", None)
-            admin_subtitle = getattr(sh, "subtitle", None) or getattr(sh, "subtitulo", None)
+            admin_subtitle = getattr(sh, "subtitle", None) or getattr(
+                sh, "subtitulo", None
+            )
 
     # Resolución final
     final_title = admin_title or title or "Estancias"
@@ -73,15 +83,23 @@ def participa_instagram(slug=None):
     if InstaGallery is None:
         return {"insta": None}
     if slug:
-        gal = InstaGallery.objects.filter(publicado=True, seccion="participa_instagram", titulo=slug).first()
+        gal = InstaGallery.objects.filter(
+            publicado=True, seccion="participa_instagram", titulo=slug
+        ).first()
     else:
-        gal = InstaGallery.objects.filter(publicado=True, seccion="participa_instagram").first()
+        gal = InstaGallery.objects.filter(
+            publicado=True, seccion="participa_instagram"
+        ).first()
     return {"insta": gal}
 
 
 # ====== COOPERACIONES (ÚNICA definición, con seccion) ======
-@register.inclusion_tag("participa/_cooperaciones.html", takes_context=False, name="participa_cooperaciones")
-def participa_cooperaciones(title=None, subtitle=None, limit=None, seccion=None, order="orden,-creado"):
+@register.inclusion_tag(
+    "participa/_cooperaciones.html", takes_context=False, name="participa_cooperaciones"
+)
+def participa_cooperaciones(
+    title=None, subtitle=None, limit=None, seccion=None, order="orden,-creado"
+):
     """
     Uso:
       {% participa_cooperaciones title="Cooperaciones" subtitle="Alianzas que nos potencian" limit=12 seccion="voluntariado" %}
@@ -133,9 +151,9 @@ def participa_cooperaciones(title=None, subtitle=None, limit=None, seccion=None,
 def voluntariado_sidebar_projects(limit=10, title=None):
     if ProyectoVoluntariado is None:
         return {"proyectos": [], "title": title}
-    qs = (ProyectoVoluntariado.objects
-          .filter(publicado=True)
-          .order_by("orden", "nombre")[: int(limit)])
+    qs = ProyectoVoluntariado.objects.filter(publicado=True).order_by(
+        "orden", "nombre"
+    )[: int(limit)]
     return {"proyectos": qs, "title": title}
 
 
@@ -146,6 +164,9 @@ def voluntariado_page():
     if VoluntariadoPage is None:
         return None
     try:
-        return VoluntariadoPage.objects.filter(publicado=True).first() or VoluntariadoPage.get_solo()
+        return (
+            VoluntariadoPage.objects.filter(publicado=True).first()
+            or VoluntariadoPage.get_solo()
+        )
     except Exception:
         return None

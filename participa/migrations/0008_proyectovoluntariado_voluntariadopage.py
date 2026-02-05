@@ -4,47 +4,91 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('participa', '0007_rename_portadas_estancia_portada'),
+        ("participa", "0007_rename_portadas_estancia_portada"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ProyectoVoluntariado',
+            name="ProyectoVoluntariado",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=120)),
-                ('slug', models.SlugField(blank=True, unique=True)),
-                ('descripcion', models.TextField(blank=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('link', models.URLField(blank=True, help_text='URL de detalle (opcional)')),
-                ('publicado', models.BooleanField(default=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nombre", models.CharField(max_length=120)),
+                ("slug", models.SlugField(blank=True, unique=True)),
+                ("descripcion", models.TextField(blank=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                (
+                    "link",
+                    models.URLField(blank=True, help_text="URL de detalle (opcional)"),
+                ),
+                ("publicado", models.BooleanField(default=True)),
             ],
             options={
-                'verbose_name': 'Proyecto de voluntariado',
-                'verbose_name_plural': 'Proyectos de voluntariado',
-                'ordering': ('orden', 'nombre'),
+                "verbose_name": "Proyecto de voluntariado",
+                "verbose_name_plural": "Proyectos de voluntariado",
+                "ordering": ("orden", "nombre"),
             },
         ),
         migrations.CreateModel(
-            name='VoluntariadoPage',
+            name="VoluntariadoPage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('titulo', models.CharField(default='Voluntariado: nuestra filosofía y cómo involucrarte', max_length=150)),
-                ('subtitulo', models.CharField(blank=True, max_length=200)),
-                ('background', models.ImageField(blank=True, help_text='Imagen de cabecera (hero) — 1920x800 recomendado', null=True, upload_to='participa/voluntariado/hero/')),
-                ('intro_html', models.TextField(blank=True, help_text='Texto HTML introductorio (puede contener <p>…</p>)')),
-                ('quote_text', models.CharField(blank=True, max_length=300)),
-                ('quote_author', models.CharField(blank=True, max_length=120)),
-                ('instagram_embed_url', models.URLField(blank=True, help_text='URL del post/reel a embeber (permalink de Instagram)')),
-                ('publicado', models.BooleanField(default=True)),
-                ('creado', models.DateTimeField(auto_now_add=True)),
-                ('actualizado', models.DateTimeField(auto_now=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "titulo",
+                    models.CharField(
+                        default="Voluntariado: nuestra filosofía y cómo involucrarte",
+                        max_length=150,
+                    ),
+                ),
+                ("subtitulo", models.CharField(blank=True, max_length=200)),
+                (
+                    "background",
+                    models.ImageField(
+                        blank=True,
+                        help_text="Imagen de cabecera (hero) — 1920x800 recomendado",
+                        null=True,
+                        upload_to="participa/voluntariado/hero/",
+                    ),
+                ),
+                (
+                    "intro_html",
+                    models.TextField(
+                        blank=True,
+                        help_text="Texto HTML introductorio (puede contener <p>…</p>)",
+                    ),
+                ),
+                ("quote_text", models.CharField(blank=True, max_length=300)),
+                ("quote_author", models.CharField(blank=True, max_length=120)),
+                (
+                    "instagram_embed_url",
+                    models.URLField(
+                        blank=True,
+                        help_text="URL del post/reel a embeber (permalink de Instagram)",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("creado", models.DateTimeField(auto_now_add=True)),
+                ("actualizado", models.DateTimeField(auto_now=True)),
             ],
             options={
-                'verbose_name': 'Página de Voluntariado',
-                'verbose_name_plural': 'Página de Voluntariado',
+                "verbose_name": "Página de Voluntariado",
+                "verbose_name_plural": "Página de Voluntariado",
             },
         ),
     ]

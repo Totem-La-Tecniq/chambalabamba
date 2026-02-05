@@ -5,55 +5,94 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('visitas', '0001_initial'),
+        ("visitas", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='actualizado',
-            field=models.DateTimeField(auto_now=True, db_default=datetime.datetime(2025, 9, 23, 16, 20, 22, 14502, tzinfo=datetime.timezone.utc)),
+            model_name="guidedvisit",
+            name="actualizado",
+            field=models.DateTimeField(
+                auto_now=True,
+                db_default=datetime.datetime(
+                    2025, 9, 23, 16, 20, 22, 14502, tzinfo=datetime.timezone.utc
+                ),
+            ),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='creado',
-            field=models.DateTimeField(auto_now_add=True, db_default=datetime.datetime(2025, 9, 23, 16, 20, 22, 14482, tzinfo=datetime.timezone.utc)),
+            model_name="guidedvisit",
+            name="creado",
+            field=models.DateTimeField(
+                auto_now_add=True,
+                db_default=datetime.datetime(
+                    2025, 9, 23, 16, 20, 22, 14482, tzinfo=datetime.timezone.utc
+                ),
+            ),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='inner_bg_override',
-            field=models.ImageField(blank=True, help_text='Opcional: reemplaza el fondo del inner-header en el detalle.', null=True, upload_to='visitas/inner/'),
+            model_name="guidedvisit",
+            name="inner_bg_override",
+            field=models.ImageField(
+                blank=True,
+                help_text="Opcional: reemplaza el fondo del inner-header en el detalle.",
+                null=True,
+                upload_to="visitas/inner/",
+            ),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='portada',
-            field=models.ImageField(blank=True, help_text='Imagen destacada para grillas/listados.', null=True, upload_to='visitas/portadas/'),
+            model_name="guidedvisit",
+            name="portada",
+            field=models.ImageField(
+                blank=True,
+                help_text="Imagen destacada para grillas/listados.",
+                null=True,
+                upload_to="visitas/portadas/",
+            ),
         ),
         migrations.AlterField(
-            model_name='guidedvisitphoto',
-            name='actualizado',
-            field=models.DateTimeField(auto_now=True, db_default=datetime.datetime(2025, 9, 23, 16, 20, 22, 15310, tzinfo=datetime.timezone.utc)),
+            model_name="guidedvisitphoto",
+            name="actualizado",
+            field=models.DateTimeField(
+                auto_now=True,
+                db_default=datetime.datetime(
+                    2025, 9, 23, 16, 20, 22, 15310, tzinfo=datetime.timezone.utc
+                ),
+            ),
         ),
         migrations.AlterField(
-            model_name='guidedvisitphoto',
-            name='creado',
-            field=models.DateTimeField(auto_now_add=True, db_default=datetime.datetime(2025, 9, 23, 16, 20, 22, 15291, tzinfo=datetime.timezone.utc)),
+            model_name="guidedvisitphoto",
+            name="creado",
+            field=models.DateTimeField(
+                auto_now_add=True,
+                db_default=datetime.datetime(
+                    2025, 9, 23, 16, 20, 22, 15291, tzinfo=datetime.timezone.utc
+                ),
+            ),
         ),
         migrations.AlterField(
-            model_name='guidedvisitphoto',
-            name='imagen',
-            field=models.ImageField(upload_to='visitas/galeria/'),
+            model_name="guidedvisitphoto",
+            name="imagen",
+            field=models.ImageField(upload_to="visitas/galeria/"),
         ),
         migrations.AlterField(
-            model_name='visitslanding',
-            name='actualizado',
-            field=models.DateTimeField(auto_now=True, db_default=datetime.datetime(2025, 9, 23, 16, 20, 22, 13683, tzinfo=datetime.timezone.utc)),
+            model_name="visitslanding",
+            name="actualizado",
+            field=models.DateTimeField(
+                auto_now=True,
+                db_default=datetime.datetime(
+                    2025, 9, 23, 16, 20, 22, 13683, tzinfo=datetime.timezone.utc
+                ),
+            ),
         ),
         migrations.AlterField(
-            model_name='visitslanding',
-            name='background',
-            field=models.ImageField(blank=True, null=True, upload_to='visitas/landing/', verbose_name='Imagen de cabecera (inner header)'),
+            model_name="visitslanding",
+            name="background",
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to="visitas/landing/",
+                verbose_name="Imagen de cabecera (inner header)",
+            ),
         ),
     ]

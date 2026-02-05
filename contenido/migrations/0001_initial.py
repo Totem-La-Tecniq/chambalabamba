@@ -5,72 +5,161 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Flyer',
+            name="Flyer",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('titulo', models.CharField(max_length=150)),
-                ('imagen', models.ImageField(upload_to='flyers/')),
-                ('ratio', models.CharField(choices=[('1x1', '1:1'), ('4x5', '4:5 (IG 1080×1350)'), ('16x9', '16:9 (1920×1080)'), ('9x16', '9:16 (stories)')], default='4x5', max_length=5)),
-                ('alt', models.CharField(blank=True, max_length=200)),
-                ('publicado', models.BooleanField(default=True)),
-                ('creado', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("titulo", models.CharField(max_length=150)),
+                ("imagen", models.ImageField(upload_to="flyers/")),
+                (
+                    "ratio",
+                    models.CharField(
+                        choices=[
+                            ("1x1", "1:1"),
+                            ("4x5", "4:5 (IG 1080×1350)"),
+                            ("16x9", "16:9 (1920×1080)"),
+                            ("9x16", "9:16 (stories)"),
+                        ],
+                        default="4x5",
+                        max_length=5,
+                    ),
+                ),
+                ("alt", models.CharField(blank=True, max_length=200)),
+                ("publicado", models.BooleanField(default=True)),
+                ("creado", models.DateTimeField(auto_now_add=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Gallery',
+            name="Gallery",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('titulo', models.CharField(max_length=200)),
-                ('slug', models.SlugField(blank=True, unique=True)),
-                ('descripcion', models.TextField(blank=True)),
-                ('publicado', models.BooleanField(default=True)),
-                ('creado', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("titulo", models.CharField(max_length=200)),
+                ("slug", models.SlugField(blank=True, unique=True)),
+                ("descripcion", models.TextField(blank=True)),
+                ("publicado", models.BooleanField(default=True)),
+                ("creado", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'verbose_name_plural': 'Galerías',
+                "verbose_name_plural": "Galerías",
             },
         ),
         migrations.CreateModel(
-            name='MediaAsset',
+            name="MediaAsset",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('titulo', models.CharField(max_length=200)),
-                ('imagen', models.ImageField(upload_to='media/')),
-                ('alt', models.CharField(blank=True, max_length=200)),
-                ('credito', models.CharField(blank=True, max_length=200)),
-                ('tags', models.CharField(blank=True, help_text='Separar por comas', max_length=200)),
-                ('creado', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("titulo", models.CharField(max_length=200)),
+                ("imagen", models.ImageField(upload_to="media/")),
+                ("alt", models.CharField(blank=True, max_length=200)),
+                ("credito", models.CharField(blank=True, max_length=200)),
+                (
+                    "tags",
+                    models.CharField(
+                        blank=True, help_text="Separar por comas", max_length=200
+                    ),
+                ),
+                ("creado", models.DateTimeField(auto_now_add=True)),
             ],
         ),
         migrations.CreateModel(
-            name='GalleryItem',
+            name="GalleryItem",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('caption', models.CharField(blank=True, max_length=250)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('gallery', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', to='contenido.gallery')),
-                ('asset', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='contenido.mediaasset')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("caption", models.CharField(blank=True, max_length=250)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                (
+                    "gallery",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="items",
+                        to="contenido.gallery",
+                    ),
+                ),
+                (
+                    "asset",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="contenido.mediaasset",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['orden'],
+                "ordering": ["orden"],
             },
         ),
         migrations.CreateModel(
-            name='Placement',
+            name="Placement",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('key', models.SlugField(help_text='Ej: home_hero, galeria_footer', unique=True)),
-                ('activo', models.BooleanField(default=True)),
-                ('flyer', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='contenido.flyer')),
-                ('gallery', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='contenido.gallery')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "key",
+                    models.SlugField(
+                        help_text="Ej: home_hero, galeria_footer", unique=True
+                    ),
+                ),
+                ("activo", models.BooleanField(default=True)),
+                (
+                    "flyer",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="contenido.flyer",
+                    ),
+                ),
+                (
+                    "gallery",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="contenido.gallery",
+                    ),
+                ),
             ],
         ),
     ]

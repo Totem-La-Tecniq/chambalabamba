@@ -5,52 +5,139 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('eventos', '0005_alter_tallerdetail_options_and_more'),
+        ("eventos", "0005_alter_tallerdetail_options_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='FestivalesHeader',
+            name="FestivalesHeader",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Festivales', max_length=120, verbose_name='Título')),
-                ('breadcrumb_label', models.CharField(default='Festivales', max_length=120, verbose_name='Breadcrumb actual')),
-                ('background', models.ImageField(help_text='Imagen de fondo del header', upload_to='eventos/')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Festivales", max_length=120, verbose_name="Título"
+                    ),
+                ),
+                (
+                    "breadcrumb_label",
+                    models.CharField(
+                        default="Festivales",
+                        max_length=120,
+                        verbose_name="Breadcrumb actual",
+                    ),
+                ),
+                (
+                    "background",
+                    models.ImageField(
+                        help_text="Imagen de fondo del header", upload_to="eventos/"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Sección: Header de Festivales',
-                'verbose_name_plural': 'Sección: Header de Festivales',
+                "verbose_name": "Sección: Header de Festivales",
+                "verbose_name_plural": "Sección: Header de Festivales",
             },
         ),
         migrations.CreateModel(
-            name='FestivalesIntroSection',
+            name="FestivalesIntroSection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='¡Celebra con nosotros!', max_length=160, verbose_name='Título')),
-                ('paragraph1', models.TextField(blank=True, verbose_name='Párrafo 1')),
-                ('paragraph2', models.TextField(blank=True, verbose_name='Párrafo 2')),
-                ('quote', models.CharField(blank=True, max_length=255, verbose_name='Cita')),
-                ('cta_text', models.CharField(blank=True, default='Ver todos los festivales', max_length=80, verbose_name='Texto del botón')),
-                ('cta_url', models.CharField(blank=True, default='#festivales-grid', max_length=300, verbose_name='URL del botón')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="¡Celebra con nosotros!",
+                        max_length=160,
+                        verbose_name="Título",
+                    ),
+                ),
+                ("paragraph1", models.TextField(blank=True, verbose_name="Párrafo 1")),
+                ("paragraph2", models.TextField(blank=True, verbose_name="Párrafo 2")),
+                (
+                    "quote",
+                    models.CharField(blank=True, max_length=255, verbose_name="Cita"),
+                ),
+                (
+                    "cta_text",
+                    models.CharField(
+                        blank=True,
+                        default="Ver todos los festivales",
+                        max_length=80,
+                        verbose_name="Texto del botón",
+                    ),
+                ),
+                (
+                    "cta_url",
+                    models.CharField(
+                        blank=True,
+                        default="#festivales-grid",
+                        max_length=300,
+                        verbose_name="URL del botón",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Sección: Introducción de Festivales',
-                'verbose_name_plural': 'Sección: Introducción de Festivales',
+                "verbose_name": "Sección: Introducción de Festivales",
+                "verbose_name_plural": "Sección: Introducción de Festivales",
             },
         ),
         migrations.CreateModel(
-            name='FestivalesPage',
+            name="FestivalesPage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('enabled', models.BooleanField(default=True, verbose_name='Habilitado')),
-                ('header', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.festivalesheader', verbose_name='Header')),
-                ('intro', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.festivalesintrosection', verbose_name='Sección de Introducción')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "enabled",
+                    models.BooleanField(default=True, verbose_name="Habilitado"),
+                ),
+                (
+                    "header",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.festivalesheader",
+                        verbose_name="Header",
+                    ),
+                ),
+                (
+                    "intro",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.festivalesintrosection",
+                        verbose_name="Sección de Introducción",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Página: Festivales',
-                'verbose_name_plural': 'Página: Festivales',
+                "verbose_name": "Página: Festivales",
+                "verbose_name_plural": "Página: Festivales",
             },
         ),
     ]

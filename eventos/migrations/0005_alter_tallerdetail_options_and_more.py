@@ -4,26 +4,37 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('eventos', '0004_talleresheader_talleresintrosection_and_more'),
+        ("eventos", "0004_talleresheader_talleresintrosection_and_more"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='tallerdetail',
-            options={'verbose_name': 'Sección: Lista de Talleres', 'verbose_name_plural': 'Sección: Lista de Talleres'},
+            name="tallerdetail",
+            options={
+                "verbose_name": "Sección: Lista de Talleres",
+                "verbose_name_plural": "Sección: Lista de Talleres",
+            },
         ),
         migrations.AlterModelOptions(
-            name='talleresheader',
-            options={'verbose_name': 'Sección: Header de Talleres', 'verbose_name_plural': 'Sección: Header de Talleres'},
+            name="talleresheader",
+            options={
+                "verbose_name": "Sección: Header de Talleres",
+                "verbose_name_plural": "Sección: Header de Talleres",
+            },
         ),
         migrations.AlterModelOptions(
-            name='talleresintrosection',
-            options={'verbose_name': 'Sección: Introducción de Talleres', 'verbose_name_plural': 'Sección: Introducción de Talleres'},
+            name="talleresintrosection",
+            options={
+                "verbose_name": "Sección: Introducción de Talleres",
+                "verbose_name_plural": "Sección: Introducción de Talleres",
+            },
         ),
         migrations.AlterModelOptions(
-            name='tallerespage',
-            options={'verbose_name': 'Página: Talleres', 'verbose_name_plural': 'Página: Talleres'},
+            name="tallerespage",
+            options={
+                "verbose_name": "Página: Talleres",
+                "verbose_name_plural": "Página: Talleres",
+            },
         ),
     ]

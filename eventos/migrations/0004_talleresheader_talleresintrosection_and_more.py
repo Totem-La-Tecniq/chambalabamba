@@ -5,60 +5,147 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('eventos', '0003_taller_flyer'),
+        ("eventos", "0003_taller_flyer"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='TalleresHeader',
+            name="TalleresHeader",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Talleres', max_length=120, verbose_name='Título')),
-                ('breadcrumb_label', models.CharField(default='Talleres', max_length=120, verbose_name='Breadcrumb actual')),
-                ('background', models.ImageField(help_text='Imagen de fondo del header', upload_to='eventos/')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Talleres", max_length=120, verbose_name="Título"
+                    ),
+                ),
+                (
+                    "breadcrumb_label",
+                    models.CharField(
+                        default="Talleres",
+                        max_length=120,
+                        verbose_name="Breadcrumb actual",
+                    ),
+                ),
+                (
+                    "background",
+                    models.ImageField(
+                        help_text="Imagen de fondo del header", upload_to="eventos/"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Header de Talleres',
-                'verbose_name_plural': 'Header de Talleres',
+                "verbose_name": "Header de Talleres",
+                "verbose_name_plural": "Header de Talleres",
             },
         ),
         migrations.CreateModel(
-            name='TalleresIntroSection',
+            name="TalleresIntroSection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='¡Únete a nuestros talleres transformadores!', max_length=160, verbose_name='Título')),
-                ('paragraph1', models.TextField(blank=True, verbose_name='Párrafo 1')),
-                ('paragraph2', models.TextField(blank=True, verbose_name='Párrafo 2')),
-                ('quote', models.CharField(blank=True, max_length=255, verbose_name='Cita')),
-                ('cta_text', models.CharField(blank=True, default='Ver todos los talleres', max_length=80, verbose_name='Texto del botón')),
-                ('cta_url', models.CharField(blank=True, default='#talleres-grid', max_length=300, verbose_name='URL del botón')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="¡Únete a nuestros talleres transformadores!",
+                        max_length=160,
+                        verbose_name="Título",
+                    ),
+                ),
+                ("paragraph1", models.TextField(blank=True, verbose_name="Párrafo 1")),
+                ("paragraph2", models.TextField(blank=True, verbose_name="Párrafo 2")),
+                (
+                    "quote",
+                    models.CharField(blank=True, max_length=255, verbose_name="Cita"),
+                ),
+                (
+                    "cta_text",
+                    models.CharField(
+                        blank=True,
+                        default="Ver todos los talleres",
+                        max_length=80,
+                        verbose_name="Texto del botón",
+                    ),
+                ),
+                (
+                    "cta_url",
+                    models.CharField(
+                        blank=True,
+                        default="#talleres-grid",
+                        max_length=300,
+                        verbose_name="URL del botón",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Sección de Introducción de Talleres',
-                'verbose_name_plural': 'Sección de Introducción de Talleres',
+                "verbose_name": "Sección de Introducción de Talleres",
+                "verbose_name_plural": "Sección de Introducción de Talleres",
             },
         ),
         migrations.RenameModel(
-            old_name='Taller',
-            new_name='TallerDetail',
+            old_name="Taller",
+            new_name="TallerDetail",
         ),
         migrations.AlterModelTable(
-            name='tallerdetail',
-            table='eventos_taller',
+            name="tallerdetail",
+            table="eventos_taller",
         ),
         migrations.CreateModel(
-            name='TalleresPage',
+            name="TalleresPage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('enabled', models.BooleanField(default=True, verbose_name='Habilitado')),
-                ('header', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.talleresheader', verbose_name='Header')),
-                ('intro', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.talleresintrosection', verbose_name='Sección de Introducción')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "enabled",
+                    models.BooleanField(default=True, verbose_name="Habilitado"),
+                ),
+                (
+                    "header",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.talleresheader",
+                        verbose_name="Header",
+                    ),
+                ),
+                (
+                    "intro",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.talleresintrosection",
+                        verbose_name="Sección de Introducción",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Página de Talleres',
-                'verbose_name_plural': 'Página de Talleres',
+                "verbose_name": "Página de Talleres",
+                "verbose_name_plural": "Página de Talleres",
             },
         ),
     ]

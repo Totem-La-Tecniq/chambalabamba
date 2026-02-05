@@ -1,13 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from .models import ParticipaHeader, ParticipaPage, Estancia, InstaGallery
+from .models import ParticipaPage, Estancia
 from .models import VoluntariadoPage  # tu modelo de la captura
 from django.templatetags.static import static
 
 # participa/views.py
-from django.shortcuts import render
-from django.templatetags.static import static
 from django.http import Http404
-from .models import VoluntariadoPage  # tu modelo real
+
 
 def voluntariado(request):
     pagina = VoluntariadoPage.objects.filter(publicado=True).first()
@@ -57,21 +55,33 @@ def voluntariado(request):
 
 def estancias_list(request):
     page = ParticipaPage.objects.select_related("header").first()
-    estancias = (Estancia.objects
-                 .filter(seccion="participa_estancias", publicado=True)
-                 .order_by("orden","-creado"))
-    return render(request, "participa/estancias/estancias_list.html",
-                  {"estancias": estancias, "page": page})
+    estancias = Estancia.objects.filter(
+        seccion="participa_estancias", publicado=True
+    ).order_by("orden", "-creado")
+    return render(
+        request,
+        "participa/estancias/estancias_list.html",
+        {"estancias": estancias, "page": page},
+    )
+
 
 def estancia_detail(request, slug):
     page = ParticipaPage.objects.select_related("header").first()
     e = get_object_or_404(Estancia, slug=slug, publicado=True)
-    fotos = e.fotos.filter(publicado=True).order_by("orden","-creado")
-    specs = e.specs.all().order_by("orden","id")
-    return render(request, "participa/estancias/estancia_detail.html",
-                  {"page": page, "e": e, "fotos": fotos, "specs": specs, "phone": e.phone_whatsapp or ""})
+    fotos = e.fotos.filter(publicado=True).order_by("orden", "-creado")
+    specs = e.specs.all().order_by("orden", "id")
+    return render(
+        request,
+        "participa/estancias/estancia_detail.html",
+        {
+            "page": page,
+            "e": e,
+            "fotos": fotos,
+            "specs": specs,
+            "phone": e.phone_whatsapp or "",
+        },
+    )
 
 
-def donaciones(request,id):
-    return render(request, 'donaciones/donaciones.html')
-
+def donaciones(request, id):
+    return render(request, "donaciones/donaciones.html")

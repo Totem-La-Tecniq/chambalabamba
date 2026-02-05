@@ -4,15 +4,24 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('inicio', '0006_alter_gallery_options_alter_galleryitem_options_and_more'),
+        ("inicio", "0006_alter_gallery_options_alter_galleryitem_options_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='gallery',
-            name='seccion',
-            field=models.CharField(choices=[('home_cabecera', 'Home – Cabecera'), ('home_ult_evento', 'Home – Último evento'), ('nosotros_cabecera', 'Nosotros – Cabecera'), ('proyectos_movimiento', 'Home – Proyecto movimiento'), ('participa_estancias', 'Participa – Estancias')], default='home_cabecera', max_length=50),
+            model_name="gallery",
+            name="seccion",
+            field=models.CharField(
+                choices=[
+                    ("home_cabecera", "Home – Cabecera"),
+                    ("home_ult_evento", "Home – Último evento"),
+                    ("nosotros_cabecera", "Nosotros – Cabecera"),
+                    ("proyectos_movimiento", "Home – Proyecto movimiento"),
+                    ("participa_estancias", "Participa – Estancias"),
+                ],
+                default="home_cabecera",
+                max_length=50,
+            ),
         ),
     ]

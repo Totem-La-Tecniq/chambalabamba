@@ -5,65 +5,116 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='ProductoCategoria',
+            name="ProductoCategoria",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=120)),
-                ('slug', models.SlugField(max_length=140, unique=True)),
-                ('descripcion', models.TextField(blank=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('publicado', models.BooleanField(default=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nombre", models.CharField(max_length=120)),
+                ("slug", models.SlugField(max_length=140, unique=True)),
+                ("descripcion", models.TextField(blank=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("publicado", models.BooleanField(default=True)),
             ],
             options={
-                'verbose_name': 'Categoría de producto',
-                'verbose_name_plural': 'Categorías de producto',
-                'ordering': ['orden', 'nombre'],
+                "verbose_name": "Categoría de producto",
+                "verbose_name_plural": "Categorías de producto",
+                "ordering": ["orden", "nombre"],
             },
         ),
         migrations.CreateModel(
-            name='Producto',
+            name="Producto",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('titulo', models.CharField(max_length=180)),
-                ('slug', models.SlugField(max_length=200, unique=True)),
-                ('descripcion_corta', models.CharField(blank=True, max_length=240)),
-                ('descripcion', models.TextField(blank=True)),
-                ('imagen_portada', models.ImageField(blank=True, null=True, upload_to='productos/portadas/')),
-                ('precio', models.DecimalField(decimal_places=2, default=0, max_digits=10)),
-                ('precio_tachado', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True)),
-                ('categoria', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='productos', to='tienda.productocategoria')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("titulo", models.CharField(max_length=180)),
+                ("slug", models.SlugField(max_length=200, unique=True)),
+                ("descripcion_corta", models.CharField(blank=True, max_length=240)),
+                ("descripcion", models.TextField(blank=True)),
+                (
+                    "imagen_portada",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="productos/portadas/"
+                    ),
+                ),
+                (
+                    "precio",
+                    models.DecimalField(decimal_places=2, default=0, max_digits=10),
+                ),
+                (
+                    "precio_tachado",
+                    models.DecimalField(
+                        blank=True, decimal_places=2, max_digits=10, null=True
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("creado", models.DateTimeField(auto_now_add=True)),
+                (
+                    "categoria",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="productos",
+                        to="tienda.productocategoria",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Producto',
-                'verbose_name_plural': 'Productos',
-                'ordering': ['orden', '-creado'],
+                "verbose_name": "Producto",
+                "verbose_name_plural": "Productos",
+                "ordering": ["orden", "-creado"],
             },
         ),
         migrations.CreateModel(
-            name='ProductoImagen',
+            name="ProductoImagen",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('imagen', models.ImageField(upload_to='productos/items/')),
-                ('alt', models.CharField(blank=True, max_length=140)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('publicado', models.BooleanField(default=True)),
-                ('producto', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='imagenes', to='tienda.producto')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("imagen", models.ImageField(upload_to="productos/items/")),
+                ("alt", models.CharField(blank=True, max_length=140)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("publicado", models.BooleanField(default=True)),
+                (
+                    "producto",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="imagenes",
+                        to="tienda.producto",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Imagen de producto',
-                'verbose_name_plural': 'Imágenes de producto',
-                'ordering': ['orden', 'id'],
+                "verbose_name": "Imagen de producto",
+                "verbose_name_plural": "Imágenes de producto",
+                "ordering": ["orden", "id"],
             },
         ),
     ]

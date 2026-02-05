@@ -4,18 +4,24 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('participa', '0017_estanciasintro'),
+        ("participa", "0017_estanciasintro"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='estancia',
-            options={'ordering': ['orden', '-creado'], 'verbose_name': '3) Galeria Estancias', 'verbose_name_plural': '3) Galeria Estancias'},
+            name="estancia",
+            options={
+                "ordering": ["orden", "-creado"],
+                "verbose_name": "3) Galeria Estancias",
+                "verbose_name_plural": "3) Galeria Estancias",
+            },
         ),
         migrations.AlterModelOptions(
-            name='participapage',
-            options={'verbose_name': '3) Página: Galeria Estancias', 'verbose_name_plural': '3) Página: Participa/Estancias'},
+            name="participapage",
+            options={
+                "verbose_name": "3) Página: Galeria Estancias",
+                "verbose_name_plural": "3) Página: Participa/Estancias",
+            },
         ),
     ]

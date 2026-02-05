@@ -5,104 +5,291 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('eventos', '0012_retirosactivitiessection_retirosgallerysection_and_more'),
+        ("eventos", "0012_retirosactivitiessection_retirosgallerysection_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='TerapiasBenefitsSection',
+            name="TerapiasBenefitsSection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Beneficios de Nuestras Terapias', max_length=160, verbose_name='Título')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Beneficios de Nuestras Terapias",
+                        max_length=160,
+                        verbose_name="Título",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': '6.3 Sección: Beneficios de Terapias',
-                'verbose_name_plural': '6.3 Sección: Beneficios de Terapias',
+                "verbose_name": "6.3 Sección: Beneficios de Terapias",
+                "verbose_name_plural": "6.3 Sección: Beneficios de Terapias",
             },
         ),
         migrations.CreateModel(
-            name='TerapiasGallerySection',
+            name="TerapiasGallerySection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Espacios de Contención y Sanación', max_length=160, verbose_name='Título')),
-                ('paragraph', models.TextField(blank=True, verbose_name='Párrafo')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Espacios de Contención y Sanación",
+                        max_length=160,
+                        verbose_name="Título",
+                    ),
+                ),
+                ("paragraph", models.TextField(blank=True, verbose_name="Párrafo")),
             ],
             options={
-                'verbose_name': '6.4 Sección: Galería de Terapias',
-                'verbose_name_plural': '6.4 Sección: Galería de Terapias',
+                "verbose_name": "6.4 Sección: Galería de Terapias",
+                "verbose_name_plural": "6.4 Sección: Galería de Terapias",
             },
         ),
         migrations.CreateModel(
-            name='TerapiasHeader',
+            name="TerapiasHeader",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Terapias', max_length=120, verbose_name='Título')),
-                ('breadcrumb_label', models.CharField(default='Terapias', max_length=120, verbose_name='Breadcrumb actual')),
-                ('background', models.ImageField(blank=True, help_text='Imagen de fondo del header', null=True, upload_to='eventos/')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Terapias", max_length=120, verbose_name="Título"
+                    ),
+                ),
+                (
+                    "breadcrumb_label",
+                    models.CharField(
+                        default="Terapias",
+                        max_length=120,
+                        verbose_name="Breadcrumb actual",
+                    ),
+                ),
+                (
+                    "background",
+                    models.ImageField(
+                        blank=True,
+                        help_text="Imagen de fondo del header",
+                        null=True,
+                        upload_to="eventos/",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': '6.1 Sección: Header de Terapias',
-                'verbose_name_plural': '6.1 Sección: Header de Terapias',
+                "verbose_name": "6.1 Sección: Header de Terapias",
+                "verbose_name_plural": "6.1 Sección: Header de Terapias",
             },
         ),
         migrations.CreateModel(
-            name='TerapiasIntroSection',
+            name="TerapiasIntroSection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('main_image', models.ImageField(blank=True, help_text='Imagen principal de la sección de introducción', null=True, upload_to='eventos/')),
-                ('title', models.CharField(default='Sanación y Equilibrio para tu Ser', max_length=160, verbose_name='Título')),
-                ('paragraph', models.TextField(blank=True, verbose_name='Párrafo')),
-                ('sidebar_title', models.CharField(default='Bienestar', max_length=160, verbose_name='Título del sidebar')),
-                ('sidebar_subtitle', models.CharField(default='Físico, emocional, mental, espiritual', max_length=160, verbose_name='Subtítulo del sidebar')),
-                ('sidebar_paragraph', models.TextField(blank=True, verbose_name='Párrafo del sidebar')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "main_image",
+                    models.ImageField(
+                        blank=True,
+                        help_text="Imagen principal de la sección de introducción",
+                        null=True,
+                        upload_to="eventos/",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        default="Sanación y Equilibrio para tu Ser",
+                        max_length=160,
+                        verbose_name="Título",
+                    ),
+                ),
+                ("paragraph", models.TextField(blank=True, verbose_name="Párrafo")),
+                (
+                    "sidebar_title",
+                    models.CharField(
+                        default="Bienestar",
+                        max_length=160,
+                        verbose_name="Título del sidebar",
+                    ),
+                ),
+                (
+                    "sidebar_subtitle",
+                    models.CharField(
+                        default="Físico, emocional, mental, espiritual",
+                        max_length=160,
+                        verbose_name="Subtítulo del sidebar",
+                    ),
+                ),
+                (
+                    "sidebar_paragraph",
+                    models.TextField(blank=True, verbose_name="Párrafo del sidebar"),
+                ),
             ],
             options={
-                'verbose_name': '6.2 Sección: Introducción de Terapias',
-                'verbose_name_plural': '6.2 Sección: Introducción de Terapias',
+                "verbose_name": "6.2 Sección: Introducción de Terapias",
+                "verbose_name_plural": "6.2 Sección: Introducción de Terapias",
             },
         ),
         migrations.CreateModel(
-            name='TerapiaBenefit',
+            name="TerapiaBenefit",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=120, verbose_name='Título')),
-                ('description', models.TextField(verbose_name='Descripción')),
-                ('section', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='benefits', to='eventos.terapiasbenefitssection')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=120, verbose_name="Título")),
+                ("description", models.TextField(verbose_name="Descripción")),
+                (
+                    "section",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="benefits",
+                        to="eventos.terapiasbenefitssection",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Beneficio de Terapia',
-                'verbose_name_plural': 'Beneficios de Terapias',
+                "verbose_name": "Beneficio de Terapia",
+                "verbose_name_plural": "Beneficios de Terapias",
             },
         ),
         migrations.CreateModel(
-            name='TerapiasGalleryImage',
+            name="TerapiasGalleryImage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(help_text='Imagen para la galería', upload_to='eventos/gallery/')),
-                ('alt_text', models.CharField(blank=True, max_length=255, verbose_name='Texto alternativo')),
-                ('section', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='images', to='eventos.terapiasgallerysection')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        help_text="Imagen para la galería", upload_to="eventos/gallery/"
+                    ),
+                ),
+                (
+                    "alt_text",
+                    models.CharField(
+                        blank=True, max_length=255, verbose_name="Texto alternativo"
+                    ),
+                ),
+                (
+                    "section",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="images",
+                        to="eventos.terapiasgallerysection",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Imagen de la Galería de Terapias',
-                'verbose_name_plural': 'Imágenes de la Galería de Terapias',
+                "verbose_name": "Imagen de la Galería de Terapias",
+                "verbose_name_plural": "Imágenes de la Galería de Terapias",
             },
         ),
         migrations.CreateModel(
-            name='TerapiasPage',
+            name="TerapiasPage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('enabled', models.BooleanField(default=True, verbose_name='Habilitado')),
-                ('second_quote', models.TextField(blank=True, verbose_name='Segunda Cita')),
-                ('benefits_section', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.terapiasbenefitssection', verbose_name='Sección de Beneficios')),
-                ('gallery_section', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.terapiasgallerysection', verbose_name='Sección de Galería')),
-                ('header', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.terapiasheader', verbose_name='Header')),
-                ('intro', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='eventos.terapiasintrosection', verbose_name='Sección de Introducción')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "enabled",
+                    models.BooleanField(default=True, verbose_name="Habilitado"),
+                ),
+                (
+                    "second_quote",
+                    models.TextField(blank=True, verbose_name="Segunda Cita"),
+                ),
+                (
+                    "benefits_section",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.terapiasbenefitssection",
+                        verbose_name="Sección de Beneficios",
+                    ),
+                ),
+                (
+                    "gallery_section",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.terapiasgallerysection",
+                        verbose_name="Sección de Galería",
+                    ),
+                ),
+                (
+                    "header",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.terapiasheader",
+                        verbose_name="Header",
+                    ),
+                ),
+                (
+                    "intro",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="eventos.terapiasintrosection",
+                        verbose_name="Sección de Introducción",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': '6. Página: Terapias',
-                'verbose_name_plural': '6. Página: Terapias',
+                "verbose_name": "6. Página: Terapias",
+                "verbose_name_plural": "6. Página: Terapias",
             },
         ),
     ]

@@ -11,6 +11,7 @@ from .models import TipoUsuario, PerfilUsuario
 User = get_user_model()
 ROLE_PREFIX = "role:"
 
+
 def role_group_name(slug: str) -> str:
     return f"{ROLE_PREFIX}{slug or 'externo'}"
 
@@ -36,7 +37,10 @@ def seed_tipos_and_groups(sender, **kwargs):
 
         externo, _ = TipoUsuario.objects.get_or_create(
             slug="externo",
-            defaults={"nombre": "Externo", "descripcion": "Usuario externo por defecto"},
+            defaults={
+                "nombre": "Externo",
+                "descripcion": "Usuario externo por defecto",
+            },
         )
         residente, _ = TipoUsuario.objects.get_or_create(
             slug="residente",

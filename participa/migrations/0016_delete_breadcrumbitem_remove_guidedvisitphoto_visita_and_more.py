@@ -4,30 +4,29 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('participa', '0015_innerheader'),
+        ("participa", "0015_innerheader"),
     ]
 
     operations = [
         migrations.DeleteModel(
-            name='BreadcrumbItem',
+            name="BreadcrumbItem",
         ),
         migrations.RemoveField(
-            model_name='guidedvisitphoto',
-            name='visita',
+            model_name="guidedvisitphoto",
+            name="visita",
         ),
         migrations.DeleteModel(
-            name='InnerHeader',
+            name="InnerHeader",
         ),
         migrations.RemoveField(
-            model_name='guidedvisitspage',
-            name='breadcrumb_slug',
+            model_name="guidedvisitspage",
+            name="breadcrumb_slug",
         ),
         migrations.DeleteModel(
-            name='GuidedVisit',
+            name="GuidedVisit",
         ),
         migrations.DeleteModel(
-            name='GuidedVisitPhoto',
+            name="GuidedVisitPhoto",
         ),
     ]

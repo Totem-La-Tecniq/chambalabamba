@@ -4,12 +4,16 @@ from django.core.management.base import BaseCommand
 from django.conf import settings
 from django.apps import apps
 
+
 class Command(BaseCommand):
     help = "Asegura un flyer por defecto en Placement 'home_hero' (idempotente)."
 
     def add_arguments(self, parser):
-        parser.add_argument("--once", action="store_true",
-                            help="No hace nada si el placement ya tiene flyer.")
+        parser.add_argument(
+            "--once",
+            action="store_true",
+            help="No hace nada si el placement ya tiene flyer.",
+        )
 
     def handle(self, *args, **opts):
         Placement = apps.get_model("contenido", "Placement")
@@ -21,11 +25,15 @@ class Command(BaseCommand):
         )
 
         if opts["once"] and placement.flyer_id:
-            self.stdout.write(self.style.SUCCESS("Seed: ya existía flyer en home_hero."))
+            self.stdout.write(
+                self.style.SUCCESS("Seed: ya existía flyer en home_hero.")
+            )
             return
 
         if not placement.flyer_id:
-            img_path = Path(settings.BASE_DIR) / "core" / "static" / "seed" / "flyer-demo.jpg"
+            img_path = (
+                Path(settings.BASE_DIR) / "core" / "static" / "seed" / "flyer-demo.jpg"
+            )
             if not img_path.exists():
                 self.stderr.write(f"No encuentro {img_path}")
                 return

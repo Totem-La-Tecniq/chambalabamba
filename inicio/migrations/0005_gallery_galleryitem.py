@@ -6,50 +6,117 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('inicio', '0004_alter_heroslide_actualizado_and_more'),
+        ("inicio", "0004_alter_heroslide_actualizado_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Gallery',
+            name="Gallery",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True, db_default=django.db.models.functions.datetime.Now())),
-                ('actualizado', models.DateTimeField(auto_now=True, db_default=django.db.models.functions.datetime.Now())),
-                ('titulo', models.CharField(max_length=200)),
-                ('slug', models.SlugField(blank=True, max_length=220, unique=True)),
-                ('seccion', models.CharField(choices=[('home_cabecera', 'Home – Cabecera'), ('home_ult_evento', 'Home – Último evento'), ('nosotros_cabecera', 'Nosotros – Cabecera')], default='home_cabecera', max_length=50)),
-                ('descripcion', models.TextField(blank=True)),
-                ('portadas', models.ImageField(blank=True, upload_to='inicio/galerias/portadas/')),
-                ('alt_portada', models.CharField(blank=True, max_length=200)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                (
+                    "creado",
+                    models.DateTimeField(
+                        auto_now_add=True,
+                        db_default=django.db.models.functions.datetime.Now(),
+                    ),
+                ),
+                (
+                    "actualizado",
+                    models.DateTimeField(
+                        auto_now=True,
+                        db_default=django.db.models.functions.datetime.Now(),
+                    ),
+                ),
+                ("titulo", models.CharField(max_length=200)),
+                ("slug", models.SlugField(blank=True, max_length=220, unique=True)),
+                (
+                    "seccion",
+                    models.CharField(
+                        choices=[
+                            ("home_cabecera", "Home – Cabecera"),
+                            ("home_ult_evento", "Home – Último evento"),
+                            ("nosotros_cabecera", "Nosotros – Cabecera"),
+                        ],
+                        default="home_cabecera",
+                        max_length=50,
+                    ),
+                ),
+                ("descripcion", models.TextField(blank=True)),
+                (
+                    "portadas",
+                    models.ImageField(
+                        blank=True, upload_to="inicio/galerias/portadas/"
+                    ),
+                ),
+                ("alt_portada", models.CharField(blank=True, max_length=200)),
             ],
             options={
-                'ordering': ['orden', '-creado'],
-                'abstract': False,
+                "ordering": ["orden", "-creado"],
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='GalleryItem',
+            name="GalleryItem",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True, db_default=django.db.models.functions.datetime.Now())),
-                ('actualizado', models.DateTimeField(auto_now=True, db_default=django.db.models.functions.datetime.Now())),
-                ('titulo', models.CharField(blank=True, max_length=200)),
-                ('imagen', models.ImageField(upload_to='inicio/galerias/items/')),
-                ('alt', models.CharField(blank=True, max_length=200)),
-                ('credito', models.CharField(blank=True, max_length=200)),
-                ('tags', models.CharField(blank=True, help_text='Separar por comas', max_length=200)),
-                ('galeria', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', to='inicio.gallery')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                (
+                    "creado",
+                    models.DateTimeField(
+                        auto_now_add=True,
+                        db_default=django.db.models.functions.datetime.Now(),
+                    ),
+                ),
+                (
+                    "actualizado",
+                    models.DateTimeField(
+                        auto_now=True,
+                        db_default=django.db.models.functions.datetime.Now(),
+                    ),
+                ),
+                ("titulo", models.CharField(blank=True, max_length=200)),
+                ("imagen", models.ImageField(upload_to="inicio/galerias/items/")),
+                ("alt", models.CharField(blank=True, max_length=200)),
+                ("credito", models.CharField(blank=True, max_length=200)),
+                (
+                    "tags",
+                    models.CharField(
+                        blank=True, help_text="Separar por comas", max_length=200
+                    ),
+                ),
+                (
+                    "galeria",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="items",
+                        to="inicio.gallery",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['orden', '-creado'],
-                'abstract': False,
+                "ordering": ["orden", "-creado"],
+                "abstract": False,
             },
         ),
     ]

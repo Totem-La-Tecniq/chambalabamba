@@ -4,20 +4,26 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('eventos', '0006_festivalesheader_festivalesintrosection_and_more'),
+        ("eventos", "0006_festivalesheader_festivalesintrosection_and_more"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='festival',
-            name='flyer',
-            field=models.ImageField(blank=True, null=True, upload_to='festivales/flyers', verbose_name='Flyer'),
+            model_name="festival",
+            name="flyer",
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to="festivales/flyers",
+                verbose_name="Flyer",
+            ),
         ),
         migrations.AlterField(
-            model_name='festival',
-            name='image',
-            field=models.ImageField(blank=True, null=True, upload_to='festivales', verbose_name='Imagen'),
+            model_name="festival",
+            name="image",
+            field=models.ImageField(
+                blank=True, null=True, upload_to="festivales", verbose_name="Imagen"
+            ),
         ),
     ]

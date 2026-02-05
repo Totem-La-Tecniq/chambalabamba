@@ -6,74 +6,166 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Estancia',
+            name="Estancia",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True, db_default=django.db.models.functions.datetime.Now())),
-                ('actualizado', models.DateTimeField(auto_now=True, db_default=django.db.models.functions.datetime.Now())),
-                ('titulo', models.CharField(max_length=200)),
-                ('slug', models.SlugField(blank=True, max_length=220, unique=True)),
-                ('seccion', models.CharField(choices=[('participa_estancias', 'Participa – Estancias')], default='participa_estancias', max_length=50)),
-                ('resumen', models.TextField(blank=True)),
-                ('descripcion', models.TextField(blank=True)),
-                ('tipo', models.CharField(blank=True, max_length=120)),
-                ('lugar', models.CharField(blank=True, default='Ecocentro Chambalabamba', max_length=200)),
-                ('portadas', models.ImageField(blank=True, upload_to='estancias/portadas/')),
-                ('alt_portada', models.CharField(blank=True, max_length=200)),
-                ('precio', models.DecimalField(blank=True, decimal_places=2, max_digits=8, null=True)),
-                ('precio_tachado', models.DecimalField(blank=True, decimal_places=2, max_digits=8, null=True)),
-                ('phone_whatsapp', models.CharField(blank=True, help_text='Solo números con código de país, ej: 5939XXXXXXX', max_length=32)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                (
+                    "creado",
+                    models.DateTimeField(
+                        auto_now_add=True,
+                        db_default=django.db.models.functions.datetime.Now(),
+                    ),
+                ),
+                (
+                    "actualizado",
+                    models.DateTimeField(
+                        auto_now=True,
+                        db_default=django.db.models.functions.datetime.Now(),
+                    ),
+                ),
+                ("titulo", models.CharField(max_length=200)),
+                ("slug", models.SlugField(blank=True, max_length=220, unique=True)),
+                (
+                    "seccion",
+                    models.CharField(
+                        choices=[("participa_estancias", "Participa – Estancias")],
+                        default="participa_estancias",
+                        max_length=50,
+                    ),
+                ),
+                ("resumen", models.TextField(blank=True)),
+                ("descripcion", models.TextField(blank=True)),
+                ("tipo", models.CharField(blank=True, max_length=120)),
+                (
+                    "lugar",
+                    models.CharField(
+                        blank=True, default="Ecocentro Chambalabamba", max_length=200
+                    ),
+                ),
+                (
+                    "portadas",
+                    models.ImageField(blank=True, upload_to="estancias/portadas/"),
+                ),
+                ("alt_portada", models.CharField(blank=True, max_length=200)),
+                (
+                    "precio",
+                    models.DecimalField(
+                        blank=True, decimal_places=2, max_digits=8, null=True
+                    ),
+                ),
+                (
+                    "precio_tachado",
+                    models.DecimalField(
+                        blank=True, decimal_places=2, max_digits=8, null=True
+                    ),
+                ),
+                (
+                    "phone_whatsapp",
+                    models.CharField(
+                        blank=True,
+                        help_text="Solo números con código de país, ej: 5939XXXXXXX",
+                        max_length=32,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Estancia',
-                'verbose_name_plural': 'Estancias',
-                'ordering': ['orden', '-creado'],
-                'abstract': False,
+                "verbose_name": "Estancia",
+                "verbose_name_plural": "Estancias",
+                "ordering": ["orden", "-creado"],
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='EstanciaFoto',
+            name="EstanciaFoto",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True, db_default=django.db.models.functions.datetime.Now())),
-                ('actualizado', models.DateTimeField(auto_now=True, db_default=django.db.models.functions.datetime.Now())),
-                ('titulo', models.CharField(blank=True, max_length=200)),
-                ('imagen', models.ImageField(upload_to='estancias/fotos/')),
-                ('alt', models.CharField(blank=True, max_length=200)),
-                ('estancia', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='fotos', to='participa.estancia')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                (
+                    "creado",
+                    models.DateTimeField(
+                        auto_now_add=True,
+                        db_default=django.db.models.functions.datetime.Now(),
+                    ),
+                ),
+                (
+                    "actualizado",
+                    models.DateTimeField(
+                        auto_now=True,
+                        db_default=django.db.models.functions.datetime.Now(),
+                    ),
+                ),
+                ("titulo", models.CharField(blank=True, max_length=200)),
+                ("imagen", models.ImageField(upload_to="estancias/fotos/")),
+                ("alt", models.CharField(blank=True, max_length=200)),
+                (
+                    "estancia",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="fotos",
+                        to="participa.estancia",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Foto de estancia',
-                'verbose_name_plural': 'Fotos de estancias',
-                'ordering': ['orden', '-creado'],
-                'abstract': False,
+                "verbose_name": "Foto de estancia",
+                "verbose_name_plural": "Fotos de estancias",
+                "ordering": ["orden", "-creado"],
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='EstanciaSpec',
+            name="EstanciaSpec",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('clave', models.CharField(max_length=120)),
-                ('valor', models.TextField()),
-                ('estancia', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='specs', to='participa.estancia')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("clave", models.CharField(max_length=120)),
+                ("valor", models.TextField()),
+                (
+                    "estancia",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="specs",
+                        to="participa.estancia",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Especificación',
-                'verbose_name_plural': 'Especificaciones',
-                'ordering': ['orden', 'id'],
+                "verbose_name": "Especificación",
+                "verbose_name_plural": "Especificaciones",
+                "ordering": ["orden", "id"],
             },
         ),
     ]

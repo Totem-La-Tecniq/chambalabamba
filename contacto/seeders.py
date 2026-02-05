@@ -6,6 +6,7 @@ SEEDS = [
     ("contacto_static_default.json", "contacto:static_default:v1"),
 ]
 
+
 def _seed_contacto_once(sender, **kwargs):
     if sender.label != "contacto":
         return
@@ -22,7 +23,9 @@ def _seed_contacto_once(sender, **kwargs):
 
             fixture_path = base_dir / "fixtures" / filename
             if not fixture_path.exists():
-                print(f"[seed_contacto] Skipped: Fixture '{fixture_path}' does not exist.")
+                print(
+                    f"[seed_contacto] Skipped: Fixture '{fixture_path}' does not exist."
+                )
                 continue
 
             call_command("loaddata", str(fixture_path), verbosity=0)

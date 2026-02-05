@@ -6,6 +6,7 @@ from django.dispatch import receiver
 
 SEED_TAG = "tienda:v7"  # súbelo (v2, v3, …) cuando quieras resembrar
 
+
 @receiver(post_migrate)
 def _seed_tienda_once(sender, **kwargs):
     # Correr solo cuando migra esta app
@@ -25,7 +26,7 @@ def _seed_tienda_once(sender, **kwargs):
         # Ruta a fixtures de la app tienda
         fixtures_dir = Path(__file__).resolve().parent / "fixtures"
         fixtures = [
-            "tienda_seed.json",        # Categorías + Productos (usa imagen_portada)
+            "tienda_seed.json",  # Categorías + Productos (usa imagen_portada)
             # "tienda_imagenes.json",  # (opcional) ProductoImagen si luego agregas galería
         ]
 

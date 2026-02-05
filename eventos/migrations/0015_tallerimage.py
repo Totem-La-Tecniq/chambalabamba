@@ -5,23 +5,47 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('eventos', '0014_festivalimage'),
+        ("eventos", "0014_festivalimage"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='TallerImage',
+            name="TallerImage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(upload_to='talleres/gallery/', verbose_name='Imagen de Galería')),
-                ('alt_text', models.CharField(blank=True, max_length=255, verbose_name='Texto alternativo')),
-                ('taller', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='gallery_images', to='eventos.tallerdetail')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        upload_to="talleres/gallery/", verbose_name="Imagen de Galería"
+                    ),
+                ),
+                (
+                    "alt_text",
+                    models.CharField(
+                        blank=True, max_length=255, verbose_name="Texto alternativo"
+                    ),
+                ),
+                (
+                    "taller",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="gallery_images",
+                        to="eventos.tallerdetail",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Imagen de Galería del Taller',
-                'verbose_name_plural': 'Imágenes de Galería del Taller',
+                "verbose_name": "Imagen de Galería del Taller",
+                "verbose_name_plural": "Imágenes de Galería del Taller",
             },
         ),
     ]

@@ -5,83 +5,179 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('nosotros', '0005_remove_pilarproyecto_pilar_delete_pilarpage_and_more'),
+        ("nosotros", "0005_remove_pilarproyecto_pilar_delete_pilarpage_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='PageHeader',
+            name="PageHeader",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default='Nosotros', max_length=120)),
-                ('breadcrumb_label', models.CharField(blank=True, help_text='Texto del breadcrumb nivel 2/3', max_length=120)),
-                ('background', models.ImageField(blank=True, null=True, upload_to='nosotros/headers/')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(default="Nosotros", max_length=120)),
+                (
+                    "breadcrumb_label",
+                    models.CharField(
+                        blank=True,
+                        help_text="Texto del breadcrumb nivel 2/3",
+                        max_length=120,
+                    ),
+                ),
+                (
+                    "background",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="nosotros/headers/"
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='PilarPage',
+            name="PilarPage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('slug', models.SlugField(choices=[('ecologia', 'Ecología'), ('economia', 'Economía comunitaria'), ('bienestar', 'Bienestar integral'), ('sociocultural', 'Sociocultural')], unique=True)),
-                ('hero_image', models.ImageField(blank=True, null=True, upload_to='nosotros/pilares/hero/')),
-                ('title', models.CharField(default='Pilar', max_length=150)),
-                ('lead', models.TextField(blank=True)),
-                ('header', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='nosotros.pageheader')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "slug",
+                    models.SlugField(
+                        choices=[
+                            ("ecologia", "Ecología"),
+                            ("economia", "Economía comunitaria"),
+                            ("bienestar", "Bienestar integral"),
+                            ("sociocultural", "Sociocultural"),
+                        ],
+                        unique=True,
+                    ),
+                ),
+                (
+                    "hero_image",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="nosotros/pilares/hero/"
+                    ),
+                ),
+                ("title", models.CharField(default="Pilar", max_length=150)),
+                ("lead", models.TextField(blank=True)),
+                (
+                    "header",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="nosotros.pageheader",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Pilar',
-                'verbose_name_plural': 'Pilares',
+                "verbose_name": "Pilar",
+                "verbose_name_plural": "Pilares",
             },
         ),
         migrations.CreateModel(
-            name='PilarParagraph',
+            name="PilarParagraph",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True)),
-                ('actualizado', models.DateTimeField(auto_now=True)),
-                ('body', models.TextField()),
-                ('page', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='paragraphs', to='nosotros.pilarpage')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("creado", models.DateTimeField(auto_now_add=True)),
+                ("actualizado", models.DateTimeField(auto_now=True)),
+                ("body", models.TextField()),
+                (
+                    "page",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="paragraphs",
+                        to="nosotros.pilarpage",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['orden', '-creado'],
-                'abstract': False,
+                "ordering": ["orden", "-creado"],
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='PilarQuote',
+            name="PilarQuote",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True)),
-                ('actualizado', models.DateTimeField(auto_now=True)),
-                ('text', models.TextField()),
-                ('page', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='quotes', to='nosotros.pilarpage')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("creado", models.DateTimeField(auto_now_add=True)),
+                ("actualizado", models.DateTimeField(auto_now=True)),
+                ("text", models.TextField()),
+                (
+                    "page",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="quotes",
+                        to="nosotros.pilarpage",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['orden', '-creado'],
-                'abstract': False,
+                "ordering": ["orden", "-creado"],
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='PilarSidebarWidget',
+            name="PilarSidebarWidget",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True)),
-                ('actualizado', models.DateTimeField(auto_now=True)),
-                ('title', models.CharField(max_length=120)),
-                ('text', models.TextField()),
-                ('page', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='sidebar', to='nosotros.pilarpage')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("creado", models.DateTimeField(auto_now_add=True)),
+                ("actualizado", models.DateTimeField(auto_now=True)),
+                ("title", models.CharField(max_length=120)),
+                ("text", models.TextField()),
+                (
+                    "page",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="sidebar",
+                        to="nosotros.pilarpage",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['orden', '-creado'],
-                'abstract': False,
+                "ordering": ["orden", "-creado"],
+                "abstract": False,
             },
         ),
     ]

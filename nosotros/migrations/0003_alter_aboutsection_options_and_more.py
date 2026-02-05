@@ -4,38 +4,63 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('nosotros', '0002_alter_ecoaldeacard_icon_alter_ecoaldeacard_link_text_and_more'),
+        (
+            "nosotros",
+            "0002_alter_ecoaldeacard_icon_alter_ecoaldeacard_link_text_and_more",
+        ),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='aboutsection',
-            options={'verbose_name': '3. Sección: Acerca + Video / About + Video', 'verbose_name_plural': '3. Sección: Acerca + Video / About + Video'},
+            name="aboutsection",
+            options={
+                "verbose_name": "3. Sección: Acerca + Video / About + Video",
+                "verbose_name_plural": "3. Sección: Acerca + Video / About + Video",
+            },
         ),
         migrations.AlterModelOptions(
-            name='ecoaldeacard',
-            options={'ordering': ['order'], 'verbose_name': 'Tarjeta EcoAldea / EcoVillage Card', 'verbose_name_plural': 'Tarjeta EcoAldea / EcoVillage Card'},
+            name="ecoaldeacard",
+            options={
+                "ordering": ["order"],
+                "verbose_name": "Tarjeta EcoAldea / EcoVillage Card",
+                "verbose_name_plural": "Tarjeta EcoAldea / EcoVillage Card",
+            },
         ),
         migrations.AlterModelOptions(
-            name='ecoaldeasection',
-            options={'verbose_name': '5. Sección: EcoAldea / EcoVillage Section', 'verbose_name_plural': '5. Sección: EcoAldea / EcoVillage Section'},
+            name="ecoaldeasection",
+            options={
+                "verbose_name": "5. Sección: EcoAldea / EcoVillage Section",
+                "verbose_name_plural": "5. Sección: EcoAldea / EcoVillage Section",
+            },
         ),
         migrations.AlterModelOptions(
-            name='historysection',
-            options={'verbose_name': '4. Sección: Historia / History Section', 'verbose_name_plural': '4. Sección: Historia / History Section'},
+            name="historysection",
+            options={
+                "verbose_name": "4. Sección: Historia / History Section",
+                "verbose_name_plural": "4. Sección: Historia / History Section",
+            },
         ),
         migrations.AlterModelOptions(
-            name='innerheader',
-            options={'verbose_name': '2. Sección: Cabecera / Header Section', 'verbose_name_plural': '2. Sección: Cabecera / Header Section'},
+            name="innerheader",
+            options={
+                "verbose_name": "2. Sección: Cabecera / Header Section",
+                "verbose_name_plural": "2. Sección: Cabecera / Header Section",
+            },
         ),
         migrations.AlterModelOptions(
-            name='nosotrospage',
-            options={'verbose_name': '1. Página: Nosotros / About Us Page', 'verbose_name_plural': '1. Página: Nosotros / About Us Page'},
+            name="nosotrospage",
+            options={
+                "verbose_name": "1. Página: Nosotros / About Us Page",
+                "verbose_name_plural": "1. Página: Nosotros / About Us Page",
+            },
         ),
         migrations.AlterModelOptions(
-            name='timelineperiod',
-            options={'ordering': ['order'], 'verbose_name': 'Periodo (Timeline) / Timeline Period', 'verbose_name_plural': 'Periodos (Timeline) / Timeline Periods'},
+            name="timelineperiod",
+            options={
+                "ordering": ["order"],
+                "verbose_name": "Periodo (Timeline) / Timeline Period",
+                "verbose_name_plural": "Periodos (Timeline) / Timeline Periods",
+            },
         ),
     ]

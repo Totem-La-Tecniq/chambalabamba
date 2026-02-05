@@ -4,11 +4,8 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('inicio', '0016_alter_gallery_options_alter_heroslide_options_and_more'),
+        ("inicio", "0016_alter_gallery_options_alter_heroslide_options_and_more"),
     ]
 
-    operations = [
-
-    ]
+    operations = []

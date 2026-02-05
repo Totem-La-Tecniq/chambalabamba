@@ -3,15 +3,17 @@ from inicio.models import Gallery, SectionHeader
 
 register = template.Library()
 
+
 @register.inclusion_tag("inicio/_gallery_headers_component.html")
 def gallery_headers(seccion, title=None, subtitle=None, limit=None):
-    qs = (Gallery.objects
-          .filter(seccion=seccion, publicado=True)
-          .exclude(portada="")
-          .order_by("orden", "-creado"))
+    qs = (
+        Gallery.objects.filter(seccion=seccion, publicado=True)
+        .exclude(portada="")
+        .order_by("orden", "-creado")
+    )
     if limit:
         try:
-            qs = qs[:int(limit)]
+            qs = qs[: int(limit)]
         except (TypeError, ValueError):
             pass
 

@@ -4,14 +4,17 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('inicio', '0012_alter_gallery_seccion'),
+        ("inicio", "0012_alter_gallery_seccion"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='heroslide',
-            options={'ordering': ['orden', '-creado'], 'verbose_name': 'Cabecera', 'verbose_name_plural': 'Cabeceras'},
+            name="heroslide",
+            options={
+                "ordering": ["orden", "-creado"],
+                "verbose_name": "Cabecera",
+                "verbose_name_plural": "Cabeceras",
+            },
         ),
     ]

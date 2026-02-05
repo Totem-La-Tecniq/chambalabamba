@@ -4,22 +4,33 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('inicio', '0014_delete_proyectocard_alter_valorcard_options'),
+        ("inicio", "0014_delete_proyectocard_alter_valorcard_options"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='gallery',
-            options={'ordering': ['orden', '-creado'], 'verbose_name': '3. Galerias', 'verbose_name_plural': '3. Galerias'},
+            name="gallery",
+            options={
+                "ordering": ["orden", "-creado"],
+                "verbose_name": "3. Galerias",
+                "verbose_name_plural": "3. Galerias",
+            },
         ),
         migrations.AlterModelOptions(
-            name='heroslide',
-            options={'ordering': ['orden', '-creado'], 'verbose_name': '1. Cabeceras', 'verbose_name_plural': '1. Cabeceras'},
+            name="heroslide",
+            options={
+                "ordering": ["orden", "-creado"],
+                "verbose_name": "1. Cabeceras",
+                "verbose_name_plural": "1. Cabeceras",
+            },
         ),
         migrations.AlterModelOptions(
-            name='valorcard',
-            options={'ordering': ['orden', '-creado'], 'verbose_name': '2. Pilares', 'verbose_name_plural': '2. Pilares'},
+            name="valorcard",
+            options={
+                "ordering": ["orden", "-creado"],
+                "verbose_name": "2. Pilares",
+                "verbose_name_plural": "2. Pilares",
+            },
         ),
     ]

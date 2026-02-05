@@ -3,6 +3,7 @@ from django.db import connection, transaction
 
 SEED_TAG = "eventos:v5"  # cámbialo a v5 cuando quieras resembrar
 
+
 def _seed_eventos_once(sender, **kwargs):
     with connection.cursor() as cur, transaction.atomic():
         # Crear tabla ledger si no existe
@@ -14,7 +15,16 @@ def _seed_eventos_once(sender, **kwargs):
             return
 
         # Cargar fixtures en orden
-        fixtures = ["festivales", "talleres", "talleres_page", "festivales_page", "artes_page", "escuela_page", "retiros_page", "terapias_page"]
+        fixtures = [
+            "festivales",
+            "talleres",
+            "talleres_page",
+            "festivales_page",
+            "artes_page",
+            "escuela_page",
+            "retiros_page",
+            "terapias_page",
+        ]
         for fx in fixtures:
             call_command("loaddata", fx, verbosity=0)
             print(f"[seed_eventos] Cargado fixture: {fx}")

@@ -6,11 +6,14 @@ from django.db.models.functions import Now
 
 # --- Header + Página (patrón similar a 'Nosotros') ---
 
-from django.db import models
 
 class EstanciasIntro(models.Model):
-    page = models.OneToOneField("ParticipaPage", on_delete=models.CASCADE, related_name="intro")
-    title = models.CharField(max_length=160, default="¡Vive Eco-Centro Chambalabamba: Elige tu estancia!")
+    page = models.OneToOneField(
+        "ParticipaPage", on_delete=models.CASCADE, related_name="intro"
+    )
+    title = models.CharField(
+        max_length=160, default="¡Vive Eco-Centro Chambalabamba: Elige tu estancia!"
+    )
     body_html = models.TextField(
         blank=True,
         default=(
@@ -21,7 +24,7 @@ class EstanciasIntro(models.Model):
     quote_text = models.CharField(
         max_length=300,
         blank=True,
-        default='"El conocimiento compartido se multiplica, la experiencia vivida se transforma en sabiduría"'
+        default='"El conocimiento compartido se multiplica, la experiencia vivida se transforma en sabiduría"',
     )
     bg_color = models.CharField(max_length=20, default="#f8f9fa")
     margin_top_px = models.PositiveIntegerField(default=40)
@@ -34,10 +37,15 @@ class EstanciasIntro(models.Model):
     def __str__(self):
         return self.title
 
+
 class ParticipaHeader(models.Model):
     title = models.CharField("Título", max_length=120, default="Participa")
-    breadcrumb_label = models.CharField("Breadcrumb actual", max_length=120, default="Estancias")
-    background = models.ImageField(upload_to="participa/headers/", blank=True, null=True)
+    breadcrumb_label = models.CharField(
+        "Breadcrumb actual", max_length=120, default="Estancias"
+    )
+    background = models.ImageField(
+        upload_to="participa/headers/", blank=True, null=True
+    )
 
     class Meta:
         verbose_name = "5) Sección: Header (Participa)"
@@ -49,7 +57,9 @@ class ParticipaHeader(models.Model):
 
 class ParticipaPage(models.Model):
     enabled = models.BooleanField(default=True)
-    header = models.OneToOneField(ParticipaHeader, on_delete=models.SET_NULL, null=True, blank=True)
+    header = models.OneToOneField(
+        ParticipaHeader, on_delete=models.SET_NULL, null=True, blank=True
+    )
 
     class Meta:
         verbose_name = "3) Página: Galeria Estancias"
@@ -58,7 +68,9 @@ class ParticipaPage(models.Model):
     def __str__(self):
         return "Página Participa"
 
+
 #####################ESTANCIAS###################
+
 
 class Estancia(BaseOrdenPublicado):
     SECCIONES = [
@@ -66,20 +78,30 @@ class Estancia(BaseOrdenPublicado):
     ]
     titulo = models.CharField(max_length=200)
     slug = models.SlugField(max_length=220, unique=True, blank=True)
-    seccion = models.CharField(max_length=50, choices=SECCIONES, default="participa_estancias")
-    resumen = models.TextField(blank=True)       # para el grid
-    descripcion = models.TextField(blank=True)   # para el detalle
-    tipo = models.CharField(max_length=120, blank=True)   # p.ej. "Casa de madera"
-    lugar = models.CharField(max_length=200, blank=True, default="Ecocentro Chambalabamba")
+    seccion = models.CharField(
+        max_length=50, choices=SECCIONES, default="participa_estancias"
+    )
+    resumen = models.TextField(blank=True)  # para el grid
+    descripcion = models.TextField(blank=True)  # para el detalle
+    tipo = models.CharField(max_length=120, blank=True)  # p.ej. "Casa de madera"
+    lugar = models.CharField(
+        max_length=200, blank=True, default="Ecocentro Chambalabamba"
+    )
     portada = models.ImageField(upload_to="estancias/portadas/", blank=True)
     alt_portada = models.CharField(max_length=200, blank=True)
 
     # Precios opcionales
     precio = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
-    precio_tachado = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
+    precio_tachado = models.DecimalField(
+        max_digits=8, decimal_places=2, blank=True, null=True
+    )
 
     # Contacto opcional (para botón WhatsApp del detalle)
-    phone_whatsapp = models.CharField(max_length=32, blank=True, help_text="Solo números con código de país, ej: 5939XXXXXXX")
+    phone_whatsapp = models.CharField(
+        max_length=32,
+        blank=True,
+        help_text="Solo números con código de país, ej: 5939XXXXXXX",
+    )
 
     class Meta(BaseOrdenPublicado.Meta):
         verbose_name = "3) Galeria Estancias"
@@ -95,7 +117,9 @@ class Estancia(BaseOrdenPublicado):
 
 
 class EstanciaFoto(BaseOrdenPublicado):
-    estancia = models.ForeignKey(Estancia, on_delete=models.CASCADE, related_name="fotos")
+    estancia = models.ForeignKey(
+        Estancia, on_delete=models.CASCADE, related_name="fotos"
+    )
     titulo = models.CharField(max_length=200, blank=True)
     imagen = models.ImageField(upload_to="estancias/fotos/")
     alt = models.CharField(max_length=200, blank=True)
@@ -111,10 +135,13 @@ class EstanciaFoto(BaseOrdenPublicado):
 
 class EstanciaSpec(models.Model):
     """Pares clave/valor para 'Información adicional' del detalle."""
-    estancia = models.ForeignKey(Estancia, on_delete=models.CASCADE, related_name="specs")
+
+    estancia = models.ForeignKey(
+        Estancia, on_delete=models.CASCADE, related_name="specs"
+    )
     orden = models.PositiveIntegerField(default=0)
-    clave = models.CharField(max_length=120)     # ej. "Capacidad"
-    valor = models.TextField()                   # ej. "1–2 personas"
+    clave = models.CharField(max_length=120)  # ej. "Capacidad"
+    valor = models.TextField()  # ej. "1–2 personas"
 
     class Meta:
         ordering = ["orden", "id"]
@@ -132,7 +159,9 @@ class InstaGallery(BaseOrdenPublicado):
     ]
     titulo = models.CharField(max_length=120, blank=True)
     slug = models.SlugField(max_length=160, unique=True, blank=True)
-    seccion = models.CharField(max_length=40, choices=SECCIONES, default="participa_instagram")
+    seccion = models.CharField(
+        max_length=40, choices=SECCIONES, default="participa_instagram"
+    )
 
     class Meta(BaseOrdenPublicado.Meta):
         verbose_name = "Galería Instagram"
@@ -148,7 +177,9 @@ class InstaGallery(BaseOrdenPublicado):
 
 
 class InstaItem(BaseOrdenPublicado):
-    galeria = models.ForeignKey(InstaGallery, on_delete=models.CASCADE, related_name="items")
+    galeria = models.ForeignKey(
+        InstaGallery, on_delete=models.CASCADE, related_name="items"
+    )
     titulo = models.CharField(max_length=120, blank=True)
     imagen = models.ImageField(upload_to="participa/instagram/")
     alt = models.CharField(max_length=160, blank=True)
@@ -165,11 +196,11 @@ class InstaItem(BaseOrdenPublicado):
 # LOS MODELOS PARA PARTICIPA voluntariado BASADO EN EL TEMPLATE
 
 # participa/models.py
-from django.db import models
-from django.utils.text import slugify
+
 
 class ContentBlock(models.Model):
     """Bloques reutilizables: título + HTML + imagen opcional."""
+
     title = models.CharField(max_length=150)
     body_html = models.TextField(blank=True)
     image = models.ImageField(upload_to="participa/blocks/", blank=True, null=True)
@@ -191,19 +222,34 @@ class ContentBlock(models.Model):
 
 class VoluntariadoPage(models.Model):
     """Singleton editable para la página de Voluntariado."""
-    titulo = models.CharField(max_length=150, default="Voluntariado: nuestra filosofía y cómo involucrarte")
+
+    titulo = models.CharField(
+        max_length=150, default="Voluntariado: nuestra filosofía y cómo involucrarte"
+    )
     subtitulo = models.CharField(max_length=200, blank=True)
 
     # Cabecera + miniatura del artículo
-    background = models.ImageField(upload_to="participa/voluntariado/hero/", blank=True, null=True)
-    thumb = models.ImageField(upload_to="participa/voluntariado/thumb/", blank=True, null=True)
+    background = models.ImageField(
+        upload_to="participa/voluntariado/hero/", blank=True, null=True
+    )
+    thumb = models.ImageField(
+        upload_to="participa/voluntariado/thumb/", blank=True, null=True
+    )
 
     # Bloques administrables (estilo 'Nosotros' con selects y botón de +)
     about_block = models.ForeignKey(
-        ContentBlock, on_delete=models.SET_NULL, null=True, blank=True, related_name="vol_about"
+        ContentBlock,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="vol_about",
     )
     ambiente_block = models.ForeignKey(
-        ContentBlock, on_delete=models.SET_NULL, null=True, blank=True, related_name="vol_ambiente"
+        ContentBlock,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="vol_ambiente",
     )
 
     # Texto libre opcional (fallback)
@@ -214,11 +260,18 @@ class VoluntariadoPage(models.Model):
     quote_author = models.CharField(max_length=120, blank=True)
 
     # Instagram
-    instagram_embed_url = models.URLField(blank=True, help_text="Permalink canónico del Reel/Post")
+    instagram_embed_url = models.URLField(
+        blank=True, help_text="Permalink canónico del Reel/Post"
+    )
 
     # CTA de contacto (administrable)
-    contact_cta_label = models.CharField(max_length=80, blank=True, default="Proponer cooperación")
-    contact_cta_url = models.URLField(blank=True, help_text="URL absoluta o relativa; si vacío, usa {% url 'contacto:contacto' %}")
+    contact_cta_label = models.CharField(
+        max_length=80, blank=True, default="Proponer cooperación"
+    )
+    contact_cta_url = models.URLField(
+        blank=True,
+        help_text="URL absoluta o relativa; si vacío, usa {% url 'contacto:contacto' %}",
+    )
 
     publicado = models.BooleanField(default=True)
     creado = models.DateTimeField(auto_now_add=True)
@@ -259,8 +312,6 @@ class ProyectoVoluntariado(models.Model):
         super().save(*args, **kwargs)
 
 
-
-
 # ------------------------------
 # 1) Página (singleton) Visitas guiadas
 # ------------------------------
@@ -268,6 +319,7 @@ class ProyectoVoluntariado(models.Model):
 
 class GuidedVisitsPage(models.Model):
     """Página principal de la sección 'Visitas guiadas' (singleton)."""
+
     publicado = models.BooleanField(default=True)
 
     # Cabecera
@@ -282,24 +334,32 @@ class GuidedVisitsPage(models.Model):
     )
     background = models.ImageField(
         upload_to="participa/visitas/hero/",
-        blank=True, null=True,
-        help_text="Imagen grande de cabecera (si usas header dinámico)."
+        blank=True,
+        null=True,
+        help_text="Imagen grande de cabecera (si usas header dinámico).",
     )
     thumb = models.ImageField(
         upload_to="participa/visitas/thumb/",
-        blank=True, null=True,
-        help_text="Imagen usada dentro del contenido (fallback si no hay hero)."
+        blank=True,
+        null=True,
+        help_text="Imagen usada dentro del contenido (fallback si no hay hero).",
     )
 
     # Bloques administrables (estilo 'Nosotros')
     about_block = models.ForeignKey(
-        ContentBlock, null=True, blank=True,
-        on_delete=models.SET_NULL, related_name="visitas_about"
+        ContentBlock,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="visitas_about",
     )
     info_block = models.ForeignKey(
-        ContentBlock, null=True, blank=True,
-        on_delete=models.SET_NULL, related_name="visitas_info",
-        help_text="Información práctica/FAQ/indicaciones (opcional)."
+        ContentBlock,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="visitas_info",
+        help_text="Información práctica/FAQ/indicaciones (opcional).",
     )
 
     # Fallback / extras
@@ -309,8 +369,13 @@ class GuidedVisitsPage(models.Model):
     instagram_embed_url = models.URLField(blank=True)
 
     # CTA de contacto
-    contact_cta_label = models.CharField(max_length=80, blank=True, default="Consultar disponibilidad")
-    contact_cta_url = models.URLField(blank=True, help_text="Si lo dejas vacío, puedes usar una URL relativa en la plantilla.")
+    contact_cta_label = models.CharField(
+        max_length=80, blank=True, default="Consultar disponibilidad"
+    )
+    contact_cta_url = models.URLField(
+        blank=True,
+        help_text="Si lo dejas vacío, puedes usar una URL relativa en la plantilla.",
+    )
 
     creado = models.DateTimeField(auto_now_add=True, db_default=Now())
     actualizado = models.DateTimeField(auto_now=True, db_default=Now())

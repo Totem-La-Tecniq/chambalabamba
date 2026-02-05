@@ -4,19 +4,20 @@ from pathlib import Path
 
 # Cambia el nombre si usas otro archivo
 FIXTURE_FILE = "proyectos_all.json"
-SEED_TAG = "proyectos:all:v1"   # súbelo (v2, v3...) cuando quieras recargar
+SEED_TAG = "proyectos:all:v1"  # súbelo (v2, v3...) cuando quieras recargar
+
 
 def _seed_proyectos_once(sender, **kwargs):
     # Ejecuta solo cuando migra la app 'proyectos'
     if sender.label != "proyectos":
         return
 
-    seeds_dir = Path(__file__).resolve().parent           # proyectos/seeds
-    app_dir   = seeds_dir.parent                          # proyectos/
+    seeds_dir = Path(__file__).resolve().parent  # proyectos/seeds
+    app_dir = seeds_dir.parent  # proyectos/
     candidates = [
-        seeds_dir / "fixtures" / FIXTURE_FILE,            # proyectos/seeds/fixtures/...
-        app_dir / "fixtures" / FIXTURE_FILE,              # proyectos/fixtures/...
-        Path.cwd() / "fixtures" / FIXTURE_FILE,           # <raíz>/fixtures/...
+        seeds_dir / "fixtures" / FIXTURE_FILE,  # proyectos/seeds/fixtures/...
+        app_dir / "fixtures" / FIXTURE_FILE,  # proyectos/fixtures/...
+        Path.cwd() / "fixtures" / FIXTURE_FILE,  # <raíz>/fixtures/...
     ]
 
     with connection.cursor() as cur, transaction.atomic():

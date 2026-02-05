@@ -4,44 +4,74 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Festival',
+            name="Festival",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='Nombre')),
-                ('description', models.TextField(verbose_name='Descripción')),
-                ('date', models.CharField(max_length=200, verbose_name='Fecha')),
-                ('time', models.CharField(max_length=200, verbose_name='Hora')),
-                ('place', models.CharField(max_length=200, verbose_name='Lugar')),
-                ('image', models.CharField(max_length=255, verbose_name='Imagen')),
-                ('slug', models.SlugField(blank=True, help_text='Dejar en blanco para autogenerar.', max_length=200, unique=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, verbose_name="Nombre")),
+                ("description", models.TextField(verbose_name="Descripción")),
+                ("date", models.CharField(max_length=200, verbose_name="Fecha")),
+                ("time", models.CharField(max_length=200, verbose_name="Hora")),
+                ("place", models.CharField(max_length=200, verbose_name="Lugar")),
+                ("image", models.CharField(max_length=255, verbose_name="Imagen")),
+                (
+                    "slug",
+                    models.SlugField(
+                        blank=True,
+                        help_text="Dejar en blanco para autogenerar.",
+                        max_length=200,
+                        unique=True,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Festival',
-                'verbose_name_plural': 'Festivales',
+                "verbose_name": "Festival",
+                "verbose_name_plural": "Festivales",
             },
         ),
         migrations.CreateModel(
-            name='Taller',
+            name="Taller",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='Nombre')),
-                ('description', models.TextField(verbose_name='Descripción')),
-                ('schedule', models.CharField(max_length=200, verbose_name='Horario')),
-                ('place', models.CharField(max_length=200, verbose_name='Lugar')),
-                ('image', models.CharField(max_length=255, verbose_name='Imagen')),
-                ('slug', models.SlugField(blank=True, help_text='Dejar en blanco para autogenerar.', max_length=200, unique=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, verbose_name="Nombre")),
+                ("description", models.TextField(verbose_name="Descripción")),
+                ("schedule", models.CharField(max_length=200, verbose_name="Horario")),
+                ("place", models.CharField(max_length=200, verbose_name="Lugar")),
+                ("image", models.CharField(max_length=255, verbose_name="Imagen")),
+                (
+                    "slug",
+                    models.SlugField(
+                        blank=True,
+                        help_text="Dejar en blanco para autogenerar.",
+                        max_length=200,
+                        unique=True,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Taller',
-                'verbose_name_plural': 'Talleres',
+                "verbose_name": "Taller",
+                "verbose_name_plural": "Talleres",
             },
         ),
     ]

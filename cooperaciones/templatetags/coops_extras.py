@@ -5,15 +5,17 @@ from inicio.models import SectionHeader  # 👈 leeremos del admin de Inicio
 
 register = template.Library()
 
+
 @register.inclusion_tag("cooperaciones/_home_cooperaciones.html")
-def _home_cooperaciones(seccion_key="home_cooperaciones",
-                        subtitle=None,
-                        title=None,
-                        limit=None):
+def _home_cooperaciones(
+    seccion_key="home_cooperaciones", subtitle=None, title=None, limit=None
+):
     # Lee configuración desde SectionHeader si existe y está publicado
-    header = SectionHeader.objects.filter(seccion=seccion_key, publicado=True).only(
-        "title", "subtitle", "limit"
-    ).first()
+    header = (
+        SectionHeader.objects.filter(seccion=seccion_key, publicado=True)
+        .only("title", "subtitle", "limit")
+        .first()
+    )
 
     if header:
         if not title:
@@ -34,7 +36,7 @@ def _home_cooperaciones(seccion_key="home_cooperaciones",
     coops = (
         Cooperacion.objects.filter(publicado=True)
         .only("slug", "nombre", "logo", "portada", "excerpt", "orden", "creado")
-        .order_by("orden", "-creado")[:int(limit)]
+        .order_by("orden", "-creado")[: int(limit)]
     )
 
     return {"coops": coops, "subtitle": subtitle, "title": title}

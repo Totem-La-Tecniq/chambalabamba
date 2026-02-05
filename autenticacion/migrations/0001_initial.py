@@ -8,61 +8,129 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('auth', '0012_alter_user_first_name_max_length'),
+        ("auth", "0012_alter_user_first_name_max_length"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='TipoUsuario',
+            name="TipoUsuario",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=30, unique=True)),
-                ('slug', models.SlugField(help_text="Identificador único (ej. 'externo', 'residente').", max_length=30, unique=True)),
-                ('descripcion', models.TextField(blank=True)),
-                ('role_group', models.OneToOneField(blank=True, help_text='Grupo de permisos asociado a este rol.', null=True, on_delete=django.db.models.deletion.PROTECT, related_name='tipo_usuario', to='auth.group')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nombre", models.CharField(max_length=30, unique=True)),
+                (
+                    "slug",
+                    models.SlugField(
+                        help_text="Identificador único (ej. 'externo', 'residente').",
+                        max_length=30,
+                        unique=True,
+                    ),
+                ),
+                ("descripcion", models.TextField(blank=True)),
+                (
+                    "role_group",
+                    models.OneToOneField(
+                        blank=True,
+                        help_text="Grupo de permisos asociado a este rol.",
+                        null=True,
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="tipo_usuario",
+                        to="auth.group",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Tipo de usuario',
-                'verbose_name_plural': 'Tipos de usuario',
-                'ordering': ['nombre'],
+                "verbose_name": "Tipo de usuario",
+                "verbose_name_plural": "Tipos de usuario",
+                "ordering": ["nombre"],
             },
         ),
         migrations.CreateModel(
-            name='PerfilUsuario',
+            name="PerfilUsuario",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('display_name', models.CharField(blank=True, max_length=150, verbose_name='Nombre público')),
-                ('telefono', models.CharField(blank=True, max_length=30, validators=[django.core.validators.RegexValidator(message='Ingresa un teléfono válido (6–30 caracteres).', regex='^[\\d\\-\\+\\(\\) ]{6,30}$')])),
-                ('bio', models.TextField(blank=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('rol_en_comunidad', models.CharField(blank=True, max_length=100)),
-                ('areas_aporte', models.CharField(blank=True, max_length=200)),
-                ('disponibilidad', models.CharField(blank=True, max_length=100)),
-                ('fecha_residencia_desde', models.DateField(blank=True, null=True)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='perfilusuario', to=settings.AUTH_USER_MODEL)),
-                ('tipo_usuario', models.ForeignKey(default=autenticacion.models.TipoUsuario.get_externo_pk, on_delete=django.db.models.deletion.PROTECT, related_name='perfiles', to='autenticacion.tipousuario')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "display_name",
+                    models.CharField(
+                        blank=True, max_length=150, verbose_name="Nombre público"
+                    ),
+                ),
+                (
+                    "telefono",
+                    models.CharField(
+                        blank=True,
+                        max_length=30,
+                        validators=[
+                            django.core.validators.RegexValidator(
+                                message="Ingresa un teléfono válido (6–30 caracteres).",
+                                regex="^[\\d\\-\\+\\(\\) ]{6,30}$",
+                            )
+                        ],
+                    ),
+                ),
+                ("bio", models.TextField(blank=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("rol_en_comunidad", models.CharField(blank=True, max_length=100)),
+                ("areas_aporte", models.CharField(blank=True, max_length=200)),
+                ("disponibilidad", models.CharField(blank=True, max_length=100)),
+                ("fecha_residencia_desde", models.DateField(blank=True, null=True)),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="perfilusuario",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "tipo_usuario",
+                    models.ForeignKey(
+                        default=autenticacion.models.TipoUsuario.get_externo_pk,
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="perfiles",
+                        to="autenticacion.tipousuario",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Perfil de usuario',
-                'verbose_name_plural': 'Perfiles de usuario',
+                "verbose_name": "Perfil de usuario",
+                "verbose_name_plural": "Perfiles de usuario",
             },
         ),
         migrations.AddIndex(
-            model_name='tipousuario',
-            index=models.Index(fields=['slug'], name='autenticaci_slug_3ce2c9_idx'),
+            model_name="tipousuario",
+            index=models.Index(fields=["slug"], name="autenticaci_slug_3ce2c9_idx"),
         ),
         migrations.AddIndex(
-            model_name='perfilusuario',
-            index=models.Index(fields=['tipo_usuario'], name='autenticaci_tipo_us_890078_idx'),
+            model_name="perfilusuario",
+            index=models.Index(
+                fields=["tipo_usuario"], name="autenticaci_tipo_us_890078_idx"
+            ),
         ),
         migrations.AddIndex(
-            model_name='perfilusuario',
-            index=models.Index(fields=['created_at'], name='autenticaci_created_a9e33a_idx'),
+            model_name="perfilusuario",
+            index=models.Index(
+                fields=["created_at"], name="autenticaci_created_a9e33a_idx"
+            ),
         ),
     ]

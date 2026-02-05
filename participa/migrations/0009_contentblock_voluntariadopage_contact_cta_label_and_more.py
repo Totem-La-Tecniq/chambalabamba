@@ -5,73 +5,108 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('participa', '0008_proyectovoluntariado_voluntariadopage'),
+        ("participa", "0008_proyectovoluntariado_voluntariadopage"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ContentBlock',
+            name="ContentBlock",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=150)),
-                ('body_html', models.TextField(blank=True)),
-                ('image', models.ImageField(blank=True, null=True, upload_to='participa/blocks/')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True)),
-                ('actualizado', models.DateTimeField(auto_now=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=150)),
+                ("body_html", models.TextField(blank=True)),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="participa/blocks/"
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("creado", models.DateTimeField(auto_now_add=True)),
+                ("actualizado", models.DateTimeField(auto_now=True)),
             ],
             options={
-                'verbose_name': 'Bloque de contenido',
-                'verbose_name_plural': 'Bloques de contenido',
-                'ordering': ('orden', 'title'),
+                "verbose_name": "Bloque de contenido",
+                "verbose_name_plural": "Bloques de contenido",
+                "ordering": ("orden", "title"),
             },
         ),
         migrations.AddField(
-            model_name='voluntariadopage',
-            name='contact_cta_label',
-            field=models.CharField(blank=True, default='Proponer cooperación', max_length=80),
+            model_name="voluntariadopage",
+            name="contact_cta_label",
+            field=models.CharField(
+                blank=True, default="Proponer cooperación", max_length=80
+            ),
         ),
         migrations.AddField(
-            model_name='voluntariadopage',
-            name='contact_cta_url',
-            field=models.URLField(blank=True, help_text="URL absoluta o relativa; si vacío, usa {% url 'contacto:contacto' %}"),
+            model_name="voluntariadopage",
+            name="contact_cta_url",
+            field=models.URLField(
+                blank=True,
+                help_text="URL absoluta o relativa; si vacío, usa {% url 'contacto:contacto' %}",
+            ),
         ),
         migrations.AddField(
-            model_name='voluntariadopage',
-            name='thumb',
-            field=models.ImageField(blank=True, null=True, upload_to='participa/voluntariado/thumb/'),
+            model_name="voluntariadopage",
+            name="thumb",
+            field=models.ImageField(
+                blank=True, null=True, upload_to="participa/voluntariado/thumb/"
+            ),
         ),
         migrations.AlterField(
-            model_name='proyectovoluntariado',
-            name='link',
+            model_name="proyectovoluntariado",
+            name="link",
             field=models.URLField(blank=True),
         ),
         migrations.AlterField(
-            model_name='voluntariadopage',
-            name='background',
-            field=models.ImageField(blank=True, null=True, upload_to='participa/voluntariado/hero/'),
+            model_name="voluntariadopage",
+            name="background",
+            field=models.ImageField(
+                blank=True, null=True, upload_to="participa/voluntariado/hero/"
+            ),
         ),
         migrations.AlterField(
-            model_name='voluntariadopage',
-            name='instagram_embed_url',
-            field=models.URLField(blank=True, help_text='Permalink canónico del Reel/Post'),
+            model_name="voluntariadopage",
+            name="instagram_embed_url",
+            field=models.URLField(
+                blank=True, help_text="Permalink canónico del Reel/Post"
+            ),
         ),
         migrations.AlterField(
-            model_name='voluntariadopage',
-            name='intro_html',
+            model_name="voluntariadopage",
+            name="intro_html",
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='voluntariadopage',
-            name='about_block',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='vol_about', to='participa.contentblock'),
+            model_name="voluntariadopage",
+            name="about_block",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="vol_about",
+                to="participa.contentblock",
+            ),
         ),
         migrations.AddField(
-            model_name='voluntariadopage',
-            name='ambiente_block',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='vol_ambiente', to='participa.contentblock'),
+            model_name="voluntariadopage",
+            name="ambiente_block",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="vol_ambiente",
+                to="participa.contentblock",
+            ),
         ),
     ]

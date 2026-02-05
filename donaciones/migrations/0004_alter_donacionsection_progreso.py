@@ -4,15 +4,16 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('donaciones', '0003_donacionsection_canceled_message_and_more'),
+        ("donaciones", "0003_donacionsection_canceled_message_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='donacionsection',
-            name='progreso',
-            field=models.PositiveIntegerField(default=100, help_text='0–100 (muestra la barra de progreso)'),
+            model_name="donacionsection",
+            name="progreso",
+            field=models.PositiveIntegerField(
+                default=100, help_text="0–100 (muestra la barra de progreso)"
+            ),
         ),
     ]

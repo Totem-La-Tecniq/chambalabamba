@@ -1,19 +1,21 @@
 from django.db import models
 
 # Create your models here.
-from django.db import models
 from django.utils.text import slugify
 from django.db.models.functions import Now  # Django 5.x
+from django.db.models import Max
+
 
 class BaseOrdenPublicado(models.Model):
     publicado = models.BooleanField(default=True)
     orden = models.PositiveIntegerField(default=0)
-    creado = models.DateTimeField(auto_now_add=True,db_default=Now())
-    actualizado = models.DateTimeField(auto_now=True,db_default=Now())
+    creado = models.DateTimeField(auto_now_add=True, db_default=Now())
+    actualizado = models.DateTimeField(auto_now=True, db_default=Now())
 
     class Meta:
         abstract = True
         ordering = ["orden", "-creado"]
+
 
 # 1) HERO / SLIDER
 class HeroSlide(BaseOrdenPublicado):
@@ -32,12 +34,15 @@ class HeroSlide(BaseOrdenPublicado):
     def __str__(self):
         return self.titulo
 
+
 # 2) VALORES / CARDS PEQUEÑAS CON ICONO
 class ValorCard(BaseOrdenPublicado):
     titulo = models.CharField(max_length=80)
     descripcion = models.CharField(max_length=200, blank=True)
     icono = models.ImageField(upload_to="inicio/icons/", blank=True, null=True)
-    link_url = models.URLField(blank=True, help_text="URL a donde debe llevar este pilar (opcional).")
+    link_url = models.URLField(
+        blank=True, help_text="URL a donde debe llevar este pilar (opcional)."
+    )
     slug = models.SlugField(max_length=90, unique=True, blank=True)
 
     def save(self, *args, **kwargs):
@@ -52,7 +57,9 @@ class ValorCard(BaseOrdenPublicado):
     def __str__(self):
         return self.titulo
 
-#GALERIA INICIAL ULTIMOS EVENTOS
+
+# GALERIA INICIAL ULTIMOS EVENTOS
+
 
 class Gallery(BaseOrdenPublicado):
     SECCIONES = [
@@ -63,10 +70,13 @@ class Gallery(BaseOrdenPublicado):
     ]
     titulo = models.CharField(max_length=200)
     slug = models.SlugField(max_length=220, unique=True, blank=True)
-    seccion = models.CharField(max_length=50, choices=SECCIONES, default="home_ultimos_eventos")
+    seccion = models.CharField(
+        max_length=50, choices=SECCIONES, default="home_ultimos_eventos"
+    )
     descripcion = models.TextField(blank=True)
     descripcion_breve = models.CharField(
-        max_length=200, blank=True,
+        max_length=200,
+        blank=True,
         help_text="Texto corto que se muestra sobre la portada (tarjeta).",
     )
     portada = models.ImageField(upload_to="inicio/galerias/portadas/", blank=True)
@@ -82,9 +92,10 @@ class Gallery(BaseOrdenPublicado):
         # Autogenerar 'orden' si está en 0, separado por seccion
         if self.orden == 0:
             max_orden = (
-                Gallery.objects
-                .filter(seccion=self.seccion)
-                .aggregate(Max("orden"))["orden__max"] or 0
+                Gallery.objects.filter(seccion=self.seccion).aggregate(Max("orden"))[
+                    "orden__max"
+                ]
+                or 0
             )
             self.orden = max_orden + 1
 
@@ -111,6 +122,7 @@ class GalleryItem(BaseOrdenPublicado):
     def __str__(self):
         base = self.titulo or self.alt or self.imagen.name
         return f"{self.galeria.titulo} – {base}"
+
 
 class SectionHeader(models.Model):
     SECCIONES = [

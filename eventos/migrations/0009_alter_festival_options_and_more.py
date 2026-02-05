@@ -4,42 +4,65 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('eventos', '0008_alter_festival_options'),
+        ("eventos", "0008_alter_festival_options"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='festival',
-            options={'verbose_name': '1.3 Sección: Lista de Festivales', 'verbose_name_plural': '1.3 Sección: Lista de Festivales'},
+            name="festival",
+            options={
+                "verbose_name": "1.3 Sección: Lista de Festivales",
+                "verbose_name_plural": "1.3 Sección: Lista de Festivales",
+            },
         ),
         migrations.AlterModelOptions(
-            name='festivalesheader',
-            options={'verbose_name': '1.1 Sección: Header de Festivales', 'verbose_name_plural': '1.1 Sección: Header de Festivales'},
+            name="festivalesheader",
+            options={
+                "verbose_name": "1.1 Sección: Header de Festivales",
+                "verbose_name_plural": "1.1 Sección: Header de Festivales",
+            },
         ),
         migrations.AlterModelOptions(
-            name='festivalesintrosection',
-            options={'verbose_name': '1.2 Sección: Introducción de Festivales', 'verbose_name_plural': '1.2 Sección: Introducción de Festivales'},
+            name="festivalesintrosection",
+            options={
+                "verbose_name": "1.2 Sección: Introducción de Festivales",
+                "verbose_name_plural": "1.2 Sección: Introducción de Festivales",
+            },
         ),
         migrations.AlterModelOptions(
-            name='festivalespage',
-            options={'verbose_name': '1. Página: Festivales', 'verbose_name_plural': '1. Página: Festivales'},
+            name="festivalespage",
+            options={
+                "verbose_name": "1. Página: Festivales",
+                "verbose_name_plural": "1. Página: Festivales",
+            },
         ),
         migrations.AlterModelOptions(
-            name='tallerdetail',
-            options={'verbose_name': '2.3 Sección: Lista de Talleres', 'verbose_name_plural': '2.3 Sección: Lista de Talleres'},
+            name="tallerdetail",
+            options={
+                "verbose_name": "2.3 Sección: Lista de Talleres",
+                "verbose_name_plural": "2.3 Sección: Lista de Talleres",
+            },
         ),
         migrations.AlterModelOptions(
-            name='talleresheader',
-            options={'verbose_name': '2.1 Sección: Header de Talleres', 'verbose_name_plural': '2.1 Sección: Header de Talleres'},
+            name="talleresheader",
+            options={
+                "verbose_name": "2.1 Sección: Header de Talleres",
+                "verbose_name_plural": "2.1 Sección: Header de Talleres",
+            },
         ),
         migrations.AlterModelOptions(
-            name='talleresintrosection',
-            options={'verbose_name': '2.2 Sección: Introducción de Talleres', 'verbose_name_plural': '2.2 Sección: Introducción de Talleres'},
+            name="talleresintrosection",
+            options={
+                "verbose_name": "2.2 Sección: Introducción de Talleres",
+                "verbose_name_plural": "2.2 Sección: Introducción de Talleres",
+            },
         ),
         migrations.AlterModelOptions(
-            name='tallerespage',
-            options={'verbose_name': '2. Página: Talleres', 'verbose_name_plural': '2. Página: Talleres'},
+            name="tallerespage",
+            options={
+                "verbose_name": "2. Página: Talleres",
+                "verbose_name_plural": "2. Página: Talleres",
+            },
         ),
     ]

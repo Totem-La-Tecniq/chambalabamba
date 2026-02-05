@@ -4,11 +4,8 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('participa', '0003_instagallery_instaitem'),
+        ("participa", "0003_instagallery_instaitem"),
     ]
 
-    operations = [
-
-    ]
+    operations = []

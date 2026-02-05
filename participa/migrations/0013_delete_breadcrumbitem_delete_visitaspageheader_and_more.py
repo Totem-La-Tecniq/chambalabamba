@@ -5,139 +5,182 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('participa', '0012_breadcrumbitem_visitaspageheader_and_more'),
+        ("participa", "0012_breadcrumbitem_visitaspageheader_and_more"),
     ]
 
     operations = [
         migrations.DeleteModel(
-            name='BreadcrumbItem',
+            name="BreadcrumbItem",
         ),
         migrations.DeleteModel(
-            name='VisitasPageHeader',
+            name="VisitasPageHeader",
         ),
         migrations.AlterModelOptions(
-            name='guidedvisit',
-            options={'ordering': ('orden', 'titulo'), 'verbose_name': '2) Visita guiada', 'verbose_name_plural': '2) Visitas guiadas'},
+            name="guidedvisit",
+            options={
+                "ordering": ("orden", "titulo"),
+                "verbose_name": "2) Visita guiada",
+                "verbose_name_plural": "2) Visitas guiadas",
+            },
         ),
         migrations.AlterModelOptions(
-            name='guidedvisitphoto',
-            options={'ordering': ('visita', 'orden'), 'verbose_name': '2.1) Foto de visita guiada', 'verbose_name_plural': '2.1) Fotos de visita guiada'},
+            name="guidedvisitphoto",
+            options={
+                "ordering": ("visita", "orden"),
+                "verbose_name": "2.1) Foto de visita guiada",
+                "verbose_name_plural": "2.1) Fotos de visita guiada",
+            },
         ),
         migrations.AddField(
-            model_name='guidedvisit',
-            name='actualizado',
-            field=models.DateTimeField(auto_now=True, db_default=django.db.models.functions.datetime.Now()),
+            model_name="guidedvisit",
+            name="actualizado",
+            field=models.DateTimeField(
+                auto_now=True, db_default=django.db.models.functions.datetime.Now()
+            ),
         ),
         migrations.AddField(
-            model_name='guidedvisit',
-            name='creado',
-            field=models.DateTimeField(auto_now_add=True, db_default=django.db.models.functions.datetime.Now()),
+            model_name="guidedvisit",
+            name="creado",
+            field=models.DateTimeField(
+                auto_now_add=True, db_default=django.db.models.functions.datetime.Now()
+            ),
         ),
         migrations.AddField(
-            model_name='guidedvisitphoto',
-            name='actualizado',
-            field=models.DateTimeField(auto_now=True, db_default=django.db.models.functions.datetime.Now()),
+            model_name="guidedvisitphoto",
+            name="actualizado",
+            field=models.DateTimeField(
+                auto_now=True, db_default=django.db.models.functions.datetime.Now()
+            ),
         ),
         migrations.AddField(
-            model_name='guidedvisitphoto',
-            name='alt',
+            model_name="guidedvisitphoto",
+            name="alt",
             field=models.CharField(blank=True, max_length=200),
         ),
         migrations.AddField(
-            model_name='guidedvisitphoto',
-            name='creado',
-            field=models.DateTimeField(auto_now_add=True, db_default=django.db.models.functions.datetime.Now()),
+            model_name="guidedvisitphoto",
+            name="creado",
+            field=models.DateTimeField(
+                auto_now_add=True, db_default=django.db.models.functions.datetime.Now()
+            ),
         ),
         migrations.AddField(
-            model_name='guidedvisitphoto',
-            name='creditos',
+            model_name="guidedvisitphoto",
+            name="creditos",
             field=models.CharField(blank=True, max_length=140),
         ),
         migrations.AddField(
-            model_name='guidedvisitphoto',
-            name='is_header',
-            field=models.BooleanField(default=True, help_text='Si está activo, participa en el slider/galería de cabecera de esta visita.'),
+            model_name="guidedvisitphoto",
+            name="is_header",
+            field=models.BooleanField(
+                default=True,
+                help_text="Si está activo, participa en el slider/galería de cabecera de esta visita.",
+            ),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='aporte_text',
-            field=models.CharField(blank=True, help_text='Ej: Aporte consciente / $5 por persona', max_length=120),
+            model_name="guidedvisit",
+            name="aporte_text",
+            field=models.CharField(
+                blank=True,
+                help_text="Ej: Aporte consciente / $5 por persona",
+                max_length=120,
+            ),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='breve',
-            field=models.CharField(blank=True, help_text='Texto breve que aparece en tarjetas/listas.', max_length=200),
+            model_name="guidedvisit",
+            name="breve",
+            field=models.CharField(
+                blank=True,
+                help_text="Texto breve que aparece en tarjetas/listas.",
+                max_length=200,
+            ),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='contacto_email',
+            model_name="guidedvisit",
+            name="contacto_email",
             field=models.EmailField(blank=True, max_length=254),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='contacto_whatsapp',
+            model_name="guidedvisit",
+            name="contacto_whatsapp",
             field=models.CharField(blank=True, max_length=40),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='descripcion_html',
-            field=models.TextField(blank=True, help_text='Cuerpo en HTML (admin).'),
+            model_name="guidedvisit",
+            name="descripcion_html",
+            field=models.TextField(blank=True, help_text="Cuerpo en HTML (admin)."),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='duracion_minutos',
-            field=models.PositiveIntegerField(default=60, help_text='Duración aproximada.'),
+            model_name="guidedvisit",
+            name="duracion_minutos",
+            field=models.PositiveIntegerField(
+                default=60, help_text="Duración aproximada."
+            ),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='frecuencia_text',
-            field=models.CharField(blank=True, help_text='Ej: Semanal / Quincenal / Bajo reserva', max_length=120),
+            model_name="guidedvisit",
+            name="frecuencia_text",
+            field=models.CharField(
+                blank=True,
+                help_text="Ej: Semanal / Quincenal / Bajo reserva",
+                max_length=120,
+            ),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='horario_text',
-            field=models.CharField(blank=True, help_text='Ej: Sábados 10h – 12h', max_length=120),
+            model_name="guidedvisit",
+            name="horario_text",
+            field=models.CharField(
+                blank=True, help_text="Ej: Sábados 10h – 12h", max_length=120
+            ),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='organizador',
+            model_name="guidedvisit",
+            name="organizador",
             field=models.CharField(blank=True, max_length=120),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='organizador_url',
+            model_name="guidedvisit",
+            name="organizador_url",
             field=models.URLField(blank=True),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='portada',
-            field=models.ImageField(blank=True, help_text='Imagen destacada (aparece en listados).', null=True, upload_to='participa/visitas/portadas/'),
+            model_name="guidedvisit",
+            name="portada",
+            field=models.ImageField(
+                blank=True,
+                help_text="Imagen destacada (aparece en listados).",
+                null=True,
+                upload_to="participa/visitas/portadas/",
+            ),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='punto_encuentro',
+            model_name="guidedvisit",
+            name="punto_encuentro",
             field=models.CharField(blank=True, max_length=140),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='slug',
+            model_name="guidedvisit",
+            name="slug",
             field=models.SlugField(blank=True, unique=True),
         ),
         migrations.AlterField(
-            model_name='guidedvisit',
-            name='ubicacion',
-            field=models.CharField(blank=True, help_text='Ej: Chambalabamba / punto de encuentro', max_length=140),
+            model_name="guidedvisit",
+            name="ubicacion",
+            field=models.CharField(
+                blank=True,
+                help_text="Ej: Chambalabamba / punto de encuentro",
+                max_length=140,
+            ),
         ),
         migrations.AlterField(
-            model_name='guidedvisitphoto',
-            name='imagen',
-            field=models.ImageField(upload_to='participa/visitas/galeria/'),
+            model_name="guidedvisitphoto",
+            name="imagen",
+            field=models.ImageField(upload_to="participa/visitas/galeria/"),
         ),
         migrations.AlterField(
-            model_name='guidedvisitphoto',
-            name='titulo',
+            model_name="guidedvisitphoto",
+            name="titulo",
             field=models.CharField(blank=True, max_length=140),
         ),
     ]

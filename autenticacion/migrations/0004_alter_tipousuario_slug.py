@@ -4,15 +4,20 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('autenticacion', '0003_populate_tipousuario_slug'),
+        ("autenticacion", "0003_populate_tipousuario_slug"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='tipousuario',
-            name='slug',
-            field=models.SlugField(blank=True, help_text="Identificador único (ej. 'externo', 'residente').", max_length=30, null=True, unique=True),
+            model_name="tipousuario",
+            name="slug",
+            field=models.SlugField(
+                blank=True,
+                help_text="Identificador único (ej. 'externo', 'residente').",
+                max_length=30,
+                null=True,
+                unique=True,
+            ),
         ),
     ]

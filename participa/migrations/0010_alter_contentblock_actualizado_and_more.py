@@ -5,20 +5,23 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('participa', '0009_contentblock_voluntariadopage_contact_cta_label_and_more'),
+        ("participa", "0009_contentblock_voluntariadopage_contact_cta_label_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='contentblock',
-            name='actualizado',
-            field=models.DateTimeField(auto_now=True, db_default=django.db.models.functions.datetime.Now()),
+            model_name="contentblock",
+            name="actualizado",
+            field=models.DateTimeField(
+                auto_now=True, db_default=django.db.models.functions.datetime.Now()
+            ),
         ),
         migrations.AlterField(
-            model_name='contentblock',
-            name='creado',
-            field=models.DateTimeField(auto_now_add=True, db_default=django.db.models.functions.datetime.Now()),
+            model_name="contentblock",
+            name="creado",
+            field=models.DateTimeField(
+                auto_now_add=True, db_default=django.db.models.functions.datetime.Now()
+            ),
         ),
     ]

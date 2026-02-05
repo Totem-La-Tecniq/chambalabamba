@@ -5,102 +5,195 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('nosotros', '0006_pageheader_pilarpage_pilarparagraph_pilarquote_and_more'),
+        ("nosotros", "0006_pageheader_pilarpage_pilarparagraph_pilarquote_and_more"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='aboutsection',
-            options={'verbose_name': '1.2 Nuestro camino - Sección: Acerca + Video / About + Video', 'verbose_name_plural': '1.2 Nuestro camino - Sección: Acerca + Video / About + Video'},
+            name="aboutsection",
+            options={
+                "verbose_name": "1.2 Nuestro camino - Sección: Acerca + Video / About + Video",
+                "verbose_name_plural": "1.2 Nuestro camino - Sección: Acerca + Video / About + Video",
+            },
         ),
         migrations.AlterModelOptions(
-            name='ecoaldeasection',
-            options={'verbose_name': '1.4 Nuestro camino - Sección: EcoAldea / EcoVillage Section', 'verbose_name_plural': '1.4 Nuestro camino - Sección: EcoAldea / EcoVillage Section'},
+            name="ecoaldeasection",
+            options={
+                "verbose_name": "1.4 Nuestro camino - Sección: EcoAldea / EcoVillage Section",
+                "verbose_name_plural": "1.4 Nuestro camino - Sección: EcoAldea / EcoVillage Section",
+            },
         ),
         migrations.AlterModelOptions(
-            name='historysection',
-            options={'verbose_name': '1.3 Nuestro camino - Sección: Historia / History Section', 'verbose_name_plural': '1.3 Nuestro camino - Sección: Historia / History Section'},
+            name="historysection",
+            options={
+                "verbose_name": "1.3 Nuestro camino - Sección: Historia / History Section",
+                "verbose_name_plural": "1.3 Nuestro camino - Sección: Historia / History Section",
+            },
         ),
         migrations.AlterModelOptions(
-            name='innerheader',
-            options={'verbose_name': '1.1. Nuestro camino - Sección: Cabecera / Header Section', 'verbose_name_plural': '1.1. Nuestro camino - Sección: Cabecera / Header Section'},
+            name="innerheader",
+            options={
+                "verbose_name": "1.1. Nuestro camino - Sección: Cabecera / Header Section",
+                "verbose_name_plural": "1.1. Nuestro camino - Sección: Cabecera / Header Section",
+            },
         ),
         migrations.AlterModelOptions(
-            name='nosotrospage',
-            options={'verbose_name': '1. Nuestro camino - Página: Nosotros / About Us Page', 'verbose_name_plural': '1. Nuestro camino - Página: Nosotros / About Us Page'},
+            name="nosotrospage",
+            options={
+                "verbose_name": "1. Nuestro camino - Página: Nosotros / About Us Page",
+                "verbose_name_plural": "1. Nuestro camino - Página: Nosotros / About Us Page",
+            },
         ),
         migrations.AlterModelOptions(
-            name='pageheader',
-            options={'verbose_name': '2.1 Cabeceras Pilares', 'verbose_name_plural': '2.1 Pilares Cabeceras'},
+            name="pageheader",
+            options={
+                "verbose_name": "2.1 Cabeceras Pilares",
+                "verbose_name_plural": "2.1 Pilares Cabeceras",
+            },
         ),
         migrations.AlterModelOptions(
-            name='pilarpage',
-            options={'verbose_name': '2. Pilar', 'verbose_name_plural': '2. Pilares'},
+            name="pilarpage",
+            options={"verbose_name": "2. Pilar", "verbose_name_plural": "2. Pilares"},
         ),
         migrations.CreateModel(
-            name='TopicPage',
+            name="TopicPage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('slug', models.SlugField(choices=[('gobernanza', 'Gobernanza'), ('principios_valores', 'Principios y valores'), ('territorio', 'Territorio')], unique=True)),
-                ('hero_image', models.ImageField(blank=True, null=True, upload_to='nosotros/sections/hero/')),
-                ('title', models.CharField(default='Sección', max_length=150)),
-                ('lead', models.TextField(blank=True)),
-                ('header', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='nosotros.pageheader')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "slug",
+                    models.SlugField(
+                        choices=[
+                            ("gobernanza", "Gobernanza"),
+                            ("principios_valores", "Principios y valores"),
+                            ("territorio", "Territorio"),
+                        ],
+                        unique=True,
+                    ),
+                ),
+                (
+                    "hero_image",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="nosotros/sections/hero/"
+                    ),
+                ),
+                ("title", models.CharField(default="Sección", max_length=150)),
+                ("lead", models.TextField(blank=True)),
+                (
+                    "header",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="nosotros.pageheader",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Sección (Nosotros)',
-                'verbose_name_plural': 'Secciones (Nosotros)',
+                "verbose_name": "Sección (Nosotros)",
+                "verbose_name_plural": "Secciones (Nosotros)",
             },
         ),
         migrations.CreateModel(
-            name='TopicParagraph',
+            name="TopicParagraph",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True)),
-                ('actualizado', models.DateTimeField(auto_now=True)),
-                ('body', models.TextField()),
-                ('page', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='paragraphs', to='nosotros.topicpage')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("creado", models.DateTimeField(auto_now_add=True)),
+                ("actualizado", models.DateTimeField(auto_now=True)),
+                ("body", models.TextField()),
+                (
+                    "page",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="paragraphs",
+                        to="nosotros.topicpage",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['orden', '-creado'],
-                'abstract': False,
+                "ordering": ["orden", "-creado"],
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='TopicQuote',
+            name="TopicQuote",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True)),
-                ('actualizado', models.DateTimeField(auto_now=True)),
-                ('text', models.TextField()),
-                ('page', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='quotes', to='nosotros.topicpage')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("creado", models.DateTimeField(auto_now_add=True)),
+                ("actualizado", models.DateTimeField(auto_now=True)),
+                ("text", models.TextField()),
+                (
+                    "page",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="quotes",
+                        to="nosotros.topicpage",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['orden', '-creado'],
-                'abstract': False,
+                "ordering": ["orden", "-creado"],
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='TopicSidebarWidget',
+            name="TopicSidebarWidget",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('publicado', models.BooleanField(default=True)),
-                ('orden', models.PositiveIntegerField(default=0)),
-                ('creado', models.DateTimeField(auto_now_add=True)),
-                ('actualizado', models.DateTimeField(auto_now=True)),
-                ('title', models.CharField(max_length=120)),
-                ('text', models.TextField()),
-                ('page', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='sidebar', to='nosotros.topicpage')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
+                ("orden", models.PositiveIntegerField(default=0)),
+                ("creado", models.DateTimeField(auto_now_add=True)),
+                ("actualizado", models.DateTimeField(auto_now=True)),
+                ("title", models.CharField(max_length=120)),
+                ("text", models.TextField()),
+                (
+                    "page",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="sidebar",
+                        to="nosotros.topicpage",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['orden', '-creado'],
-                'abstract': False,
+                "ordering": ["orden", "-creado"],
+                "abstract": False,
             },
         ),
     ]

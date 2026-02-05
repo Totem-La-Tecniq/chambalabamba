@@ -4,22 +4,33 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('inicio', '0015_alter_gallery_options_alter_heroslide_options_and_more'),
+        ("inicio", "0015_alter_gallery_options_alter_heroslide_options_and_more"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='gallery',
-            options={'ordering': ['orden', '-creado'], 'verbose_name': '3. Galerías / Galleries', 'verbose_name_plural': '3. Galerías / Galleries'},
+            name="gallery",
+            options={
+                "ordering": ["orden", "-creado"],
+                "verbose_name": "3. Galerías / Galleries",
+                "verbose_name_plural": "3. Galerías / Galleries",
+            },
         ),
         migrations.AlterModelOptions(
-            name='heroslide',
-            options={'ordering': ['orden', '-creado'], 'verbose_name': '1. Cabeceras / Hero Slides', 'verbose_name_plural': '1. Cabeceras / Hero Slides'},
+            name="heroslide",
+            options={
+                "ordering": ["orden", "-creado"],
+                "verbose_name": "1. Cabeceras / Hero Slides",
+                "verbose_name_plural": "1. Cabeceras / Hero Slides",
+            },
         ),
         migrations.AlterModelOptions(
-            name='valorcard',
-            options={'ordering': ['orden', '-creado'], 'verbose_name': '2. Pilares / Value Cards', 'verbose_name_plural': '2. Pilares / Value Cards'},
+            name="valorcard",
+            options={
+                "ordering": ["orden", "-creado"],
+                "verbose_name": "2. Pilares / Value Cards",
+                "verbose_name_plural": "2. Pilares / Value Cards",
+            },
         ),
     ]

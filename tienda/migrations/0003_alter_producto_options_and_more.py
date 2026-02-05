@@ -4,18 +4,25 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('tienda', '0002_tiendalanding'),
+        ("tienda", "0002_tiendalanding"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='producto',
-            options={'ordering': ['orden', '-creado'], 'verbose_name': '1) Producto', 'verbose_name_plural': '1) Productos'},
+            name="producto",
+            options={
+                "ordering": ["orden", "-creado"],
+                "verbose_name": "1) Producto",
+                "verbose_name_plural": "1) Productos",
+            },
         ),
         migrations.AlterModelOptions(
-            name='productocategoria',
-            options={'ordering': ['orden', 'nombre'], 'verbose_name': '2. Categoría de producto', 'verbose_name_plural': '2. Categorías de producto'},
+            name="productocategoria",
+            options={
+                "ordering": ["orden", "nombre"],
+                "verbose_name": "2. Categoría de producto",
+                "verbose_name_plural": "2. Categorías de producto",
+            },
         ),
     ]

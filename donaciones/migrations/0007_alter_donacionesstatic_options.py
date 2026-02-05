@@ -4,14 +4,16 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('donaciones', '0006_donacionesstatic'),
+        ("donaciones", "0006_donacionesstatic"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='donacionesstatic',
-            options={'verbose_name': 'Página de Donaciones', 'verbose_name_plural': 'Páginas de Donaciones'},
+            name="donacionesstatic",
+            options={
+                "verbose_name": "Página de Donaciones",
+                "verbose_name_plural": "Páginas de Donaciones",
+            },
         ),
     ]

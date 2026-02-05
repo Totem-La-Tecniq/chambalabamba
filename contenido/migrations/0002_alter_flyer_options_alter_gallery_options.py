@@ -4,18 +4,17 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('contenido', '0001_initial'),
+        ("contenido", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='flyer',
-            options={'verbose_name_plural': 'Flyers de Inicio/Home'},
+            name="flyer",
+            options={"verbose_name_plural": "Flyers de Inicio/Home"},
         ),
         migrations.AlterModelOptions(
-            name='gallery',
-            options={'verbose_name_plural': 'Galeria de Inicio/Home'},
+            name="gallery",
+            options={"verbose_name_plural": "Galeria de Inicio/Home"},
         ),
     ]

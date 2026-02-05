@@ -4,29 +4,62 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('inicio', '0020_rename_portadas_gallery_portada'),
+        ("inicio", "0020_rename_portadas_gallery_portada"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='SectionHeader',
+            name="SectionHeader",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('seccion', models.CharField(choices=[('home_ultimos_eventos', 'Home – Últimos Eventos'), ('nosotros_cabecera', 'Nosotros – Cabecera'), ('proyectos_movimiento', 'Home – Proyectos en Movimiento'), ('participa_estancias', 'Participa – Estancias')], max_length=50, unique=True)),
-                ('title', models.CharField(max_length=120, verbose_name='Título (H2)')),
-                ('subtitle', models.CharField(blank=True, max_length=160, verbose_name='Subtítulo (H5)')),
-                ('publicado', models.BooleanField(default=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "seccion",
+                    models.CharField(
+                        choices=[
+                            ("home_ultimos_eventos", "Home – Últimos Eventos"),
+                            ("nosotros_cabecera", "Nosotros – Cabecera"),
+                            ("proyectos_movimiento", "Home – Proyectos en Movimiento"),
+                            ("participa_estancias", "Participa – Estancias"),
+                        ],
+                        max_length=50,
+                        unique=True,
+                    ),
+                ),
+                ("title", models.CharField(max_length=120, verbose_name="Título (H2)")),
+                (
+                    "subtitle",
+                    models.CharField(
+                        blank=True, max_length=160, verbose_name="Subtítulo (H5)"
+                    ),
+                ),
+                ("publicado", models.BooleanField(default=True)),
             ],
             options={
-                'verbose_name': 'Header de Sección',
-                'verbose_name_plural': 'Headers de Sección',
+                "verbose_name": "Header de Sección",
+                "verbose_name_plural": "Headers de Sección",
             },
         ),
         migrations.AlterField(
-            model_name='gallery',
-            name='seccion',
-            field=models.CharField(choices=[('home_ultimos_eventos', 'Home – Ultimos-Eventos'), ('nosotros_cabecera', 'Nosotros – Cabecera'), ('proyectos_movimiento', 'Home – Proyecto movimiento'), ('participa_estancias', 'Participa – Estancias')], default='home_ultimos_eventos', max_length=50),
+            model_name="gallery",
+            name="seccion",
+            field=models.CharField(
+                choices=[
+                    ("home_ultimos_eventos", "Home – Ultimos-Eventos"),
+                    ("nosotros_cabecera", "Nosotros – Cabecera"),
+                    ("proyectos_movimiento", "Home – Proyecto movimiento"),
+                    ("participa_estancias", "Participa – Estancias"),
+                ],
+                default="home_ultimos_eventos",
+                max_length=50,
+            ),
         ),
     ]
