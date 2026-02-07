@@ -9,15 +9,9 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        # Nada en DB porque ya está renombrado
-        migrations.SeparateDatabaseAndState(
-            database_operations=[],
-            state_operations=[
-                migrations.RenameField(
-                    model_name="gallery",
-                    old_name="portadas",
-                    new_name="portada",
-                ),
-            ],
+        migrations.RenameField(
+            model_name="gallery",
+            old_name="portadas",
+            new_name="portada",
         ),
     ]
