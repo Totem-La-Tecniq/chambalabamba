@@ -6,7 +6,7 @@
       "h5": "Alianzas que nos potencian",
       "h2": "Cooperaciones",
       "subtitulo": "Organizaciones y colectivos que caminan junto a Chambalabamba",
-      "hero": "coops/hero/coops-hero.jpg",
+      "hero": "images/coops/hero/coops-hero.jpg",
       "publicado": true,
       "actualizado": "2025-09-15T10:00:00Z"
     }
@@ -29,8 +29,8 @@
       "nombre": "Red Agroecológica",
       "slug": "red-agroecologica",
       "pais": "Ecuador",
-      "logo": "coops/logos/red-agroecologica.png",
-      "portada": "coops/portadas/red-agroecologica.jpg",
+      "logo": "images/coops/logos/red-agroecologica.png",
+      "portada": "images/coops/portadas/red-agroecologica.jpg",
       "excerpt": "Intercambio de semillas y talleres comunitarios.",
       "descripcion": "Trabajamos junto a nodos locales para promover la soberanía alimentaria y prácticas agroecológicas.",
       "url_externa": "https://ejemplo.org/red-agroecologica",
@@ -47,8 +47,8 @@
       "nombre": "Universidad Verde",
       "slug": "universidad-verde",
       "pais": "Chile",
-      "logo": "coops/logos/universidad-verde.png",
-      "portada": "coops/portadas/universidad-verde.jpg",
+      "logo": "images/coops/logos/universidad-verde.png",
+      "portada": "images/coops/portadas/universidad-verde.jpg",
       "excerpt": "Pasantías y apoyo técnico en permacultura.",
       "descripcion": "Convenio para pasantías, investigación aplicada y transferencia de conocimientos.",
       "url_externa": "https://ejemplo.edu/universidad-verde",
@@ -62,7 +62,7 @@
     "pk": 1,
     "fields": {
       "coop": 1,
-      "imagen": "coops/fotos/red-agroecologica/siembra-1.jpg",
+      "imagen": "images/coops/fotos/red-agroecologica/siembra-1.jpg",
       "alt": "Jornada de siembra comunitaria",
       "publicado": true,
       "orden": 1
@@ -73,7 +73,7 @@
     "pk": 2,
     "fields": {
       "coop": 1,
-      "imagen": "coops/fotos/red-agroecologica/trueque-1.jpg",
+      "imagen": "images/coops/fotos/red-agroecologica/trueque-1.jpg",
       "alt": "Intercambio de semillas",
       "publicado": true,
       "orden": 2
@@ -84,7 +84,7 @@
     "pk": 3,
     "fields": {
       "coop": 2,
-      "imagen": "coops/fotos/universidad-verde/pasantia-1.jpg",
+      "imagen": "images/coops/fotos/universidad-verde/pasantia-1.jpg",
       "alt": "Pasantía en bio-construcción",
       "publicado": true,
       "orden": 1
