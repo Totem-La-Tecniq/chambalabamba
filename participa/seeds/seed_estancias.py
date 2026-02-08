@@ -4,7 +4,7 @@ from django.db import connection, transaction
 from django.conf import settings
 from pathlib import Path
 
-SEED_TAG = "estancias:v11"  # <- súbelo al cambiar el seed/datos
+SEED_TAG = "estancias:v12"  # <- súbelo al cambiar el seed/datos
 
 
 def _seed_estancias_once(sender, **kwargs):

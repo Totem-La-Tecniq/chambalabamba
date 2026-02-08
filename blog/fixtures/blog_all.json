@@ -5,7 +5,7 @@
     "fields": {
       "title": "Blog",
       "breadcrumb_label": "Blog",
-      "background": "blog/header/blog-header.jpg"
+      "background": "images/blog/header/blog-header.jpg"
     }
   },
   {
@@ -46,7 +46,7 @@
       "tags": [1,2],
       "resumen": "Preparando camas y semillas nativas.",
       "cuerpo_html": "<p>Compartimos el calendario de siembra y prácticas de cuidado del suelo.</p>",
-      "portada": "blog/portadas/siembra.jpg",
+      "portada": "images/blog/portadas/siembra.jpg",
       "tipo": "standard",
       "video_url": "",
       "audio_url": "",
@@ -71,7 +71,7 @@
       "tags": [2],
       "resumen": "Galería con momentos de la semana.",
       "cuerpo_html": "<p>Imágenes de siembra, riego y cosecha.</p>",
-      "portada": "blog/portadas/siembra.jpg",
+      "portada": "images/blog/portadas/siembra.jpg",
       "tipo": "gallery",
       "video_url": "",
       "audio_url": "",
@@ -84,13 +84,13 @@
   { "model": "blog.blogpostphoto", "pk": 201,
     "fields": {
       "publicado": true, "orden": 1, "creado": "2025-09-12T09:00:00", "actualizado": "2025-09-12T09:00:00",
-      "post": 2, "imagen": "blog/gallery/huerta-1.jpg", "titulo": "Semillas", "alt": "Semillas nativas", "creditos": "", "is_header": true
+      "post": 2, "imagen": "images/blog/gallery/huerta-1.jpg", "titulo": "Semillas", "alt": "Semillas nativas", "creditos": "", "is_header": true
     }
   },
   { "model": "blog.blogpostphoto", "pk": 202,
     "fields": {
       "publicado": true, "orden": 2, "creado": "2025-09-12T09:00:00", "actualizado": "2025-09-12T09:00:00",
-      "post": 2, "imagen": "blog/gallery/huerta-2.jpg", "titulo": "Camas", "alt": "Camas de cultivo", "creditos": "", "is_header": false
+      "post": 2, "imagen": "images/blog/gallery/huerta-2.jpg", "titulo": "Camas", "alt": "Camas de cultivo", "creditos": "", "is_header": false
     }
   },
 

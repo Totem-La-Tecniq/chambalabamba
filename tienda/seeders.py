@@ -4,7 +4,7 @@ from pathlib import Path
 from django.db.models.signals import post_migrate
 from django.dispatch import receiver
 
-SEED_TAG = "tienda:v7"  # súbelo (v2, v3, …) cuando quieras resembrar
+SEED_TAG = "tienda:v8"  # súbelo (v2, v3, …) cuando quieras resembrar
 
 
 @receiver(post_migrate)
