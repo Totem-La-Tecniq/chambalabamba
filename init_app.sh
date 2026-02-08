@@ -16,7 +16,7 @@ DEST="/opt/render/project/src/media/"
 # 3. Sync images and assets to the Persistent Disk
 # We exclude code files and the admin dashboard assets
 echo "Step 2: Syncing assets to Persistent Disk ($DEST)..."
-rsync -av --ignore-existing \
+rsync -rv --no-t --ignore-existing \
   --exclude='*.css' \
   --exclude='*.js' \
   --exclude='*.map' \
