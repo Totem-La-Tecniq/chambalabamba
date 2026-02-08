@@ -9,26 +9,14 @@ echo "--- 📦 Starting Media Initialization ---"
 echo "Step 1: Collecting static files..."
 python manage.py collectstatic --noinput
 
-# 2. Define source and destination
-SOURCE="staticfiles/"
-DEST="/opt/render/project/src/media/"
-
-# 3. Sync images and assets to the Persistent Disk
-# We exclude code files and the admin dashboard assets
-echo "Step 2: Syncing assets to Persistent Disk ($DEST)..."
-rsync -rv --no-t --ignore-existing \
-  --exclude='*.css' \
-  --exclude='*.js' \
-  --exclude='*.map' \
-  --exclude='admin/' \
-  --exclude='ckeditor/' \
-  "$SOURCE" "$DEST"
+# 2. Organize seed media (copy images from static to media with correct folder structure)
+echo "Step 2: Organizing seed media with correct folder structure..."
+python manage.py load_seed_media
 
 echo "--- ✅ Media Initialization Complete ---"
 
-
-# 4. Create Superuser (Idempotent)
-echo "Step 4: Checking for Admin User..."
+# 3. Create Superuser (Idempotent)
+echo "Step 3: Checking for Admin User..."
 python manage.py shell <<EOF
 from django.contrib.auth import get_user_model
 import os
@@ -48,6 +36,6 @@ else:
     print(f"--- 👤 Superuser '{username}' already exists ---")
 EOF
 
-# 5. Start Gunicorn
-echo "Step 5: Launching Gunicorn..."
+# 4. Start Gunicorn
+echo "Step 4: Launching Gunicorn..."
 exec gunicorn chambalabamba.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 120
