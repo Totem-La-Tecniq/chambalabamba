@@ -1,17 +1,17 @@
 [
-  { "model": "participa.estanciafoto", "pk": 1, "fields": { "publicado": true, "orden": 1, "estancia": 1, "titulo": "Vista exterior",  "imagen": "images/estancias/fotos/voluntarios.png",  "alt": "Exterior Casa Loma" } },
+  { "model": "participa.estanciafoto", "pk": 1, "fields": { "publicado": true, "orden": 1, "estancia": 1, "titulo": "Vista exterior",  "imagen": "estancias/fotos/voluntarios.png",  "alt": "Exterior Casa Loma" } },
 
 
-  { "model": "participa.estanciafoto", "pk": 3, "fields": { "publicado": true, "orden": 1, "estancia": 2, "titulo": "Koala exterior",  "imagen": "images/estancias/fotos/arbol.png", "alt": "Exterior Koala" } },
+  { "model": "participa.estanciafoto", "pk": 3, "fields": { "publicado": true, "orden": 1, "estancia": 2, "titulo": "Koala exterior",  "imagen": "estancias/fotos/arbol.png", "alt": "Exterior Koala" } },
 
 
-  { "model": "participa.estanciafoto", "pk": 5, "fields": { "publicado": true, "orden": 1, "estancia": 3, "titulo": "Bosque exterior", "imagen": "images/estancias/fotos/casa-bioconstruccion.png", "alt": "Exterior Bosque" } },
+  { "model": "participa.estanciafoto", "pk": 5, "fields": { "publicado": true, "orden": 1, "estancia": 3, "titulo": "Bosque exterior", "imagen": "estancias/fotos/casa-bioconstruccion.png", "alt": "Exterior Bosque" } },
 
-  { "model": "participa.estanciafoto", "pk": 5, "fields": { "publicado": true, "orden": 1, "estancia": 3, "titulo": "Bosque exterior", "imagen": "images/estancias/fotos/casa-loma.png", "alt": "Exterior Bosque" } },
+  { "model": "participa.estanciafoto", "pk": 5, "fields": { "publicado": true, "orden": 1, "estancia": 3, "titulo": "Bosque exterior", "imagen": "estancias/fotos/casa-loma.png", "alt": "Exterior Bosque" } },
 
-  { "model": "participa.estanciafoto", "pk": 5, "fields": { "publicado": true, "orden": 1, "estancia": 3, "titulo": "Bosque exterior", "imagen": "images/estancias/fotos/casa-madera.png", "alt": "Exterior Bosque" } },
-  { "model": "participa.estanciafoto", "pk": 5, "fields": { "publicado": true, "orden": 1, "estancia": 3, "titulo": "Bosque exterior", "imagen": "images/estancias/fotos/domo.png", "alt": "Exterior Bosque" } },
-  { "model": "participa.estanciafoto", "pk": 5, "fields": { "publicado": true, "orden": 1, "estancia": 3, "titulo": "Bosque exterior", "imagen": "images/estancias/fotos/domo-paja.png", "alt": "Exterior Bosque" } }
+  { "model": "participa.estanciafoto", "pk": 5, "fields": { "publicado": true, "orden": 1, "estancia": 3, "titulo": "Bosque exterior", "imagen": "estancias/fotos/casa-madera.png", "alt": "Exterior Bosque" } },
+  { "model": "participa.estanciafoto", "pk": 5, "fields": { "publicado": true, "orden": 1, "estancia": 3, "titulo": "Bosque exterior", "imagen": "estancias/fotos/domo.png", "alt": "Exterior Bosque" } },
+  { "model": "participa.estanciafoto", "pk": 5, "fields": { "publicado": true, "orden": 1, "estancia": 3, "titulo": "Bosque exterior", "imagen": "estancias/fotos/domo-paja.png", "alt": "Exterior Bosque" } }
 
 
 ]
