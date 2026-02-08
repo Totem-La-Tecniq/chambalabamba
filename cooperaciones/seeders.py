@@ -6,7 +6,7 @@ APP_LABEL = "cooperaciones"
 
 # (fixture, tag) — cada tag se guarda en seed_run para no recargarlo dos veces
 SEEDS = [
-    ("coops_seed.json", "coops:v3"),
+    ("coops_seed.json", "coops:v4"),
     # Si más adelante sumas otras semillas (p. ej. por países), agrega sus tags aquí:
     # ("coops_seed_extra.json", "coops:extra:v1"),
 ]

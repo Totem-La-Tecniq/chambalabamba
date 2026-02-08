@@ -5,7 +5,7 @@ from pathlib import Path
 import os
 
 # Sube la versión para resembrar (p.ej. v2, v3...)
-SEED_TAG = os.getenv("INICIO_SEED_TAG", "inicio:v20")
+SEED_TAG = os.getenv("INICIO_SEED_TAG", "inicio:v21")
 FIXTURE_FILENAME = os.getenv("INICIO_FIXTURE", "inicio_seed.json")
 
 

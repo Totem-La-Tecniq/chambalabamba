@@ -4,7 +4,7 @@ from django.db import connection, transaction
 from pathlib import Path
 
 FIXTURE_FILE = "blog_all.json"  # nombre del único JSON
-SEED_TAG = "blog:all:v5"  # súbelo (v2, v3...) si quieres recargar
+SEED_TAG = "blog:all:v6"  # súbelo (v2, v3...) si quieres recargar
 
 
 def _seed_blog_once(sender, **kwargs):
