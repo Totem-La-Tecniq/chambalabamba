@@ -87,7 +87,7 @@
       "slug": "vida-en-chambalabamba",
       "seccion": "home_ultimos_eventos",
       "descripcion": "Nuestra esencia en imágenes.",
-      "portada": "inicio/galerias/portadas/flyer-dorado-cab1.png",
+      "portada": "images/galerias/portadas/flyer-dorado-cab1.png",
       "alt_portada": "Maloca al atardecer"
     }
   },
@@ -101,7 +101,7 @@
       "slug": "ecstatic-dance",
       "seccion": "home_ultimos_eventos",
       "descripcion": "Danza libre y medicina del movimiento.",
-      "portada": "inicio/galerias/portadas/flyer-dorado-cab2.png",
+      "portada": "images/galerias/portadas/flyer-dorado-cab2.png",
       "alt_portada": "Ecstatic Dance en la maloca"
     }
   },
@@ -115,7 +115,7 @@
       "slug": "retiros-revitalizantes",
       "seccion": "home_ultimos_eventos",
       "descripcion": "Descanso consciente en la naturaleza.",
-      "portada": "inicio/galerias/portadas/flyer-dorado-cab3.png",
+      "portada": "images/galerias/portadas/flyer-dorado-cab3.png",
       "alt_portada": "Retiro junto al río"
     }
   },
@@ -128,7 +128,7 @@
       "orden": 1,
       "galeria": 1,
       "titulo": "Río al amanecer",
-      "imagen": "inicio/galerias/items/flyer-dorado-det1.png",
+      "imagen": "images/galerias/items/flyer-dorado-det1.png",
       "alt": "Río con neblina al amanecer",
       "credito": "Foto: Luis",
       "tags": "rio,amanecer,naturaleza"
@@ -144,7 +144,7 @@
       "slug": "ecstatic-dance-mov",
       "seccion": "proyectos_movimiento",
       "descripcion": "Danza libre como medicina del alma.",
-      "portada": "inicio/galerias/portadas/ecstatic-dance.png",
+      "portada": "images/proyectos/ecstatic-dance.png",
       "alt_portada": "Ecstatic Dance"
     }
   },
@@ -158,7 +158,7 @@
       "slug": "retiros-revitalizantes-mov",
       "seccion": "proyectos_movimiento",
       "descripcion": "Descanso consciente en la naturaleza.",
-      "portada": "inicio/galerias/portadas/retiros-revitalizadores.png",
+      "portada": "images/proyectos/retiros-revitalizadores.png",
       "alt_portada": "Retiros revitalizantes"
     }
   },
@@ -172,7 +172,7 @@
       "slug": "agricultura-regenerativa-mov",
       "seccion": "proyectos_movimiento",
       "descripcion": "Agroecología en armonía con los ciclos.",
-      "portada": "inicio/galerias/portadas/agricultura-sintropica.png",
+      "portada": "images/proyectos/agricultura-sintropica.png",
       "alt_portada": "Agricultura Regenerativa"
     }
   },
@@ -186,7 +186,7 @@
       "slug": "animales-de-granja-mov",
       "seccion": "proyectos_movimiento",
       "descripcion": "Convivencia respetuosa y bienestar animal.",
-      "portada": "inicio/galerias/portadas/animales-granja.png",
+      "portada": "images/proyectos/animales-granja.png",
       "alt_portada": "Animales de Granja"
     }
   },
@@ -200,30 +200,30 @@
       "slug": "apicultura-mov",
       "seccion": "proyectos_movimiento",
       "descripcion": "Cuidado natural de colmenas y polinización.",
-      "portada": "inicio/galerias/portadas/apicultura.png",
+      "portada": "images/proyectos/apicultura.png",
       "alt_portada": "Apicultura"
     }
   },
 
-  { "model": "inicio.galleryitem", "pk": 7,  "fields": { "publicado": true, "orden": 1, "galeria": 4, "titulo": "Círculo de apertura",     "imagen": "inicio/galerias/items/ecstatic_01.jpg", "alt": "Círculo de apertura",     "credito": "", "tags": "danza,ceremonia" } },
-  { "model": "inicio.galleryitem", "pk": 8,  "fields": { "publicado": true, "orden": 2, "galeria": 4, "titulo": "Movimiento libre",        "imagen": "inicio/galerias/items/ecstatic_02.jpg", "alt": "Movimiento libre",        "credito": "", "tags": "ecstatic,tribu" } },
-  { "model": "inicio.galleryitem", "pk": 9,  "fields": { "publicado": true, "orden": 3, "galeria": 4, "titulo": "Cierre e integración",    "imagen": "inicio/galerias/items/ecstatic_03.jpg", "alt": "Cierre e integración",    "credito": "", "tags": "danza,integracion" } },
+  { "model": "inicio.galleryitem", "pk": 7,  "fields": { "publicado": true, "orden": 1, "galeria": 4, "titulo": "Círculo de apertura",     "imagen": "images/proyectos/items/ecstatic_01.jpg", "alt": "Círculo de apertura",     "credito": "", "tags": "danza,ceremonia" } },
+  { "model": "inicio.galleryitem", "pk": 8,  "fields": { "publicado": true, "orden": 2, "galeria": 4, "titulo": "Movimiento libre",        "imagen": "images/proyectos/items/ecstatic_02.jpg", "alt": "Movimiento libre",        "credito": "", "tags": "ecstatic,tribu" } },
+  { "model": "inicio.galleryitem", "pk": 9,  "fields": { "publicado": true, "orden": 3, "galeria": 4, "titulo": "Cierre e integración",    "imagen": "images/proyectos/items/ecstatic_03.jpg", "alt": "Cierre e integración",    "credito": "", "tags": "danza,integracion" } },
 
-  { "model": "inicio.galleryitem", "pk": 10, "fields": { "publicado": true, "orden": 1, "galeria": 5, "titulo": "Meditación en bosque",    "imagen": "inicio/galerias/items/retiros_01.jpg",  "alt": "Meditación en bosque",    "credito": "", "tags": "retiro,meditacion" } },
-  { "model": "inicio.galleryitem", "pk": 11, "fields": { "publicado": true, "orden": 2, "galeria": 5, "titulo": "Alimentación orgánica",   "imagen": "inicio/galerias/items/retiros_02.jpg",  "alt": "Alimentación orgánica",   "credito": "", "tags": "organico,cocina" } },
-  { "model": "inicio.galleryitem", "pk": 12, "fields": { "publicado": true, "orden": 3, "galeria": 5, "titulo": "Respirar junto al río",   "imagen": "inicio/galerias/items/retiros_03.jpg",  "alt": "Respirar junto al río",   "credito": "", "tags": "rio,respiracion" } },
+  { "model": "inicio.galleryitem", "pk": 10, "fields": { "publicado": true, "orden": 1, "galeria": 5, "titulo": "Meditación en bosque",    "imagen": "images/proyectos/items/retiros_01.jpg",  "alt": "Meditación en bosque",    "credito": "", "tags": "retiro,meditacion" } },
+  { "model": "inicio.galleryitem", "pk": 11, "fields": { "publicado": true, "orden": 2, "galeria": 5, "titulo": "Alimentación orgánica",   "imagen": "images/proyectos/items/retiros_02.jpg",  "alt": "Alimentación orgánica",   "credito": "", "tags": "organico,cocina" } },
+  { "model": "inicio.galleryitem", "pk": 12, "fields": { "publicado": true, "orden": 3, "galeria": 5, "titulo": "Respirar junto al río",   "imagen": "images/proyectos/items/retiros_03.jpg",  "alt": "Respirar junto al río",   "credito": "", "tags": "rio,respiracion" } },
 
-  { "model": "inicio.galleryitem", "pk": 13, "fields": { "publicado": true, "orden": 1, "galeria": 6, "titulo": "Huerta comunitaria",      "imagen": "inicio/galerias/items/agri_01.jpg",     "alt": "Huerta comunitaria",      "credito": "", "tags": "huerta,comunidad" } },
-  { "model": "inicio.galleryitem", "pk": 14, "fields": { "publicado": true, "orden": 2, "galeria": 6, "titulo": "Compostaje vivo",         "imagen": "inicio/galerias/items/agri_02.jpg",     "alt": "Compostaje vivo",         "credito": "", "tags": "compost,regenerativa" } },
-  { "model": "inicio.galleryitem", "pk": 15, "fields": { "publicado": true, "orden": 3, "galeria": 6, "titulo": "Cosecha en comunidad",    "imagen": "inicio/galerias/items/agri_03.jpg",     "alt": "Cosecha en comunidad",    "credito": "", "tags": "cosecha,agroecologia" } },
+  { "model": "inicio.galleryitem", "pk": 13, "fields": { "publicado": true, "orden": 1, "galeria": 6, "titulo": "Huerta comunitaria",      "imagen": "images/proyectos/items/agri_01.jpg",     "alt": "Huerta comunitaria",      "credito": "", "tags": "huerta,comunidad" } },
+  { "model": "inicio.galleryitem", "pk": 14, "fields": { "publicado": true, "orden": 2, "galeria": 6, "titulo": "Compostaje vivo",         "imagen": "images/proyectos/items/agri_02.jpg",     "alt": "Compostaje vivo",         "credito": "", "tags": "compost,regenerativa" } },
+  { "model": "inicio.galleryitem", "pk": 15, "fields": { "publicado": true, "orden": 3, "galeria": 6, "titulo": "Cosecha en comunidad",    "imagen": "images/proyectos/items/agri_03.jpg",     "alt": "Cosecha en comunidad",    "credito": "", "tags": "cosecha,agroecologia" } },
 
-  { "model": "inicio.galleryitem", "pk": 16, "fields": { "publicado": true, "orden": 1, "galeria": 7, "titulo": "Libre pastoreo",          "imagen": "inicio/galerias/items/granja_01.jpg",   "alt": "Libre pastoreo",          "credito": "", "tags": "granja,animales" } },
-  { "model": "inicio.galleryitem", "pk": 17, "fields": { "publicado": true, "orden": 2, "galeria": 7, "titulo": "Cuidado consciente",      "imagen": "inicio/galerias/items/granja_02.jpg",   "alt": "Cuidado consciente",      "credito": "", "tags": "bienestar,ecosistema" } },
-  { "model": "inicio.galleryitem", "pk": 18, "fields": { "publicado": true, "orden": 3, "galeria": 7, "titulo": "Vida en el corral",       "imagen": "inicio/galerias/items/granja_03.jpg",   "alt": "Vida en el corral",       "credito": "", "tags": "corral,vida" } },
+  { "model": "inicio.galleryitem", "pk": 16, "fields": { "publicado": true, "orden": 1, "galeria": 7, "titulo": "Libre pastoreo",          "imagen": "images/proyectos/items/granja_01.jpg",   "alt": "Libre pastoreo",          "credito": "", "tags": "granja,animales" } },
+  { "model": "inicio.galleryitem", "pk": 17, "fields": { "publicado": true, "orden": 2, "galeria": 7, "titulo": "Cuidado consciente",      "imagen": "images/proyectos/items/granja_02.jpg",   "alt": "Cuidado consciente",      "credito": "", "tags": "bienestar,ecosistema" } },
+  { "model": "inicio.galleryitem", "pk": 18, "fields": { "publicado": true, "orden": 3, "galeria": 7, "titulo": "Vida en el corral",       "imagen": "images/proyectos/items/granja_03.jpg",   "alt": "Vida en el corral",       "credito": "", "tags": "corral,vida" } },
 
-  { "model": "inicio.galleryitem", "pk": 19, "fields": { "publicado": true, "orden": 1, "galeria": 8, "titulo": "Guardianas del bosque",   "imagen": "inicio/galerias/items/api_01.jpg",      "alt": "Guardianas del bosque",   "credito": "", "tags": "abejas,naturaleza" } },
-  { "model": "inicio.galleryitem", "pk": 20, "fields": { "publicado": true, "orden": 2, "galeria": 8, "titulo": "Cera y miel",             "imagen": "inicio/galerias/items/api_02.jpg",      "alt": "Cera y miel",             "credito": "", "tags": "miel,cera" } },
-  { "model": "inicio.galleryitem", "pk": 21, "fields": { "publicado": true, "orden": 3, "galeria": 8, "titulo": "Polinización en acción",  "imagen": "inicio/galerias/items/api_03.jpg",      "alt": "Polinización en acción",  "credito": "", "tags": "polinizacion,vida" } },
+  { "model": "inicio.galleryitem", "pk": 19, "fields": { "publicado": true, "orden": 1, "galeria": 8, "titulo": "Guardianas del bosque",   "imagen": "images/proyectos/items/api_01.jpg",      "alt": "Guardianas del bosque",   "credito": "", "tags": "abejas,naturaleza" } },
+  { "model": "inicio.galleryitem", "pk": 20, "fields": { "publicado": true, "orden": 2, "galeria": 8, "titulo": "Cera y miel",             "imagen": "images/proyectos/items/api_02.jpg",      "alt": "Cera y miel",             "credito": "", "tags": "miel,cera" } },
+  { "model": "inicio.galleryitem", "pk": 21, "fields": { "publicado": true, "orden": 3, "galeria": 8, "titulo": "Polinización en acción",  "imagen": "images/proyectos/items/api_03.jpg",      "alt": "Polinización en acción",  "credito": "", "tags": "polinizacion,vida" } },
   {
     "model": "inicio.galleryitem",
     "pk": 2,
@@ -232,7 +232,7 @@
       "orden": 2,
       "galeria": 1,
       "titulo": "Huerta comunitaria",
-      "imagen": "inicio/galerias/items/flyer-dorado-det2.png",
+      "imagen": "images/galerias/items/flyer-dorado-det2.png",
       "alt": "Huerta comunitaria",
       "credito": "Foto: Gina",
       "tags": "huerta,comunidad"
@@ -246,7 +246,7 @@
       "orden": 3,
       "galeria": 1,
       "titulo": "Atardecer en la maloca",
-      "imagen": "inicio/galerias/items/flyer-dorado-det3.png",
+      "imagen": "images/galerias/items/flyer-dorado-det3.png",
       "alt": "Atardecer en la maloca",
       "credito": "",
       "tags": "maloca,atardecer"
@@ -261,7 +261,7 @@
       "orden": 1,
       "galeria": 2,
       "titulo": "Círculo de apertura",
-      "imagen": "inicio/galerias/items/flyer-dorado-det4.png",
+      "imagen": "images/galerias/items/flyer-dorado-det4.png",
       "alt": "Círculo de apertura",
       "credito": "",
       "tags": "danza,ceremonia"
@@ -275,7 +275,7 @@
       "orden": 2,
       "galeria": 2,
       "titulo": "Movimiento libre",
-      "imagen": "inicio/galerias/items/flyer-dorado-det5.png",
+      "imagen": "images/galerias/items/flyer-dorado-det5.png",
       "alt": "Movimiento libre",
       "credito": "",
       "tags": "ecstatic,tribu"
@@ -289,7 +289,7 @@
       "orden": 3,
       "galeria": 2,
       "titulo": "Cierre e integración",
-      "imagen": "inicio/galerias/items/flyer-dorado-det6.png",
+      "imagen": "images/galerias/items/flyer-dorado-det6.png",
       "alt": "Cierre e integración",
       "credito": "",
       "tags": "danza,integracion"
@@ -297,5 +297,3 @@
   }
 
 ]
-
-
