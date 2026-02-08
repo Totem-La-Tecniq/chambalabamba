@@ -26,6 +26,28 @@ rsync -rv --no-t --ignore-existing \
 
 echo "--- ✅ Media Initialization Complete ---"
 
-# 4. Start Gunicorn
-echo "Step 3: Launching Gunicorn..."
+
+# 4. Create Superuser (Idempotent)
+echo "Step 4: Checking for Admin User..."
+python manage.py shell <<EOF
+from django.contrib.auth import get_user_model
+import os
+
+User = get_user_model()
+username = os.getenv("DJANGO_SUPERUSER_USERNAME", "admin")
+email = os.getenv("DJANGO_SUPERUSER_EMAIL", "admin@example.com")
+password = os.getenv("DJANGO_SUPERUSER_PASSWORD")
+
+if not User.objects.filter(username=username).exists():
+    if password:
+        User.objects.create_superuser(username, email, password)
+        print(f"--- 👤 Superuser '{username}' created successfully ---")
+    else:
+        print("--- ⚠️ DJANGO_SUPERUSER_PASSWORD not set, skipping creation ---")
+else:
+    print(f"--- 👤 Superuser '{username}' already exists ---")
+EOF
+
+# 5. Start Gunicorn
+echo "Step 5: Launching Gunicorn..."
 exec gunicorn chambalabamba.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 120
