@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from decouple import config
 import dj_database_url
+from django.utils.translation import gettext_lazy as _
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = config("DEBUG", default=True, cast=bool)
@@ -79,6 +80,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -160,10 +162,14 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internacionalización
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "es"
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
+LANGUAGES = [
+    ("en", _("English")),
+    ("es", _("Spanish")),
+]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
