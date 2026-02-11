@@ -23,6 +23,10 @@ from django.urls import re_path
 from django.views.static import serve
 
 urlpatterns = [
+    path("i18n/", include("django.conf.urls.i18n")),
+]
+
+urlpatterns += [
     path("admin/", admin.site.urls),
     path("", include("inicio.urls")),
     path("contacto/", include("contacto.urls")),
